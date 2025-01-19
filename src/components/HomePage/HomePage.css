@@ -1,0 +1,10 @@
+
+.posts {
+    background-color: #505050;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    list-style: none;
+}

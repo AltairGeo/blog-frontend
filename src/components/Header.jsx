@@ -7,16 +7,16 @@ function Header(props) {
         <div id="header">
             <nav>
                 <ul id='header-pgs'>
-                    <li><a href="./index.html" class="active">Home</a></li>
-                    <li><a href="#">Hot</a></li>
-                    <li><a href="#">Lasts</a></li>
+                    <li><a href="#" className={props.active === "home" ? "active" : ""}>Home</a></li>
+                    <li><a href="#" className={props.active === "hot" ? "active" : ""}>Hot</a></li>
+                    <li><a href="#" className={props.active === "lasts" ? "active" : ""}>Lasts</a></li>
                 </ul>
             </nav>
             <nav>
-                {cookies.token ? <p>Гойдочка</p> :             
+                {cookies.token ? <p>Гойдочка</p> :               
                 <ul>
-                    <li><a href="./register.html">Registration</a></li>
-                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="#" className={props.active === "registration" ? "active" : ""}>Registration</a></li>
+                    <li><a href="#" className={props.active === "login" ? "active" : ""}>Login</a></li>
                 </ul>}
             </nav>
         </div>

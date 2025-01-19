@@ -1,0 +1,92 @@
+@font-face {
+    font-family: Russo;
+    src: url('../../../public/fonts/KellySlab-Regular.ttf');
+}
+
+.PostHeader {
+    font-family: Russo;
+    font-size: 15px;
+
+    background-color: #7F3D39;
+    color: #DBDDCF;
+    border-bottom: 4px solid #753835;
+    border-radius: 6px;
+    margin: 0px;
+    padding: 4px;
+    text-align: center;
+}
+
+#PostBody {
+    font-family: Russo;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #DBDDCF;  
+    border-bottom: 4px solid #b8b9b0;
+    border-radius: 10px;  
+    word-break: break-all;
+}
+
+.PostHeader h1{
+    margin: 4px;
+}
+
+.PostSpan{
+    font-family: Russo;
+    font-size: 20px;
+    display: flex;
+    margin: 0;
+    color: white;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.PostSpan p {
+    margin: 0;
+    font-size: 25px;
+    padding: 5px;
+    background-color: #908D79;
+    border-radius: 10px;
+    color: #424243;
+}
+
+.PostBottom {
+    font-family: Russo;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.PostBottom button {
+    font-family: Russo;
+    font-size: 24px;
+    background-color: #7E7B68;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    height: 50px;
+    color: #424243;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    transition: ease 0.3s;
+    cursor: text;
+}
+
+.PostBottom button:hover {
+    background-color: #9b9a84;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.075);
+    scale: 1.05;
+}
+
+.PostBottom button:active {
+    scale: 1.0;
+    background-color: #7E7B68;
+}
+
+#PostElement {
+    border-radius: 10px;
+    background-color: #424243;
+    margin: 15px;
+    padding: 15px;
+}
