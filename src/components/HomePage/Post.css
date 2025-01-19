@@ -1,6 +1,6 @@
 @font-face {
     font-family: Russo;
-    src: url('../../../public/fonts/KellySlab-Regular.ttf');
+    src: url('../../assets/KellySlab-Regular.ttf');
 }
 
 .PostHeader {

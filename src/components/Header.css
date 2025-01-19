@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: FA;
-    src: url('../../public/fonts/fa-solid-900.ttf');
+    src: url('../assets/fa-solid-900.ttf');
 }
 
 @font-face {
     font-family: Russo;
-    src: url(../../public/fonts/KellySlab-Regular.ttf);
+    src: url('../assets/KellySlab-Regular.ttf');
 }
 
 #header *{ 
