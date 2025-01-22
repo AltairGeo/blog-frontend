@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import ErrorText from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Post from './Post';
+import Paper from '../Paper/Paper';
 
 function HomePage() {
     const [posts, setPosts] = useState([]); // Хранилище для данных
@@ -29,9 +30,16 @@ function HomePage() {
     return (
     <>
         {error != null ? <ErrorText title="Error!" text={error.statusText}></ErrorText> : ""}
-        {loading ? <Loading /> : error != null ? "" : <ul className='posts'>{posts.map((post) => (
-    <Post key={post.id} title={post.title} body={post.text} author={post.author_id} />
-))}</ul>}
+        {loading ?
+            <Loading /> : 
+            error != null ? "" 
+        : 
+        <Paper marg={true}>
+            <ul className='posts'>
+                {posts.map((post) => (
+            <Post key={post.id} title={post.title} body={post.text} author={post.author_id} />))}
+            </ul>
+        </Paper>}
     </>
     )
 }

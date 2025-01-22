@@ -17,11 +17,11 @@ export default function Post(props){
     return (
         <li id='PostElement'>
             <div>
-                <div class="PostHeader"><h1>{props.title}</h1></div>
+                <div className="PostHeader"><h1>{props.title}</h1></div>
                 <p id="PostBody">{props.body.slice(0, 350) + "..."}</p>
-                <div class="PostBottom">
-                    <button class="btn-read-more">Читать дальше</button>
-                    <span class="PostSpan">
+                <div className="PostBottom">
+                    <button className="btn-read-more">Читать дальше</button>
+                    <span className="PostSpan">
                         <p id="PostAuthorName">{authorPost}</p>
                     </span>
                 </div>

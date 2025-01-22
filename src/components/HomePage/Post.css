@@ -28,6 +28,7 @@
 
 .PostHeader h1{
     margin: 4px;
+    min-width: 50%;
 }
 
 .PostSpan{
@@ -52,7 +53,7 @@
 
 .PostBottom {
     font-family: Russo;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
@@ -87,6 +88,6 @@
 #PostElement {
     border-radius: 10px;
     background-color: #424243;
-    margin: 15px;
-    padding: 15px;
+    margin: 12px;
+    padding: 12px;
 }
