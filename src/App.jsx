@@ -4,6 +4,7 @@ import Header from './components/Header'
 import HomePage from './components/HomePage/HomePage';
 import Register from './components/register/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import Login from './components/LoginPage/Login';
 
 function App() { 
   const [activeTab, setActiveTab] = useState("home");
@@ -17,6 +18,8 @@ function App() {
       setActiveTab("register");
     } else if (location.pathname === '/login') {
       setActiveTab("login");
+    } else if (location.pathname === '/create') {
+      setActiveTab("create");
     }
   }, [location]); // useEffect будет срабатывать при изменении маршрута
 
@@ -26,6 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}/>
         <Route path='/register' element={<Register></Register>}/>
+        <Route path='/login' element={<Login></Login>}/>
       </Routes>
     </>
   )

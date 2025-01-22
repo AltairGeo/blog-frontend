@@ -16,13 +16,13 @@ function Header(props) {
             <nav>
                 {cookies.token ? 
                 <ul>
-                    <li><Link to='/create' className={props.active === "+" ? "active" : ""} id="createPostBTN">+</Link></li>
-                    <li><a className={props.active === "profile" ? "active" : ""}><Link>Profile</Link></a></li>
+                    <li><Link to='/create' className={props.active === "create" ? "active" : ""} id="createPostBTN">+</Link></li>
+                    <li><Link className={props.active === "profile" ? "active" : ""} >Profile</Link></li>
                 </ul> 
             :               
                 <ul>
-                    <li><a className={props.active === "registration" ? "active" : ""}><Link to="/register">Registration</Link></a></li>
-                    <li><a className={props.active === "login" ? "active" : ""}><Link to="/login">Login</Link></a></li>
+                    <li><a className={props.active === "register" ? "active" : ""}><Link to="/register">Registration</Link></a></li>
+                    <li><Link className={props.active === "login" ? "active" : ""} to="/login">Login</Link></li>
                 </ul>}
             </nav>
         </div>
