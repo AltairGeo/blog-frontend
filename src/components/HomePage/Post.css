@@ -1,10 +1,16 @@
 @font-face {
     font-family: Russo;
-    src: url('../../assets/KellySlab-Regular.ttf');
+    src: url('/KellySlab-Regular.ttf');
 }
 
+@font-face {
+    font-family: Teko;
+    src: url("/Teko.ttf");
+}
+
+
 .PostHeader {
-    font-family: Russo;
+    font-family: Russo, Teko;
     font-size: 15px;
 
     background-color: #7F3D39;
@@ -17,7 +23,7 @@
 }
 
 #PostBody {
-    font-family: Russo;
+    font-family: Russo, Teko;
     font-size: 20px;
     padding: 20px;
     background-color: #DBDDCF;  
@@ -32,7 +38,7 @@
 }
 
 .PostSpan{
-    font-family: Russo;
+    font-family: Russo, Teko;
     font-size: 20px;
     display: flex;
     margin: 0;

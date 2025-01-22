@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: FA;
-    src: url('../assets/fa-solid-900.ttf');
+    src: url('/fa-solid-900.ttf');
 }
 
 @font-face {
     font-family: Russo;
-    src: url('../assets/KellySlab-Regular.ttf');
+    src: url('/KellySlab-Regular.ttf');
 }
 
 #header *{ 
@@ -82,4 +82,5 @@
 
 #createPostBTN {
     font-family: FA;
+    font-size: 20px;
 }

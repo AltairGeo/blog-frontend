@@ -16,7 +16,7 @@ function Header(props) {
             <nav>
                 {cookies.token ? 
                 <ul>
-                    <li><a  className={props.active === "+" ? "active" : ""} id="createPostBTN"><Link>+</Link></a></li>
+                    <li><Link to='/create' className={props.active === "+" ? "active" : ""} id="createPostBTN">+</Link></li>
                     <li><a className={props.active === "profile" ? "active" : ""}><Link>Profile</Link></a></li>
                 </ul> 
             :               

@@ -1,10 +1,15 @@
 @font-face {
     font-family: Russo;
-    src: url('../assets/KellySlab-Regular.ttf');
+    src: url('/KellySlab-Regular.ttf');
+}
+
+@font-face {
+  font-family: Teko;
+  src: url("/Teko.ttf");
 }
 
 * {
-    font-family: Russo;
+    font-family: Russo, Teko;
     outline: none;
 }
 
@@ -47,7 +52,7 @@
   #form-btn {
     margin-top: 35px;
     background-color: #6e6639;
-    color: white;
+    color: #dbddcf;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
