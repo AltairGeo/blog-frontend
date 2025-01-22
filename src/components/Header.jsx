@@ -8,7 +8,7 @@ function Header(props) {
         <div id="header">
             <nav>
                 <ul id='header-pgs'>
-                    <li><a className={props.active === "home" ? "active" : ""}><Link>Home</Link></a></li>
+                    <li><a className={props.active === "home" ? "active" : ""}><Link to='/'>Home</Link></a></li>
                     <li><a className={props.active === "hot" ? "active" : ""}><Link>Hot</Link></a></li>
                     <li><a className={props.active === "lasts" ? "active" : ""}><Link>Lasts</Link></a></li>
                 </ul>

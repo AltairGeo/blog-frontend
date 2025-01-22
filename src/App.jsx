@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
 import HomePage from './components/HomePage/HomePage';
+import Register from './components/register/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 function App() { 
@@ -22,10 +23,10 @@ function App() {
   return (
     <>
       <Header active={activeTab}></Header>
-        <Routes>
-          <Route path='/' element={<HomePage></HomePage>}/>
-          <Route path='/register' element={null}/>
-        </Routes>
+      <Routes>
+        <Route path='/' element={<HomePage></HomePage>}/>
+        <Route path='/register' element={<Register></Register>}/>
+      </Routes>
     </>
   )
 }
