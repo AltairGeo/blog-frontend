@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
 import HomePage from './components/HomePage/HomePage';
-import Register from './components/register/Register';
+import Register from './components/RegisterPage/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Login from './components/LoginPage/Login';
 
@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Header active={activeTab}></Header>
+      <Header active={activeTab} invis={activeTab === '' ? true : false}></Header>
       <Routes>
         <Route path='/' element={<HomePage></HomePage>}/>
         <Route path='/register' element={<Register></Register>}/>

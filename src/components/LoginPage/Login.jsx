@@ -1,6 +1,8 @@
 import './Login.css'
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
+import Loading from '../Loading/Loading';
+import ErrorText from '../Error/Error';
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); 
@@ -47,6 +49,8 @@ export default function Register() {
 
     return (
         <>
+            {loading ? <Loading></Loading> : ''}
+            {error_msg ? <ErrorText title="Error!" text={error_msg}></ErrorText> : ''}
             <div className='vert-form-div'>
                 <div className='form-div'>
                     <form className='form-register' onSubmit={handleSubmit}>

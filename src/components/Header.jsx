@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Header(props) {
     const [cookies, setCookie] = useCookies(['token'])
+    props.invis ? document.getElementById('header').style.display = 'none' : null
     return (
         <div id="header">
             <nav>
