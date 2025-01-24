@@ -28,3 +28,18 @@
     margin-left: 0px;
     padding-left: 40px;
 }
+
+.md-preview table {
+    border-collapse: collapse;
+    width: 100%; /* Ширина таблицы */
+}
+  
+.md-preview th, td {
+    border: 1px solid black;
+    text-align: left; /* Выравнивание текста */
+    padding: 8px;
+}
+  
+.md-preview th {
+    background-color: #918f81; /* Заливка заголовка */
+}

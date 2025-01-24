@@ -42,3 +42,28 @@
     margin-left: 25px;
     clip-path: inset(0 round 10px); /* Закругляем углы */
 }
+
+.check-btn {
+    font-family: FA;
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    border: none;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: #dbddcf;
+    background-color: #7d8360;
+}
+
+.check-btn:hover {
+    transition: ease 0.2s;
+    background-color: #63684a;
+    bottom: 22px;
+}
+
+.check-btn:active {
+    background-color: #54583f;
+}

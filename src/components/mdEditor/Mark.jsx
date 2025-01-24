@@ -10,6 +10,8 @@ export default function MarkdownEditor(props) {
     if (format === "quote") props.setValue((prev) => `${prev}\n> Quotes`);
     if (format === "code") props.setValue((prev) => `${prev}\n ${"`code`"} `);
     if (format === "image") props.setValue((prev) => `${prev}\n![Name](https://example.com)`);
+    if (format === "line") props.setValue((prev) => `${prev}\n***`);
+    if (format === "table") props.setValue((prev) => `${prev}\n| Header | Header | Header |\n| ------ | ------ | ------ |\n| Data | Data | Data |`);
   };
 
   return (
@@ -25,6 +27,8 @@ export default function MarkdownEditor(props) {
           <button onClick={() => applyFormatting("quote")}></button>
           <button onClick={() => applyFormatting("code")}></button>
           <button onClick={() => applyFormatting("image")}></button>
+          <button onClick={() => applyFormatting("line")}></button>
+          <button onClick={() => applyFormatting("table")}></button>
         </div>
       </div>
 
