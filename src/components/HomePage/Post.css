@@ -19,6 +19,10 @@
     border-bottom: 4px solid #b8b9b0;
     border-radius: 10px;  
     word-break: break-all;
+    max-height: 250px;
+    overflow-y: hidden;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .PostHeader h1{
@@ -85,4 +89,39 @@
     background-color: #424243;
     margin: 12px;
     padding: 12px;
+}
+
+
+#PostBody * {
+    max-width: 100%;
+    word-break: break-all;
+}
+
+#PostBody p:has(code) {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px;
+    background-color: #a3a18f;
+    border-radius: 5px;
+}
+
+#PostBody blockquote {
+    border-left: #343434 5px solid;
+    margin-left: 0px;
+    padding-left: 40px;
+}
+
+#PostBody table {
+    border-collapse: collapse;
+    width: 100%; /* Ширина таблицы */
+}
+  
+#PostBody th, td {
+    border: 1px solid black;
+    text-align: left; /* Выравнивание текста */
+    padding: 8px;
+}
+  
+#PostBody th {
+    background-color: #918f81; /* Заливка заголовка */
 }
