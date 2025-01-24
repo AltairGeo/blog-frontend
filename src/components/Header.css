@@ -1,15 +1,5 @@
 /* HEADER */
 
-@font-face {
-    font-family: FA;
-    src: url('/fa-solid-900.ttf');
-}
-
-@font-face {
-    font-family: Russo;
-    src: url('/KellySlab-Regular.ttf');
-}
-
 #header *{ 
     font-family: Russo;
     font-size: 22px;

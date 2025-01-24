@@ -1,0 +1,54 @@
+.editor-textarea {
+    box-sizing: border-box;
+    resize: none;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 50vh;
+    overflow-y: auto;
+    max-height: 50vh;
+    font-family: Russo, Teko;
+    font-size: 20px;
+    border: none;
+    background-color: #DBDDCF;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.editor-toolbar button {
+    border-radius: 5px;
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-family: FA;
+    color: #fff;
+    border: none;
+    background-color: #7f3d39;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    padding: 7px;
+}
+
+.editor-toolbar button:hover {
+    background-color: #69322f;
+}
+
+.editor-toolbar button:active {
+    background-color: #532825;
+}
+
+.editor-toolbar {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.editor-toolbar-btns {
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #1d2021;
+    border-radius: 12px;
+}

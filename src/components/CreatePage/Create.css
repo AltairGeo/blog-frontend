@@ -1,0 +1,32 @@
+.md-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    height: 100%;
+}
+
+.md-editor {
+    width: 40%;
+    padding: 25px;
+    background-color: #424242;
+    border-radius: 15px;
+    max-height: 70vh;
+}
+
+.md-preview {
+    border-radius: 15px;
+    margin-left: 25px;
+    width: 35%;
+    padding: 20px;
+    background-color: #424242;
+    max-height: 70vh; /* Ограничение высоты */
+    overflow-y: auto; /* Вертикальная полоса прокрутки */
+    scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
+    scrollbar-color: #69322f #1d2021; /* Firefox: цвет трека и ползунка */
+}
+.md-preview * {
+    max-width: 100%;
+    word-break: break-all;
+}

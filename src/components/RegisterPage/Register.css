@@ -1,12 +1,3 @@
-@font-face {
-    font-family: Russo;
-    src: url('/KellySlab-Regular.ttf');
-}
-
-@font-face {
-  font-family: Teko;
-  src: url("/Teko.ttf");
-}
 
 * {
     font-family: Russo, Teko;

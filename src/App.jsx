@@ -5,6 +5,7 @@ import HomePage from './components/HomePage/HomePage';
 import Register from './components/RegisterPage/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Login from './components/LoginPage/Login';
+import CreatePost from './components/CreatePage/Create';
 
 function App() { 
   const [activeTab, setActiveTab] = useState("home");
@@ -30,6 +31,7 @@ function App() {
         <Route path='/' element={<HomePage></HomePage>}/>
         <Route path='/register' element={<Register></Register>}/>
         <Route path='/login' element={<Login></Login>}/>
+        <Route path='/create' element={<CreatePost />}/>
       </Routes>
     </>
   )
