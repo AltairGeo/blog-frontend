@@ -29,7 +29,7 @@ export default function MarkdownEditor(props) {
       </div>
 
       {/* Поле ввода Markdown */}
-      <textarea
+      <textarea autoCorrect="off" autoCapitalize="off" spellCheck="false"
         className="editor-textarea"
         value={props.value}
         onChange={(e) => props.setValue(e.target.value)}

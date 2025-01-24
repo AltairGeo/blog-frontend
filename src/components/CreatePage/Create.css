@@ -7,26 +7,38 @@
     height: 100%;
 }
 
+.group-1 {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.title-input {
+    box-shadow: 9px 6px 11px 2px rgba(0,0,0,0.31);
+    color: #dbddcf;
+    background-color: #69322f;
+    margin-left: 25px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 .md-editor {
+    box-shadow: 9px 6px 21px 2px rgba(0,0,0,0.31);
     width: 40%;
     padding: 25px;
     background-color: #424242;
-    border-radius: 15px;
+    border-radius: 10px;
     max-height: 70vh;
 }
 
-.md-preview {
-    border-radius: 15px;
-    margin-left: 25px;
-    width: 35%;
-    padding: 20px;
-    background-color: #424242;
-    max-height: 70vh; /* Ограничение высоты */
+.preview {
+    box-shadow: 9px 6px 21px 2px rgba(0,0,0,0.31);
+    background-color: #DBDDCF;
     overflow-y: auto; /* Вертикальная полоса прокрутки */
     scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
-    scrollbar-color: #69322f #1d2021; /* Firefox: цвет трека и ползунка */
-}
-.md-preview * {
-    max-width: 100%;
-    word-break: break-all;
+    scrollbar-color: #69322f #b7b8b2; /* Firefox: цвет трека и ползунка */
+    border-radius: 10px;
+    max-height: 70vh; /* Ограничение высоты */
+    margin-left: 25px;
+    clip-path: inset(0 round 10px); /* Закругляем углы */
 }

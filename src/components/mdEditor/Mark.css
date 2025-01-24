@@ -13,6 +13,9 @@
     background-color: #DBDDCF;
     padding: 8px;
     border-radius: 5px;
+    scrollbar-color: #69322f #1d2021;
+    scrollbar-width: thin;
+    clip-path: inset(0 round 10px); /* Закругляем углы */
 }
 
 .editor-toolbar button {
@@ -21,7 +24,7 @@
     padding-left: 0px;
     padding-right: 0px;
     font-family: FA;
-    color: #fff;
+    color: #DBDDCF;
     border: none;
     background-color: #7f3d39;
     margin-left: 10px;

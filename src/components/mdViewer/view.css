@@ -1,0 +1,30 @@
+.md-preview {
+    font-family: Russo, Teko;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 20px;
+    overflow-y: auto; /* Вертикальная полоса прокрутки */
+    scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
+    scrollbar-color: #69322f #1d2021; /* Firefox: цвет трека и ползунка */
+    clip-path: inset(0 round 10px); /* Закругляем углы */
+    background-color: #DBDDCF;
+    color: #343434;
+}
+.md-preview * {
+    max-width: 100%;
+    word-break: break-all;
+}
+
+.md-preview p:has(code) {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px;
+    background-color: #a3a18f;
+    border-radius: 5px;
+}
+
+.md-preview blockquote {
+    border-left: #343434 5px solid;
+    margin-left: 0px;
+    padding-left: 40px;
+}
