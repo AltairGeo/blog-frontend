@@ -1,4 +1,6 @@
 .md-preview {
+    position: relative;
+    z-index: 250;
     font-family: Russo, Teko;
     font-size: 20px;
     border-radius: 15px;

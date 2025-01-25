@@ -12,6 +12,7 @@
 }
 
 #PostBody {
+    z-index: 250;
     font-family: Russo, Teko;
     font-size: 20px;
     padding: 20px;
@@ -91,8 +92,8 @@
     padding: 12px;
 }
 
-
-#PostBody * {
+/* 
+ #PostBody * {
     max-width: 100%;
     word-break: break-all;
 }
@@ -113,15 +114,15 @@
 
 #PostBody table {
     border-collapse: collapse;
-    width: 100%; /* Ширина таблицы */
+    width: 100%; /* Ширина таблицы
 }
   
 #PostBody th, td {
     border: 1px solid black;
-    text-align: left; /* Выравнивание текста */
+    text-align: left; 
     padding: 8px;
 }
   
 #PostBody th {
-    background-color: #918f81; /* Заливка заголовка */
-}
+    background-color: #918f81;
+} */
