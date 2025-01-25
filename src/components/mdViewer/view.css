@@ -43,3 +43,8 @@
 .md-preview th {
     background-color: #918f81; /* Заливка заголовка */
 }
+
+.md-preview hr {
+    border: none;
+    border-top: 3px solid #424242;
+}
