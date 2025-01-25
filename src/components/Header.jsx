@@ -22,7 +22,7 @@ function Header(props) {
                 {cookies.token ? 
                 <ul>
                     <li><Link to='/create' className={props.active === "create" ? "active" : ""} id="createPostBTN">+</Link></li>
-                    <li><Link className={props.active === "profile" ? "active" : ""} >Profile</Link></li>
+                    <li><Link to='/profile' className={props.active === "profile" ? "active" : ""} >Profile</Link></li>
                 </ul> 
             :               
                 <ul>

@@ -1,0 +1,53 @@
+.avatar-container {
+    height: 256px;
+    width: 256px;
+    background-color: #DBDDCF;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.avatar {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-radius: 7px;
+    height: 256px;
+    width: 256px;
+    max-width: 256px;
+    max-height: 256px;
+}
+
+.avatar-button {
+    position: absolute;
+    
+    margin-top: -40px;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    transform: translateY(0);
+    scale: 0.5;
+    transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.4s ease, scale 0.2s ease;
+;
+    /* Appearence */
+    width: 50px;
+    height: 50px;
+    background-color: #81413a;
+    color: #DBDDCF;
+    font-size: 22px;
+    font-family: FA;
+    border-radius: 10px;
+}
+
+.avatar-button:hover {
+    background-color: #6d322c;
+}
+
+.avatar-button:active {
+    background-color: #41211d;
+}
+
+.avatar-container:hover .avatar-button {
+    transform: translateY(100px); 
+    opacity: 1;
+    scale: 1.1;
+}

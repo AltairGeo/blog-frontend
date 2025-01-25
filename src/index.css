@@ -7,9 +7,11 @@ body {
 body {
     scrollbar-color: #7F3D39 #424242;
     scrollbar-width: thin;
+    overflow-x: hidden;
 }
 
 html {
     scrollbar-color: #7F3D39 #1d2021;
     scrollbar-width: auto;
+    overflow-x: hidden;
 }

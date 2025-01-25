@@ -7,6 +7,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Login from './components/LoginPage/Login';
 import CreatePost from './components/CreatePage/Create';
 import PostPage from './components/ViewPostPage/PostPage';
+import Profile from './components/Profile/ProfilePage/Profile';
 
 
 
@@ -27,7 +28,10 @@ function App() {
       setActiveTab("create");
     } else if (location.pathname.slice(0, 5) === '/post'){  
       setActiveTab('')
+    } else if (location.pathname === '/profile'){
+      setActiveTab('profile')
     }
+
   }, [location]);
 
   return (
@@ -39,6 +43,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}/>
         <Route path='/create' element={<CreatePost />}/>
         <Route path='/post/:postId' element={<PostPage />}></Route>
+        <Route path='/profile' element={<Profile />}/>
       </Routes>
     </>
   )
