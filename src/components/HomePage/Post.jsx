@@ -2,6 +2,7 @@ import './Post.css'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
 import { Link } from 'react-router-dom'
+import MarkdownViewer from './../mdViewer/view'
 
 export default function Post(props){
     const [authorPost, authorSet] = useState(null)
@@ -21,7 +22,7 @@ export default function Post(props){
             <div>
                 <div className="PostHeader"><h1>{props.title}</h1></div>
                 {/* <p id="PostBody">{props.body.slice(0, 350) + "..."}</p> */}
-                <div id="PostBody"><Markdown>{props.body.slice(0, 350) + "..."}</Markdown></div>
+                <div id="PostBody"><MarkdownViewer value={props.body.slice(0, 350) + "..."}s></MarkdownViewer></div>
                 <div className="PostBottom">
                     <Link to={`/post/${props.postID}`}>
                         <button className="btn-read-more">Читать дальше</button>
