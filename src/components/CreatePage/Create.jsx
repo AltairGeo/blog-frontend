@@ -59,7 +59,7 @@ export default function CreatePost() {
                         <MarkdownEditor setValue={setMdValue} value={mdValue} ></MarkdownEditor>
                 </div>
                 <div className='group-1'>
-                <input className='title-input' placeholder='Title...' id='title-input'></input>
+                <input className='title-input' maxLength={50} placeholder='Title...' id='title-input'></input>
                 <div className='preview'>
                     <MarkdownViewer value={mdValue}></MarkdownViewer>
                 </div>

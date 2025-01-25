@@ -3,3 +3,13 @@ body {
     padding: 0;
     margin: 0;
 }
+
+body {
+    scrollbar-color: #7F3D39 #424242;
+    scrollbar-width: thin;
+}
+
+html {
+    scrollbar-color: #7F3D39 #505050;
+    scrollbar-width: auto;
+}

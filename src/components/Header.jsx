@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 
 function Header(props) {
     const [cookies, setCookie] = useCookies(['token'])
-    props.invis ? document.getElementById('header').style.display = 'none' : null
+    try {
+        props.invis ? document.getElementById('header').style.display = 'none' : document.getElementById('header').style.display = 'flex'
+    } catch(e) {
+        console.error(e.message)
+    }
     return (
         <div id="header">
             <nav>

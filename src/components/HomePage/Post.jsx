@@ -1,6 +1,7 @@
 import './Post.css'
 import { useEffect, useState } from 'react'
 import Markdown from 'react-markdown'
+import { Link } from 'react-router-dom'
 
 export default function Post(props){
     const [authorPost, authorSet] = useState(null)
@@ -22,7 +23,9 @@ export default function Post(props){
                 {/* <p id="PostBody">{props.body.slice(0, 350) + "..."}</p> */}
                 <div id="PostBody"><Markdown>{props.body.slice(0, 350) + "..."}</Markdown></div>
                 <div className="PostBottom">
-                    <button className="btn-read-more">Читать дальше</button>
+                    <Link to={`/post/${props.postID}`}>
+                        <button className="btn-read-more">Читать дальше</button>
+                    </Link>
                     <span className="PostSpan">
                         <p id="PostAuthorName">{authorPost}</p>
                     </span>

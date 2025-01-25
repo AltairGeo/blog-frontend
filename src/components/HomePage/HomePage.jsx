@@ -26,7 +26,7 @@ function HomePage() {
             }
         }
         fetchPosts()}, [])
-
+    
     return (
     <>
         {error != null ? <ErrorText title="Error!" text={error.statusText}></ErrorText> : ""}
@@ -37,7 +37,7 @@ function HomePage() {
         <Paper marg={true}>
             <ul className='posts'>
                 {posts.map((post) => (
-            <Post key={post.id} title={post.title} body={post.text} author={post.author_id} />))}
+            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author={post.author_id} />))}
             </ul>
         </Paper>}
     </>
