@@ -1,6 +1,7 @@
 import './Profile.css'
 import Avatar from '../Avatar/Avatar'
 import { useCookies } from 'react-cookie';
+import InfoTab from '../Info/Info';
 
 export default function Profile() {
     const [cookies] = useCookies(['token']);
@@ -15,6 +16,7 @@ export default function Profile() {
             <div className='profile-grid'>
                 <div className='base-info'>
                     <Avatar />
+                    <InfoTab />
                 </div>
                 <div className='btns-and-change'></div>
                 <div className='my-posts'></div>
