@@ -1,6 +1,5 @@
 import './Post.css'
 import { useEffect, useState } from 'react'
-import Markdown from 'react-markdown'
 import { Link } from 'react-router-dom'
 import MarkdownViewer from './../mdViewer/view'
 

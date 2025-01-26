@@ -30,11 +30,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    font-size: 24px;
+    font-size: 18px;
     color: #424242;
     height: 70%;
-    flex-grow: 1;
-
 }
 
 .info-base p {

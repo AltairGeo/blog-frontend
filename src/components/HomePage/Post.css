@@ -47,6 +47,7 @@
     font-size: 25px;
     padding: 5px;
     background-color: #908D79;
+    border-bottom: #7c7a68 2px solid;
     border-radius: 10px;
     color: #424243;
 }
