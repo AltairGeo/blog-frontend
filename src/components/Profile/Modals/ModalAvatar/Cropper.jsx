@@ -4,12 +4,15 @@ import 'react-image-crop/dist/ReactCrop.css';
 import { BackendUrl } from '../../../../../config';
 import { useCookies } from 'react-cookie';
 import './Cropper.css'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function AvatarUploader() {
     const [cookies] = useCookies(["token"])
     const [image, setImage] = useState(null);
     const [crop, setCrop] = useState(null);
     const imgRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -59,6 +62,7 @@ export default function AvatarUploader() {
             formData.append("image", blob);
 
             try {
+                document.querySelector(".sbm-btn").disabled = true;
                 const response = await fetch(`${BackendUrl}/users/upload_avatar`, {
                     method: 'POST',
                     body: formData,
@@ -69,6 +73,7 @@ export default function AvatarUploader() {
                 }
 
                 console.log('Аватар успешно загружен');
+                navigate(0);
             } catch (error) {
                 console.error(error);
             }
@@ -77,21 +82,26 @@ export default function AvatarUploader() {
 
     return (
         <div className="avatar-uploader">
-            <input type="file" accept="image/*" onChange={handleFileChange} />
+            <label for="avatar-up" class="custom-file-upload">
+                Click to select file
+            </label>
+            <input type="file" accept="image/*" id='avatar-up' onChange={handleFileChange} />
             {image && (
                 <>
-                <div className='cropperCont'>
-                    <ReactCrop
-                        crop={crop}
-                        onChange={(newCrop) => setCrop(newCrop)}
-                        aspect={1}
-                        minWidth={256}
-                        minHeight={256}
-                    >
-                        <img ref={imgRef} src={image} alt="Preview" />
-                    </ReactCrop>
-                    <button onClick={uploadImage}>Загрузить аватар</button>
+                    <div className='cropperCont'>
+                        <div className='cr-image'>
+                            <ReactCrop
+                                crop={crop}
+                                onChange={(newCrop) => setCrop(newCrop)}
+                                aspect={1}
+                                minWidth={256}
+                                minHeight={256}
+                            >
+                                <img ref={imgRef} src={image} alt="Preview" />
+                            </ReactCrop>
+                        </div>
                     </div>
+                    <button className='sbm-btn' onClick={uploadImage}>Upload avatar</button>
                 </>
             )}
         </div>

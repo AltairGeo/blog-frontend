@@ -2,14 +2,63 @@
     box-sizing: content-box;
     max-width: 70vw;
     max-height: 70vh;
+
 }
 
 .avatar-uploader {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 5px;
 }
 
 .cropperCont {
     max-width: 70vw;
     max-height: 70vh;
+    display: flex;
+    justify-content: center;
+}
+
+#avatar-up {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #b57614;
+    color: #fbf1c7;
+    padding: 5px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+
+.cr-image * {
+    box-sizing: border-box;
+}
+
+.custom-file-upload:hover {
+    background-color: #a06911;
+}
+
+.sbm-btn {
+    border: none;
+    align-self: center;
+    padding: 9px;
+    font-size: 22px;
+    background-color: #8a8a17;
+    color: #fbf1c7;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-top: auto;
+    border-bottom: #79740e 4px solid;
+}
+
+.sbm-btn:hover {
+    background-color: #79740e;
+    border-bottom: #68630c 4px solid;
+
 }

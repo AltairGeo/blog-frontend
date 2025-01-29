@@ -10,7 +10,8 @@ export default function Avatar() {
     const [loading, setLoading] = useState(true);
     const [avatarUrl, setAvatarUrl] = useState(null); // Состояние для URL аватара
 
-    useEffect(() => {
+
+    const getAvatar = () => {
         async function handleAvatar() {
             try {
                 if (!cookies.token) {
@@ -45,7 +46,9 @@ export default function Avatar() {
         }
 
         handleAvatar();
-    }, [cookies.token]);
+    }
+    
+    useEffect(getAvatar, [cookies.token]);
 
     return (
         <>
