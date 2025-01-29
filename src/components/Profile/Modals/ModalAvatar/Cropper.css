@@ -1,0 +1,15 @@
+.ReactCrop {
+    box-sizing: content-box;
+    max-width: 70vw;
+    max-height: 70vh;
+}
+
+.avatar-uploader {
+    display: flex;
+    flex-direction: column;
+}
+
+.cropperCont {
+    max-width: 70vw;
+    max-height: 70vh;
+}

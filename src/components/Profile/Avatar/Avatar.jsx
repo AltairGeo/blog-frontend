@@ -36,6 +36,7 @@ export default function Avatar() {
                 const urlOBJ = URL.createObjectURL(imgBlob);
 
                 setAvatarUrl(urlOBJ); // Устанавливаем URL в состояние
+                document.querySelector('.avatar-container').style.background = 'none';
             } catch (error) {
                 console.error('Error fetching avatar:', error.message);
             } finally {
@@ -47,12 +48,16 @@ export default function Avatar() {
     }, [cookies.token]);
 
     return (
-        <div className="avatar-container">
-            {loading ? 
-            <Loader /> : (
-                avatarUrl && <img src={avatarUrl} alt="Avatar" className="avatar" />
-            )}
-            <button className="avatar-button"></button>
+        <>
+            <div className="avatar-container">
+                {loading ? 
+                <Loader /> : (
+                    avatarUrl && <img src={avatarUrl} alt="Avatar" className="avatar" />
+                )}
+                <button className="avatar-button" onClick={() => {
+                    document.getElementById("rootModal").className = ""
+                }}></button>
         </div>
+        </>
     );
 }
