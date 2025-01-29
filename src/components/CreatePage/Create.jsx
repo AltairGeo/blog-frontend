@@ -1,13 +1,17 @@
 import './Create.css'
+import {BackendUrl} from '../../../config'
 import { useState } from 'react'
 import MarkdownEditor from '../mdEditor/Mark'
 import MarkdownViewer from '../mdViewer/view'
 import { useCookies } from 'react-cookie';
 
 
+
 export default function CreatePost() {
     const [mdValue, setMdValue] = useState('# Hello, world!');
     const [cookies, setCookie] = useCookies(['token']);
+
+    console.log(BackendUrl)
 
     if (!cookies.token) {
         window.location.href = '/';
@@ -27,7 +31,7 @@ export default function CreatePost() {
         }
     
         try {
-            const resp = await fetch('http://127.0.0.1:8000/posts/create_post', {
+            const resp = await fetch(`${BackendUrl}/posts/create_post`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'},

@@ -3,6 +3,7 @@ import ErrorText from '../Error/Error';
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 import Loading from '../Loading/Loading';
+import { BackendUrl } from '../../../config';
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); // Работа с cookie
@@ -24,8 +25,9 @@ export default function Register() {
         }
 
         try {
+            document.getElementById("form-btn").disabled = true;
             setLoading(true);
-            const response = await fetch('http://127.0.0.1:8000/users/register', {
+            const response = await fetch(`${BackendUrl}/users/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -46,6 +48,7 @@ export default function Register() {
             console.error(error.message);
             setError(error.message);
         } finally {
+            document.getElementById("form-btn").disabled = false;
             setLoading(false);
         }
     }

@@ -3,6 +3,8 @@ import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import ErrorText from '../Error/Error';
+import {BackendUrl} from '../../../config'
+
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); 
@@ -19,10 +21,11 @@ export default function Register() {
         const form = event.target;
         const email = form.email.value.trim();
         const password = form.password.value.trim();
+        document.getElementById("form-btn").disabled = true;
 
         try {
             setLoading(true);
-            const response = await fetch('http://127.0.0.1:8000/users/login', {
+            const response = await fetch(`${BackendUrl}/users/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,6 +47,7 @@ export default function Register() {
             setError(error.message);
         } finally {
             setLoading(false);
+            document.getElementById("form-btn").disabled = false;
         }
     }
 

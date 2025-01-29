@@ -2,6 +2,8 @@ import './Avatar.css';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Loader from '../loader/loader';
+import {BackendUrl} from '../../../../config'
+
 
 export default function Avatar() {
     const [cookies] = useCookies(['token']);
@@ -16,7 +18,7 @@ export default function Avatar() {
                     return;
                 }
 
-                const resp = await fetch("http://127.0.0.1:8000/users/avatar_by_token", {
+                const resp = await fetch(`${BackendUrl}/users/avatar_by_token`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },

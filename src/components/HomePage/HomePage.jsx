@@ -4,6 +4,8 @@ import ErrorText from '../Error/Error'
 import Loading from '../Loading/Loading'
 import Post from './Post';
 import Paper from '../Paper/Paper';
+import {BackendUrl} from '../../../config'
+
 
 function HomePage() {
     const [posts, setPosts] = useState([]); // Хранилище для данных
@@ -13,7 +15,7 @@ function HomePage() {
     useEffect(() => {
         async function fetchPosts() {
             try {
-                const response = await fetch('http://127.0.0.1:8000/posts/get_last_posts');
+                const response = await fetch(`${BackendUrl}/posts/get_last_posts`);
                 if(!response.ok) {
                     throw new Error(response.statusText);
                 }

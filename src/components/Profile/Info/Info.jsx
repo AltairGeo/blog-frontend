@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie'
 import ErrorText from '../../Error/Error'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { BackendUrl } from '../../../../config'
 
 export default function InfoTab() {
     const [cookies, setCookies] = useCookies(['token'])
@@ -12,12 +13,13 @@ export default function InfoTab() {
         data: "Not supported!",
         id: 0,
     })
+    const [err_msg, set_err_msg] = useState(null)
 
 
     useEffect(() => {
         const get_data = async () => {
-            console.log(cookies.token)
-            const resp = await fetch("http://localhost:8000/users/get_self_by_token",
+            try {
+            const resp = await fetch(`${BackendUrl}/users/get_self_by_token`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -38,13 +40,16 @@ export default function InfoTab() {
                 data: "Reg. Date: Not supported!",
                 id: `ID: ${data.id}`,
             })
-            
+        } catch(error) {
+            set_err_msg(error.message)
+        }   
         }
         get_data()
     }, [])
 
     return(
         <>
+            {err_msg ? <ErrorText title="Error info loading!" text={err_msg}></ErrorText> : ""}
             <div className='container-info'>
                 <div className='info-nickname'>
                     <p id='info-nickname'>{info_data['nickname']}</p>
