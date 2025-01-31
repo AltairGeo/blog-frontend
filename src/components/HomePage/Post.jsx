@@ -1,23 +1,9 @@
 import './Post.css'
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import MarkdownViewer from './../mdViewer/view'
-import {BackendUrl} from '../../../config'
 
 
 export default function Post(props){
-    const [authorPost, authorSet] = useState(null)
-    useEffect(() => {
-        async function fetch_user() {
-            const resp = await fetch(`${BackendUrl}/users/get_user?id=${props.author}`)
-            if(resp.ok){
-                const data = await resp.json()
-                authorSet(data.nickname)
-            }
-        }
-        fetch_user()
-    }, [])
-
     return (
         <li id='PostElement'>
             <div>
@@ -29,7 +15,7 @@ export default function Post(props){
                         <button className="btn-read-more">Читать дальше</button>
                     </Link>
                     <span className="PostSpan">
-                        <p id="PostAuthorName">{authorPost}</p>
+                        <p id="PostAuthorName">{props.author_name}</p>
                     </span>
                 </div>
             </div>

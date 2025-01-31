@@ -7,12 +7,18 @@ import { useState, useEffect } from "react";
 import ErrorText from "../Error/Error";
 
 
+
 export default function PostPage(){
     const [loader, setLoader] = useState(true)
     const [Error_MSG, setError] = useState(null)
     const [PostText, setPostText] = useState(null)
     const [PostTitle, setPostTitle] = useState(null)
+    const [PostAuthorName, setPostAuthor] = useState(null)
+    const [PostAuthorID, setAuthorID] = useState(null)
+    const [PostDate, setPostDate] = useState(null)
     const params = useParams();
+    
+    
     useEffect( () => {
     async function fetchData(){
         try{
@@ -23,6 +29,17 @@ export default function PostPage(){
         const data = await response.json()
         setPostText(data.text)
         setPostTitle(data.title)
+        setPostAuthor(data.author_name)
+        const dateStr = data.created_at;
+        const dateObj = new Date(dateStr);
+        const formatter = new Intl.DateTimeFormat('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+        const formattedDate = formatter.format(dateObj);
+        setPostDate(formattedDate)
+        setAuthorID(data.author_id)
     } catch (error){
         setError(error.message)
     } finally {
@@ -46,6 +63,10 @@ export default function PostPage(){
                         </div>
                         <div className="PostText">
                             <MarkdownViewer value={PostText}/>
+                        </div>
+                        <div className="PostFooter">
+                            <span className="PostAuthor"><Link to={`/user/${PostAuthorID}`}>{PostAuthorName}</Link></span>
+                            <span className="PostDate">{PostDate}</span>
                         </div>
                     </div>
                 </div>
