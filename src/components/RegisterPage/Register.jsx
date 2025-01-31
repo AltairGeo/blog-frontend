@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import { BackendUrl } from '../../../config';
+import { jwtDecode } from 'jwt-decode';
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); // Работа с cookie
@@ -41,7 +42,10 @@ export default function Register() {
             
             const data = await response.json();
             if(data.token) {
-                setCookie('token', data.token, { path: '/' });
+                const decoded = jwtDecode(data.token)
+                const utcDate = new Date(decoded.expires_at * 1000);
+                const expirationDate = new Date(utcDate.toLocaleString());
+                setCookie('token', data.token, { path: '/', expires: expirationDate });
                 window.location.href = '/';
             }
         } catch (error) {

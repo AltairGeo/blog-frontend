@@ -14,7 +14,7 @@
     margin-left: 15%;
     margin-right: 15%;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .PostContainer {
@@ -36,13 +36,13 @@
 
 .text-title {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .PostText {
     box-shadow: 5px 6px 10px 2px rgba(0,0,0,0.08);
     background-color: #DBDDCF;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .btn-home {

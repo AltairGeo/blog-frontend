@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import ErrorText from '../Error/Error';
 import {BackendUrl} from '../../../config'
+import { jwtDecode } from 'jwt-decode';
 
 
 export default function Register() {
@@ -39,7 +40,9 @@ export default function Register() {
 
             const data = await response.json();
             if (data.token) {
-                setCookie('token', data.token, { path: '/' });
+                const decoded = jwtDecode(data.token);
+                const expirationDate = new Date(decoded.expires_at);
+                setCookie('token', data.token, { path: '/', expires: expirationDate});
                 window.location.href = '/';
             }
         } catch (error) {
