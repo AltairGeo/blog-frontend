@@ -51,8 +51,6 @@ export default function CreatePost() {
             }
         } catch (error) {
             alert(error.message);
-        } finally {
-            document.querySelector('.check-btn').disabled = false;
         }
     } 
 

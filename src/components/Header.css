@@ -19,7 +19,8 @@
     background-size: cover;
     color: #dbddcf;
     display: flex;
-    background-color: #1d2021;
+    /* background-color: #1d2021; */
+    background-color: #202020;
     border-bottom: #36332e 0px solid;
     padding: 20px;
     text-align: center;

@@ -1,10 +1,11 @@
 .md-preview {
+    box-sizing: border-box;
     position: relative;
     z-index: 250;
     font-family: Russo, Teko;
     font-size: 20px;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px;
     overflow-y: auto; /* Вертикальная полоса прокрутки */
     scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
     scrollbar-color: #69322f #1d2021; /* Firefox: цвет трека и ползунка */
@@ -13,6 +14,7 @@
     color: #343434;
 }
 .md-preview * {
+    box-sizing: border-box;
     max-width: 100%;
     word-break: break-all;
 }

@@ -1,0 +1,122 @@
+.postPreview {
+    background-color: #dbddcf;
+    padding: 5px;
+    flex-grow: 1;
+    flex-basis: 50%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.Previewtext {
+    box-sizing: border-box;
+    color: #282828;
+    font-size: 16px;
+    max-height: 65vh;
+}
+
+.Previewtext * {
+    box-sizing: border-box;
+    max-height: 50vh;
+}
+
+.edit-Button {
+    background-color: #798361;
+    font-family: FA;
+    font-size: 20px;
+    width: 15%;
+    height: 47px;
+    margin-right: 5px;
+    border: none;
+    border-bottom: #61694e 3px solid;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.edit-Button:hover {
+    background-color: #6e7758;
+    border-bottom: #565e46 3px solid;
+}
+
+.edit-Button * {
+    font-family: FA;
+    text-decoration: none;
+    color: #DBDDCF;
+}
+
+.Previewtitle {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    width: 70%;
+    border-bottom: 4px #69322f solid;
+    background-color: #7F3D39;
+    margin: 0px;
+    color: #dbddcf;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 22px;
+}
+.Previewtitle p {
+
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.PreviewDateAndID {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    color: #282828;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.PreviewDateAndID p {
+    margin: 0;
+}
+
+.sort-cont {
+    display: flex;
+    flex-direction: row;;
+}
+
+.headerRazdel {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    color: #dbddcf;
+    background-color: #7F3D39;
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 4px #69322f solid;
+}
+
+.headerRazdel h1 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-delete-post {
+    background-color: #7F3D39;
+    font-family: FA;
+    font-size: 20px;
+    width: 15%;
+    height: 47px;
+    border: none;
+    border-bottom: #69322f 3px solid;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.btn-delete-post:hover {
+    background-color: #69322f;
+    border-bottom: #5e2d2b 3px solid;
+}
+
+.btn-delete-post:active {
+    scale: 1.05;
+}
