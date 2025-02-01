@@ -90,7 +90,7 @@ export default function MyPostsView(props) {
                 handleDelete={props.handleDelete}
                 key={post.id}
                 title={post.title}
-                text={post.text.slice(0, 60)}
+                text={post.text.slice(0, 60) + "..."}
                 postID={post.id}
                 postDate={TimeForming(post.created_at)}
               />
