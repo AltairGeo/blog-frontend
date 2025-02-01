@@ -7,7 +7,7 @@ import {jwtDecode} from 'jwt-decode'
 import { BackendUrl } from '../../../../config'
 import LoaderSpin from '../../../LoaderSpin/LoaderSpin'
 
-export default function MyPostsView() {
+export default function MyPostsView(props) {
   const [loading, setLoading] = useState(true)
   const [NotFound, setNotFound] = useState(false)
   const [MaxPage, setMaxPage] = useState(1)
@@ -87,6 +87,7 @@ export default function MyPostsView() {
         {Posts[CurrentPage - 1] ? 
             Posts[CurrentPage - 1].map((post) => (
               <PostPreview
+                handleDelete={props.handleDelete}
                 key={post.id}
                 title={post.title}
                 text={post.text.slice(0, 60)}

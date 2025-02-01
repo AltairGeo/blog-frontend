@@ -4,10 +4,13 @@ import { useCookies } from 'react-cookie';
 import InfoTab from '../Info/Info';
 import ModalAvatarDialog from '../Modals/ModalAvatar/ModalAvatar';
 import MyPostsView from '../MyPosts/MyPosts';
+import DeletePost from '../Modals/ModalDeletePost/DeletePost';
+import { useState } from 'react';
 
 
 export default function Profile() {
     const [cookies] = useCookies(['token']);
+    const [toDelete, setToDelete] = useState(null);
     if(!cookies.token){
         if (!cookies.token) {
             window.location.href = '/login';
@@ -16,6 +19,7 @@ export default function Profile() {
 
     return (
         <>
+        {toDelete ? <DeletePost setModal={setToDelete} toDelete={toDelete}></DeletePost> : ""}
             <ModalAvatarDialog></ModalAvatarDialog>
             <div className='container'>
                 <div className='profile-grid'>
@@ -27,7 +31,7 @@ export default function Profile() {
                         <p>qwe</p><p>qwe</p><p>qwe</p><p>qwe</p><p>qwe</p>
                     </div>
                     <div className='my-posts'>
-                        <MyPostsView />
+                        <MyPostsView handleDelete={setToDelete}/>
                     </div>
                 </div>
             </div>

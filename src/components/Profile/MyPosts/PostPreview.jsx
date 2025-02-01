@@ -10,7 +10,9 @@ export default function PostPreview(props) {
             <div className='postPreview'>
                 <div className='sort-cont'>
                     <button className='edit-Button'><Link to={`/edit/${props.postID}`}></Link></button>
-                    <button className='btn-delete-post'></button>
+                    <button className='btn-delete-post' onClick={() => {
+                        props.handleDelete(props.postID)
+                    }}></button>
                     <div className='Previewtitle'><p>{props.title}</p></div>
                 </div>
                 <div className='Previewtext'><MarkdownViewer value={props.text}></MarkdownViewer></div>
