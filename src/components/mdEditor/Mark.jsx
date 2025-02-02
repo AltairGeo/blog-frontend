@@ -1,28 +1,71 @@
 import "./Mark.css";
+import { useRef } from "react";
 
 export default function MarkdownEditor(props) {
-  // Обработчики для кнопок форматирования
+  const textareaRef = useRef(null);
+
+  // Функция оборачивания выделенного текста
   const applyFormatting = (format) => {
-    if (format === "bold") props.setValue((prev) => `${prev}**bold**`);
-    if (format === "italic") props.setValue((prev) => `${prev}*italic*`);
-    if (format === "header") props.setValue((prev) => `${prev}\n# Header`);
-    if (format === "link") props.setValue((prev) => `${prev}[click](https://example.com)`);
-    if (format === "quote") props.setValue((prev) => `${prev}\n> Quotes`);
-    if (format === "code") props.setValue((prev) => `${prev}\n ${"`code`"} `);
-    if (format === "image") props.setValue((prev) => `${prev}\n![Name](https://example.com)`);
-    if (format === "line") props.setValue((prev) => `${prev}\n***`);
-    if (format === "table") props.setValue((prev) => `${prev}\n| Header | Header | Header |\n| ------ | ------ | ------ |\n| Data | Data | Data |`);
+    if (!textareaRef.current) return;
+
+    // Получаем позиции выделения
+    const { selectionStart, selectionEnd } = textareaRef.current;
+    const before = props.value.substring(0, selectionStart);
+    const selectedText = props.value.substring(selectionStart, selectionEnd);
+    const after = props.value.substring(selectionEnd);
+
+    let wrappedText = "";
+
+    // Определяем, какую разметку применить, и оборачиваем выделенный текст.
+    // Если ничего не выделено, можно вставить текст-заглушку.
+    switch (format) {
+      case "bold":
+        wrappedText = `**${selectedText || "bold"}**`;
+        break;
+      case "italic":
+        wrappedText = `*${selectedText || "italic"}*`;
+        break;
+      case "header":
+        wrappedText = `# ${selectedText || "Header"}`;
+        break;
+      case "link":
+        wrappedText = `[${selectedText || "click"}](https://example.com)`;
+        break;
+      case "quote":
+        wrappedText = `> ${selectedText || "Quotes"}`;
+        break;
+      case "code":
+        wrappedText = `\`${selectedText || "code"}\``;
+        break;
+      case "image":
+        wrappedText = `![${selectedText || "Name"}](https://example.com)`;
+        break;
+      case "line":
+        wrappedText = `\n***`;
+        break;
+      case "table":
+        wrappedText =
+          `\n| Header | Header | Header |\n` +
+          `| ------ | ------ | ------ |\n` +
+          `| Data | Data | Data |`;
+        break;
+      default:
+        wrappedText = selectedText;
+    }
+
+    // Собираем новый текст
+    const newValue = before + wrappedText + after;
+    props.setValue(newValue);
   };
 
   return (
     <div className="markdown-editor">
       {/* Панель инструментов */}
-      
       <div className="editor-toolbar">
         <div className="editor-toolbar-btns">
           <button onClick={() => applyFormatting("bold")}></button>
           <button onClick={() => applyFormatting("italic")}></button>
-          <button onClick={() => applyFormatting("header")}> </button>
+          <button onClick={() => applyFormatting("header")}></button>
           <button onClick={() => applyFormatting("link")}></button>
           <button onClick={() => applyFormatting("quote")}></button>
           <button onClick={() => applyFormatting("code")}></button>
@@ -33,7 +76,11 @@ export default function MarkdownEditor(props) {
       </div>
 
       {/* Поле ввода Markdown */}
-      <textarea autoCorrect="off" autoCapitalize="off" spellCheck="false"
+      <textarea
+        ref={textareaRef}
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
         className="editor-textarea"
         value={props.value}
         onChange={(e) => props.setValue(e.target.value)}
