@@ -15,3 +15,7 @@ html {
     scrollbar-width: auto;
     overflow-x: hidden;
 }
+
+* {
+    box-sizing: border-box;
+}

@@ -6,17 +6,25 @@
 }
 
 .avatar-uploader {
-    height: 100%;
+
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
 }
+.cropperCont * {
+    box-sizing: border-box;
+    max-height: 55vh;
+}
 
 .cropperCont {
-    max-width: 70vw;
-    max-height: 70vh;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    background-color: #282828;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
 }
 
 #avatar-up {
@@ -45,6 +53,7 @@
 }
 
 .sbm-btn {
+    margin: 0;
     border: none;
     align-self: center;
     padding: 9px;
@@ -54,6 +63,7 @@
     border-radius: 5px;
     margin-left: auto;
     margin-top: auto;
+    margin-right: auto;
     border-bottom: #79740e 4px solid;
 }
 
@@ -62,3 +72,4 @@
     border-bottom: #68630c 4px solid;
 
 }
+

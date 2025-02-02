@@ -12,7 +12,7 @@ export default function ModalAvatarDialog() {
                 }}></button>
                 <div className='modalContainer'>
                     <div className='cont'>
-                        <Cropper></Cropper>
+                            <Cropper></Cropper>
                     </div>
                 </div>
             </div>

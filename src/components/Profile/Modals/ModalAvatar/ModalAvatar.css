@@ -28,10 +28,12 @@
     border-radius: 12px;
     background-color: #424242;
     border-bottom: #303030 4px solid;
+    box-sizing: border-box;
 }
 
 .btn-close {
     position: absolute;
+    box-sizing: border-box;
     left: 13px;
     top: 13px;
     width: 35px;

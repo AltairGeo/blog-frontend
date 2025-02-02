@@ -56,7 +56,14 @@
     padding: 3px;
     border-radius: 5px;
     font-size: 22px;
+    text-decoration: none;
 }
+
+.Previewtitle * {
+    text-decoration: none;
+    color: #DBDDCF;
+}
+
 .Previewtitle p {
 
     margin: 0px;
