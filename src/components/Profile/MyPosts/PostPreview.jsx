@@ -10,7 +10,7 @@ export default function PostPreview(props) {
         <>
             <div className='postPreview'>
                 <div className='sort-cont'>
-                    <button className='edit-Button'><Link to={`/edit/${props.postID}`}></Link></button>
+                    <button className='edit-Button' onClick={() =>{navigate(`/edit/${props.postID}`)}}></button>
                     <button className='btn-delete-post' onClick={() => {
                         props.handleDelete(props.postID)
                     }}></button>
