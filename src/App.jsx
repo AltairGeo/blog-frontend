@@ -44,6 +44,7 @@ function App() {
         <Route path='/create' element={<CreatePost />}/>
         <Route path='/post/:postId' element={<PostPage />}></Route>
         <Route path='/profile' element={<Profile />}/>
+        <Route path='/edit/:postID' element={<CreatePost />}/>
       </Routes>
     </>
   )
