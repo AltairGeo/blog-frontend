@@ -14,7 +14,7 @@ export default function CreatePost() {
     const [NewOrNot, setNew] = useState(true)
     const [cookies, setCookie] = useCookies(['token']);
     const params = useParams();
-    const [title, setTitle] = useState(null)
+    const [title, setTitle] = useState("")
     const navigate = useNavigate()
 
     console.log(BackendUrl)
