@@ -26,7 +26,7 @@ export default function Register() {
 
         try {
             setLoading(true);
-            const response = await fetch(`${BackendUrl}/users/login`, {
+            const response = await fetch(`${BackendUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

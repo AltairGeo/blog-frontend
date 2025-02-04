@@ -22,7 +22,7 @@ export default function PostPage(){
     useEffect( () => {
     async function fetchData(){
         try{
-        const response = await fetch(`http://localhost:8000/posts/get_post_by_id?ids=${params.postId}`)
+        const response = await fetch(`http://localhost:8000/posts/get_post?post_id=${params.postId}`)
         if(!response.ok){
             throw new Error(response.statusText)
         }

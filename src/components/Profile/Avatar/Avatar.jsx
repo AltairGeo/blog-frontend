@@ -19,7 +19,7 @@ export default function Avatar() {
                     return;
                 }
 
-                const resp = await fetch(`${BackendUrl}/users/avatar_by_token`, {
+                const resp = await fetch(`${BackendUrl}/users/get_avatar_by_token`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -32,11 +32,11 @@ export default function Avatar() {
                 if (!resp.ok) {
                     throw new Error(resp.statusText);
                 }
+                const json_data = await resp.json()
+                const imgpath = json_data["path"]
+                console.log(imgpath)
+                setAvatarUrl(imgpath)
 
-                const imgBlob = await resp.blob();
-                const urlOBJ = URL.createObjectURL(imgBlob);
-
-                setAvatarUrl(urlOBJ); // Устанавливаем URL в состояние
                 document.querySelector('.avatar-container').style.background = 'none';
             } catch (error) {
                 console.error('Error fetching avatar:', error.message);
@@ -55,7 +55,7 @@ export default function Avatar() {
             <div className="avatar-container">
                 {loading ? 
                 <Loader /> : (
-                    avatarUrl && <img src={avatarUrl} alt="Avatar" className="avatar" />
+                    avatarUrl && <img src={`${avatarUrl}?t=${new Date().getTime()}`} alt="" className="avatar" />
                 )}
                 <button className="avatar-button" onClick={() => {
                     document.getElementById("rootModal").className = ""

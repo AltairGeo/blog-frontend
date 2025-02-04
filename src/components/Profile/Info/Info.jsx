@@ -19,7 +19,7 @@ export default function InfoTab() {
     useEffect(() => {
         const get_data = async () => {
             try {
-            const resp = await fetch(`${BackendUrl}/users/get_self_by_token`,
+            const resp = await fetch(`${BackendUrl}/users/get_self`,
                 {
                     headers: {
                         'Content-Type': 'application/json',

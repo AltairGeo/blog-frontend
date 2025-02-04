@@ -97,7 +97,7 @@ export default function CreatePost() {
         }
     
         try {
-            const resp = await fetch(`${BackendUrl}/posts/create_post`, {
+            const resp = await fetch(`${BackendUrl}/posts/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'},
@@ -105,9 +105,8 @@ export default function CreatePost() {
                     title: title.trim(),
                     text: content.trim(),
                     created_at: new Date().toISOString().slice(0, -1),
-                    token: {
-                        token: cookies.token
-                    }
+                    token: cookies.token
+                    
                 })
             })
             if(!resp.ok) {
