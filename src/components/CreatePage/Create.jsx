@@ -31,7 +31,7 @@ export default function CreatePost() {
                 if(!params.postID) {
                     throw new Error("Post id not found!")
                 }
-                const resp = await fetch(`${BackendUrl}/posts/get_post_by_id?ids=${params.postID}`)
+                const resp = await fetch(`${BackendUrl}/posts/get_post?post_id=${params.postID}`)
                 if (!resp.ok){
                     throw new Error(resp.statusText);
                 }
