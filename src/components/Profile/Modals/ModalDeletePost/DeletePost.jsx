@@ -10,14 +10,14 @@ export default function DeletePost(props) {
 
     const deletePost = async () => {
         setModal(null)
-        const res = await fetch(`${BackendUrl}/posts/delete_post`, {
+        const res = await fetch(`${BackendUrl}/posts/delete`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 token: cookie.token,
-                post_id: toDelete
+                id: toDelete
             })
         })
         navigate(0)

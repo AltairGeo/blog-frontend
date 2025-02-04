@@ -63,7 +63,7 @@ export default function AvatarUploader() {
 
             try {
                 document.querySelector(".sbm-btn").disabled = true;
-                const response = await fetch(`${BackendUrl}/users/upload_avatar`, {
+                const response = await fetch(`${BackendUrl}/users/avatar_upload`, {
                     method: 'POST',
                     body: formData,
                 });
