@@ -6,6 +6,7 @@ import ModalAvatarDialog from '../Modals/ModalAvatar/ModalAvatar';
 import MyPostsView from '../MyPosts/MyPosts';
 import DeletePost from '../Modals/ModalDeletePost/DeletePost';
 import { useState } from 'react';
+import Panel from '../panel/MainPanel';
 
 
 export default function Profile() {
@@ -28,7 +29,7 @@ export default function Profile() {
                         <InfoTab />
                     </div>
                     <div className='btns-and-change'>
-                        <p>qwe</p><p>qwe</p><p>qwe</p><p>qwe</p><p>qwe</p>
+                        <Panel />
                     </div>
                     <div className='my-posts'>
                         <MyPostsView handleDelete={setToDelete}/>

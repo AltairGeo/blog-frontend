@@ -52,3 +52,15 @@
     border: none;
     border-top: 3px solid #424242;
 }
+
+.md-preview img {
+    /* border-radius: 10px; */
+    max-height: 90vh;
+    border: #7f3d39 3px solid;
+}
+
+
+.md-preview h1 {
+    border-bottom: 4px solid #282828;
+    padding-bottom: 8px;
+}

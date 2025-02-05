@@ -126,13 +126,13 @@ export default function CreatePost() {
                         <MarkdownEditor setValue={setMdValue} value={mdValue} ></MarkdownEditor>
                 </div>
                 <div className='group-1'>
-                <input className='title-input' value={title} onChange={(msg) => {
-                    setTitle(msg.target.value)
-                }} maxLength={50} placeholder='Title...' autoCorrect="off" autoComplete='off' id='title-input'></input>
-                <div className='preview'>
-                    <MarkdownViewer value={mdValue}></MarkdownViewer>
+                    <input className='title-input' value={title} onChange={(msg) => {
+                        setTitle(msg.target.value)
+                    }} maxLength={50} placeholder='Title...' autoCorrect="off" autoComplete='off' id='title-input'></input>
+                    <div className='preview'>
+                        <MarkdownViewer value={mdValue}></MarkdownViewer>
+                    </div>
                 </div>
-            </div>
             </div>
             {NewOrNot ? <button onClick={handleSendPost} className='check-btn'>+</button> : 
             <button className='edit-btn' onClick={handleChangePost}></button>

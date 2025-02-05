@@ -35,7 +35,8 @@ export default function Register() {
             })
 
             if (!response.ok) {
-                throw new Error(response.statusText);
+                const data = await response.json()
+                throw new Error(data.detail);
             }
 
             const data = await response.json();

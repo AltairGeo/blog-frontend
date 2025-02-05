@@ -1,0 +1,123 @@
+.header-action-panel {
+    text-align: center;
+    background-color: #282828;
+    color: #dbddcf;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.btns button {
+    color: #dbddcf;
+}
+
+.btns * {
+    font-family: FA;
+}
+
+.btns button:hover {
+    scale: 1.03;
+    position: static;
+}
+
+.btns button:active {
+    scale: 0.99;
+}
+
+.btns button {
+    transition: ease 0.3s;
+}
+
+.change-btns {
+    margin-top: 4px;
+    width: 100%;
+    display: flex;
+}
+
+.password-button {
+    flex-grow: 40;
+    font-size: 60px;
+    background-color: #6e6e13;
+    border: none;
+    color: #dbddcf;
+    padding: 20px;
+    border-radius: 5px;
+    border-bottom: 4px solid #616111;
+}
+
+.email-button {
+    flex-grow: 30;
+    border: none;
+    color: #dbddcf;
+    border-radius: 5px;
+    font-size: 50px;
+    background-color: #427b58;
+    border-bottom: 4px solid #38684a;
+}
+
+.name-button {
+    background-color: #d79921;
+    font-size: 50px;
+    border-radius: 5px;
+    flex-grow: 30;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    color: #dbddcf;
+    border-bottom: 4px solid #bb861c;
+}
+
+
+.del-btns {
+    flex-grow: 60;
+    display: flex;
+    flex-direction: column;
+}
+
+.del-btns * {
+    flex-grow: 50;
+}
+
+
+.btn-c {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.stat-btn {
+    background-color: #076678;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 4px solid #065768;
+    font-size: 80px;
+    flex-grow: 40;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #793032;
+    border-bottom: 4px solid #5c2526;
+    font-size: 38px;
+}
+
+.exit-btn {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    font-size: 38px;
+    background-color: #7f3d39;
+    border-bottom: 4px solid #5c2c29;
+}

@@ -82,7 +82,7 @@ export default function AvatarUploader() {
 
     return (
         <div className="avatar-uploader">
-            <label htmlFor="avatar-up" class="custom-file-upload">
+            <label htmlFor="avatar-up" className="custom-file-upload">
                 Click to select file
             </label>
             <input type="file" accept="image/*" id='avatar-up' onChange={handleFileChange} />

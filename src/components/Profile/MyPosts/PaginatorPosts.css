@@ -45,3 +45,9 @@
     padding-left: 15px;
     border-radius: 5px;
 }
+
+@media (min-width: 0px) and (max-width:1060px) {
+    .paginator-container {
+        margin-top: 50px;
+    }
+}
