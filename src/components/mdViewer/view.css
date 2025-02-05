@@ -16,7 +16,7 @@
 .md-preview * {
     box-sizing: border-box;
     max-width: 100%;
-    word-break: break-all;
+    word-break: normal;
 }
 
 .md-preview p:has(code) {
@@ -56,7 +56,7 @@
 .md-preview img {
     /* border-radius: 10px; */
     max-height: 90vh;
-    border: #7f3d39 3px solid;
+    border: #282828 3px solid;
 }
 
 
