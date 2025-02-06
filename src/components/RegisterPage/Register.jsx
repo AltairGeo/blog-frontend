@@ -5,11 +5,13 @@ import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import { BackendUrl } from '../../../config';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); // Работа с cookie
     const [error_msg, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         setError('');
@@ -46,7 +48,7 @@ export default function Register() {
                 const utcDate = new Date(decoded.expires_at * 1000);
                 const expirationDate = new Date(utcDate.toLocaleString());
                 setCookie('token', data.token, { path: '/', expires: expirationDate });
-                window.location.href = '/';
+                navigate('/');
             }
         } catch (error) {
             console.error(error.message);
@@ -59,7 +61,7 @@ export default function Register() {
     
     return (
         <>
-            { cookies.token ? window.location.href = '/' : '' }
+            { cookies.token ? navigate('/') : '' }
             { loading ? <Loading></Loading> : '' }
             <div className='vert-form-div'>
                 <div className='form-div'>

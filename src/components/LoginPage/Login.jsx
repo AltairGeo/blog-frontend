@@ -5,15 +5,18 @@ import Loading from '../Loading/Loading';
 import ErrorText from '../Error/Error';
 import {BackendUrl} from '../../../config'
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
     const [cookies, setCookie] = useCookies(['token']); 
     const [error_msg, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
+
 
     if (cookies.token) {
-        window.location.href = '/';
+        navigate('/')
     }
     
     const handleSubmit = async (event) => { 
@@ -44,7 +47,7 @@ export default function Register() {
                 const decoded = jwtDecode(data.token);
                 const expirationDate = new Date(decoded.expires_at);
                 setCookie('token', data.token, { path: '/', expires: expirationDate});
-                window.location.href = '/';
+                navigate('/')
             }
         } catch (error) {
             console.error(error.message);
