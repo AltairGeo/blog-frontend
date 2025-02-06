@@ -1,0 +1,31 @@
+.pass-inp-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.pass-inp {
+    background-color: #dbddcf;
+}
+
+.inp-mar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.pass-btn {
+    background-color: #798361;
+    font-size: 25px;
+    color: #dbddcf;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    transition: ease 0.05s
+}
+
+.pass-btn:hover {
+    background-color: #6e7758;
+}
+
+.pass-btn:active {
+    background-color: #61694e;
+}
