@@ -52,3 +52,10 @@
     opacity: 1;
     scale: 1.1;
 }
+
+@media (min-width: 0px) and (max-width: 550px) {
+    .avatar-container {
+        width: auto;
+        height: auto;
+    }
+}

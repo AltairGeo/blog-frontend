@@ -1,5 +1,5 @@
 #rootModal {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.322);
@@ -32,7 +32,7 @@
 }
 
 .btn-close {
-    position: absolute;
+    position: fixed;
     box-sizing: border-box;
     left: 13px;
     top: 13px;

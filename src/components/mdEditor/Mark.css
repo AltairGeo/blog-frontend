@@ -19,16 +19,15 @@
 }
 
 .editor-toolbar button {
+    margin: 0;
     border-radius: 5px;
-    height: 100%;
+    height: auto;
     padding-left: 0px;
     padding-right: 0px;
     font-family: FA;
     color: #DBDDCF;
     border: none;
     background-color: #7f3d39;
-    margin-left: 10px;
-    margin-right: 10px;
     font-size: 18px;
     padding: 7px;
 }
@@ -42,6 +41,7 @@
 }
 
 .editor-toolbar {
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -49,9 +49,13 @@
 }
 
 .editor-toolbar-btns {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
+    width: 90%;
+    background-color: #1d2021;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #1d2021;
     border-radius: 12px;
 }

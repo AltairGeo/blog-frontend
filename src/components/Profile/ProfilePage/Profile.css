@@ -52,3 +52,14 @@
         flex-direction: column;
     }
 }
+
+
+@media (min-width: 0px) and (max-width: 550px) {
+    .base-info {
+        flex-direction: column;
+        max-height: none;
+    }
+    .profile-grid {
+        margin-top: 20%;
+    }
+}

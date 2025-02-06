@@ -10,6 +10,7 @@ function Header(props) {
         console.error(e.message)
     }
     return (
+        <div id='header-cont'>
         <div id="header">
             <nav>
                 <ul id='header-pgs'>
@@ -30,6 +31,7 @@ function Header(props) {
                     <li><Link className={props.active === "login" ? "active" : ""} to="/login">Login</Link></li>
                 </ul>}
             </nav>
+        </div>
         </div>
     )
 }
