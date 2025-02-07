@@ -1,4 +1,4 @@
-import './chpass.css'
+import './style.css'
 import Modal from '../../../modal/modal'
 import { useState } from 'react'
 import { BackendUrl } from '../../../../../config'
@@ -14,44 +14,44 @@ export default function ChPassModal(props) {
 
     const handleSubmit = async () => {
         try {
-        document.querySelector(".pass-btn").disabled = true
-        const old = document.getElementById("old-pass").value
-        const newPass = document.getElementById("new-pass").value
-        const RnewPass = document.getElementById("r-new-pass").value
+            document.querySelector(".pass-btn").disabled = true
+            const old = document.getElementById("old-pass").value
+            const newPass = document.getElementById("new-pass").value
+            const RnewPass = document.getElementById("r-new-pass").value
 
-        if (!old){
-            setErr("Please enter old password!")
-        }
-
-        if (!newPass || !RnewPass) {
-            setErr("Please enter new password!")
-        } 
-
-        if (newPass != RnewPass) {
-            setErr("Passwords don't match")
-        }
-
-        const resp = await fetch(`${BackendUrl}/users/change_password`,
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                }, 
-                body: JSON.stringify({
-                    token: cookie.token,
-                    old_password: old,
-                    new_password: newPass,
-                })
+            if (!old){
+                setErr("Please enter old password!")
             }
-        )
-        if (!resp.ok) {
-            const data = await resp.json()
-            setErr(data.detail)
-        }
 
-        if (resp.ok) {
-            setSuc(true)
-        }
+            if (!newPass || !RnewPass) {
+                setErr("Please enter new password!")
+            } 
+
+            if (newPass != RnewPass) {
+                setErr("Passwords don't match")
+            }
+
+            const resp = await fetch(`${BackendUrl}/users/change_password`,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }, 
+                    body: JSON.stringify({
+                        token: cookie.token,
+                        old_password: old,
+                        new_password: newPass,
+                    })
+                }
+            )
+            if (!resp.ok) {
+                const data = await resp.json()
+                setErr(data.detail)
+            }
+
+            if (resp.ok) {
+                setSuc(true)
+            }
     } catch(error) {
         setErr(error.message)
     }
