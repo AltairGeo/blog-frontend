@@ -16,6 +16,7 @@ export default function MyPostsView(props) {
   const [cookies] = useCookies(['token'])
   const object_of_token = jwtDecode(cookies.token)
 
+  
   const handlePageChange = (action) => {
     if (action === "next"){
         CurrentPage + 1 <= MaxPage ? setCurrentPage(CurrentPage + 1) : ""

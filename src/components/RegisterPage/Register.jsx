@@ -30,7 +30,7 @@ export default function Register() {
         try {
             document.getElementById("form-btn").disabled = true;
             setLoading(true);
-            const response = await fetch(`${BackendUrl}/users/register`, {
+            const response = await fetch(`${BackendUrl}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,8 +45,7 @@ export default function Register() {
             const data = await response.json();
             if(data.token) {
                 const decoded = jwtDecode(data.token)
-                const utcDate = new Date(decoded.expires_at * 1000);
-                const expirationDate = new Date(utcDate.toLocaleString());
+                const expirationDate = new Date(decoded.expires_at);
                 setCookie('token', data.token, { path: '/', expires: expirationDate });
                 navigate('/');
             }

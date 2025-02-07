@@ -4,6 +4,7 @@
 }
 
 .pass-inp {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
     background-color: #dbddcf;
 }
 
@@ -13,6 +14,7 @@
 }
 
 .pass-btn {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
     background-color: #798361;
     font-size: 25px;
     color: #dbddcf;
@@ -28,4 +30,58 @@
 
 .pass-btn:active {
     background-color: #61694e;
+}
+
+.pass-btn:disabled {
+    background-color: #575e46;
+}
+
+.header1 {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    color: #dbddcf;
+    background-color: #7f3d39;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 3px solid #69322f;
+}
+
+.header2 {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-bottom: #575e46 3px solid;
+    background-color: #798361;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.p-text {
+    color: #303030;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #dbddcf;
+}
+
+.err-btn {
+    background-color: #7f3d39;
+    border: none;
+    font-size: 25px;
+    color: #dbddcf;
+    padding: 8px;
+    border-radius: 5px;
+    transition: ease 0.05s;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.err-btn:hover {
+    background-color: #6e3532;
+}
+
+.err-btn:active {
+    background-color: #69322f;
 }
