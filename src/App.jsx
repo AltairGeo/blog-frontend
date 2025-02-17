@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
-import HomePage from './components/HomePage/HomePage';
-import Register from './components/RegisterPage/Register';
+import HomePage from './components/pages/HomePage/HomePage';
+import Register from './components/pages/RegisterPage/Register';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Login from './components/LoginPage/Login';
-import CreatePost from './components/CreatePage/Create';
-import PostPage from './components/ViewPostPage/PostPage';
-import Profile from './components/Profile/ProfilePage/Profile';
+import Login from './components/pages/LoginPage/Login';
+import CreatePost from './components/pages/CreatePage/Create';
+import PostPage from './components/pages/ViewPostPage/PostPage';
+import Profile from './components/pages/Profile/ProfilePage/Profile';
 
 
 
@@ -30,6 +30,8 @@ function App() {
       setActiveTab('')
     } else if (location.pathname === '/profile'){
       setActiveTab('profile')
+    } else if (location.pathname === '/lasts'){
+      setActiveTab('lasts')
     }
 
   }, [location]);
@@ -45,6 +47,7 @@ function App() {
         <Route path='/post/:postId' element={<PostPage />}></Route>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/edit/:postID' element={<CreatePost />}/>
+        <Route path='/lasts' element={"Гойда"}/>
       </Routes>
     </>
   )

@@ -4,8 +4,8 @@ import PagesPost from './PaginatorPosts'
 import PostPreview from './PostPreview'
 import { useCookies } from 'react-cookie'
 import {jwtDecode} from 'jwt-decode'
-import { BackendUrl } from '../../../../config'
-import LoaderSpin from '../../../LoaderSpin/LoaderSpin'
+import { BackendUrl } from '../../../../../config'
+import LoaderSpin from '../../../../LoaderSpin/LoaderSpin'
 
 export default function MyPostsView(props) {
   const [loading, setLoading] = useState(true)

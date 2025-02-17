@@ -1,8 +1,8 @@
 import './Create.css'
-import {BackendUrl} from '../../../config'
+import {BackendUrl} from '../../../../config'
 import { useState } from 'react'
-import MarkdownEditor from '../mdEditor/Mark'
-import MarkdownViewer from '../mdViewer/view'
+import MarkdownEditor from '../../mdEditor/Mark'
+import MarkdownViewer from '../../mdViewer/view'
 import { useCookies } from 'react-cookie';
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'

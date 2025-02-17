@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import { BackendUrl } from '../../../../../config';
+import { BackendUrl } from '../../../../../../config';
 import { useCookies } from 'react-cookie';
 import './Cropper.css'
 import { useNavigate } from 'react-router-dom';

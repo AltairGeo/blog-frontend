@@ -1,6 +1,6 @@
 import './DeletePost.css';
 import { useCookies } from 'react-cookie';
-import { BackendUrl } from '../../../../../config';
+import { BackendUrl } from '../../../../../../config';
 import { useNavigate } from 'react-router'
 
 export default function DeletePost(props) {

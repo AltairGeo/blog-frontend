@@ -1,9 +1,9 @@
 import './Register.css'
-import ErrorText from '../Error/Error';
+import ErrorText from '../../Error/Error';
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
-import Loading from '../Loading/Loading';
-import { BackendUrl } from '../../../config';
+import Loading from '../../Loading/Loading';
+import { BackendUrl } from '../../../../config';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 

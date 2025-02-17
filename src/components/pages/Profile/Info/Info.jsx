@@ -1,9 +1,9 @@
 import './Info.css'
 import { useCookies } from 'react-cookie'
-import ErrorText from '../../Error/Error'
+import ErrorText from '../../../Error/Error'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { BackendUrl } from '../../../../config'
+import { BackendUrl } from '../../../../../config'
 
 export default function InfoTab() {
     const [cookies, setCookies] = useCookies(['token'])

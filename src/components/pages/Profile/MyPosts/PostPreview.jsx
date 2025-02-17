@@ -1,5 +1,5 @@
 import './PostPreview.css'
-import MarkdownViewer from '../../mdViewer/view'
+import MarkdownViewer from '../../../mdViewer/view'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 

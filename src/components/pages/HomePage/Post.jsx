@@ -1,6 +1,6 @@
 import './Post.css'
 import { Link } from 'react-router-dom'
-import MarkdownViewer from './../mdViewer/view'
+import MarkdownViewer from './../../mdViewer/view'
 
 
 export default function Post(props){

@@ -1,10 +1,10 @@
 import './HomePage.css'
 import { useState, useEffect } from 'react';
-import ErrorText from '../Error/Error'
-import Loading from '../Loading/Loading'
+import ErrorText from '../../Error/Error'
+import Loading from '../../Loading/Loading'
 import Post from './Post';
-import Paper from '../Paper/Paper';
-import {BackendUrl} from '../../../config'
+import Paper from '../../Paper/Paper';
+import {BackendUrl} from '../../../../config'
 
 
 function HomePage() {

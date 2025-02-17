@@ -2,7 +2,7 @@ import './Avatar.css';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Loader from '../loader/loader';
-import {BackendUrl} from '../../../../config'
+import {BackendUrl} from '../../../../../config'
 
 
 export default function Avatar() {

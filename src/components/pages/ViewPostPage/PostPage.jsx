@@ -1,10 +1,10 @@
 import { useParams } from "react-router";
 import './PostPage.css'
-import MarkdownViewer from "../mdViewer/view";
+import MarkdownViewer from "../../mdViewer/view";
 import { Link } from "react-router";
-import Loading from "../Loading/Loading"
+import Loading from "../../Loading/Loading"
 import { useState, useEffect } from "react";
-import ErrorText from "../Error/Error";
+import ErrorText from "../../Error/Error";
 
 
 

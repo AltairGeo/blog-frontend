@@ -1,9 +1,9 @@
 import './Login.css'
 import { useCookies } from 'react-cookie';
 import { useState } from 'react';
-import Loading from '../Loading/Loading';
-import ErrorText from '../Error/Error';
-import {BackendUrl} from '../../../config'
+import Loading from '../../Loading/Loading';
+import ErrorText from '../../Error/Error';
+import {BackendUrl} from '../../../../config'
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 

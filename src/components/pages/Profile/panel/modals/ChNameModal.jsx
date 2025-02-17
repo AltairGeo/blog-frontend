@@ -1,7 +1,7 @@
 import './style.css'
-import Modal from '../../../modal/modal'
+import Modal from '../../../../modal/modal'
 import { useState } from 'react'
-import { BackendUrl } from '../../../../../config'
+import { BackendUrl } from '../../../../../../config'
 import { useCookies } from 'react-cookie'
 
 
