@@ -8,6 +8,7 @@ import Login from './components/pages/LoginPage/Login';
 import CreatePost from './components/pages/CreatePage/Create';
 import PostPage from './components/pages/ViewPostPage/PostPage';
 import Profile from './components/pages/Profile/ProfilePage/Profile';
+import Lasts from './components/pages/LastsPostsPage/Lasts';
 
 
 
@@ -47,7 +48,7 @@ function App() {
         <Route path='/post/:postId' element={<PostPage />}></Route>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/edit/:postID' element={<CreatePost />}/>
-        <Route path='/lasts' element={"Гойда"}/>
+        <Route path='/lasts' element={<Lasts />}/>
       </Routes>
     </>
   )
