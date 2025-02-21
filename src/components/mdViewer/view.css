@@ -4,7 +4,7 @@
     z-index: 250;
     font-family: Russo, Teko;
     font-size: 20px;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 10px;
     overflow-y: auto; /* Вертикальная полоса прокрутки */
     scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */

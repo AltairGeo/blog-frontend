@@ -8,9 +8,9 @@ import {BackendUrl} from '../../../../config'
 
 
 function HomePage() {
-    const [posts, setPosts] = useState([]); // Хранилище для данных
-    const [loading, setLoading] = useState(true); // Индикатор загрузки
-    const [error, setError] = useState(null); // Хранилище для ошибок
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     
     useEffect(() => {
         async function fetchPosts() {
@@ -39,7 +39,10 @@ function HomePage() {
         <Paper marg={true}>
             <ul className='posts'>
                 {posts.map((post) => (
-            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author_name={post.author_name} />))}
+            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author_name={post.author_name} />
+                    )
+                )
+            }
             </ul>
         </Paper>}
     </>
