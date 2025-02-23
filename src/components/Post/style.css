@@ -53,6 +53,7 @@
     border-bottom: #61694e 3px solid;
     border-radius: 5px;
     padding: 5px;
+    transition: ease 0.2s;
 }
 
 .post-btn:hover {
@@ -66,4 +67,8 @@
 
 .post-list .post-cont {
     margin-top: 20px;
+}
+
+.post-btn:active {
+    background-color: #5a6147;
 }

@@ -53,16 +53,21 @@ export default function Lasts() {
         <>
         {console.log(loading)}
             <Paper marg={true}>
-
-                <ReactPaginate 
-                    breakLabel="..."
-                    nextLabel="next >"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount={maxPage}
-                    previousLabel="< previous"
-                    renderOnZeroPageCount={null}
-                />
+                <div className='paginate-container'>
+                    <ReactPaginate 
+                        breakLabel="2"
+                        nextLabel=""
+                        nextClassName='control-btn'
+                        previousClassName='control-btn'
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        pageCount={maxPage}
+                        previousLabel=""
+                        renderOnZeroPageCount={null}
+                        pageLinkClassName="page-elem"
+                        pageClassName="page-elem-parent"
+                    />
+                </div>
                 <ul className='post-list'>
                 {pageData.map((post) => (
                     <MainPost key={post.id} date={post.created_at} title={post.title} nickname={post.author_name} id={post.id} text={post.text}/>
