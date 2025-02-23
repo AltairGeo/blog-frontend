@@ -55,7 +55,7 @@ export default function Lasts() {
             <Paper marg={true}>
                 <div className='paginate-container'>
                     <ReactPaginate 
-                        breakLabel="2"
+                        breakLabel=""
                         nextLabel=""
                         nextClassName='control-btn'
                         previousClassName='control-btn'
