@@ -4,6 +4,7 @@
     padding: 30px;
     border-radius: 12px;
     position: absolute;
+    box-shadow: 4px 2px 3px 5px rgba(0, 0, 0, 0.048);
 }
 
 .err-cont h1 {

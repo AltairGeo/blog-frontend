@@ -16,6 +16,7 @@ function Header(props) {
                 <ul id='header-pgs'>
                     <li><a className={props.active === "home" ? "active" : ""}><Link to='/'>Home</Link></a></li>
                     <li><a className={props.active === "lasts" ? "active" : ""}><Link to='/lasts'>Lasts</Link></a></li>
+                    <li><a id='search-btn' className={props.active === "search" ? "active": ""}><Link to='/search'></Link></a></li>
                 </ul>
             </nav>
             <nav>

@@ -33,6 +33,8 @@ function App() {
       setActiveTab('profile')
     } else if (location.pathname === '/lasts'){
       setActiveTab('lasts')
+    } else if (location.pathname === "/search") {
+      setActiveTab('search')
     }
 
   }, [location]);
