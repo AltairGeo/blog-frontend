@@ -65,11 +65,22 @@
     margin-top: auto;
     margin-right: auto;
     border-bottom: #79740e 4px solid;
+    transition: ease 0.3s;
+}
+
+.sbm-btn:active {
+    background-color: #6b660d;
+    border-bottom: #79740e;
+}
+
+.sbm-btn:disabled {
+    background-color: #75700f;
+    border-bottom: 4px solid #6b660d;
 }
 
 .sbm-btn:hover {
-    background-color: #79740e;
-    border-bottom: #68630c 4px solid;
+    background-color: #75700f;
+    border-bottom: #6b660d 4px solid;
 
 }
 

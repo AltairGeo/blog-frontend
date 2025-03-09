@@ -69,10 +69,9 @@ export default function AvatarUploader() {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Ошибка загрузки');
+                    throw new Error('Avatar loading error!');
                 }
 
-                console.log('Аватар успешно загружен');
                 navigate(0);
             } catch (error) {
                 console.error(error);
