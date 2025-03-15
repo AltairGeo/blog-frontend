@@ -9,6 +9,7 @@ import CreatePost from './components/pages/CreatePage/Create';
 import PostPage from './components/pages/ViewPostPage/PostPage';
 import Profile from './components/pages/Profile/ProfilePage/Profile';
 import Lasts from './components/pages/LastsPostsPage/Lasts';
+import SearchPage from './components/pages/SearchPage/Search';
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route path='/profile' element={<Profile />}/>
         <Route path='/edit/:postID' element={<CreatePost />}/>
         <Route path='/lasts' element={<Lasts />}/>
+        <Route path='/search' element={<SearchPage />}/>
       </Routes>
     </>
   )
