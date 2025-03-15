@@ -21,7 +21,7 @@ export default function Lasts() {
         const getCountPages = async () => {
             const resp = await fetch(`${BackendUrl}/posts/count`)
             if (!resp.ok) {
-                console.log(`Error: ${resp.statusText}`)
+                console.error(`Error: ${resp.statusText}`)
             }
             setMaxPage(parseInt(await resp.text()))
         }
@@ -45,7 +45,6 @@ export default function Lasts() {
                     throw new Error(resp.statusText)
                 }
                 const resp_data = await resp.json()
-                console.log(resp_data)
                 setPageData(resp_data)
             } catch(error) {
                 console.error(error.message)
@@ -58,7 +57,6 @@ export default function Lasts() {
 
     const handlePageClick = (event) => {
         const selectedPage = event.selected + 1;
-        console.log(selectedPage)
         setCurPage(selectedPage);
         setLoading(true)
     }
