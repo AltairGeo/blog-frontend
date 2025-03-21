@@ -52,7 +52,7 @@ export default function Avatar() {
             <div className="avatar-container">
                 {loading ? 
                 <Loader /> : (
-                    avatarUrl && <img src={`${avatarUrl}?t=${new Date().getTime()}`} alt="" className="avatar" />
+                    avatarUrl && <img src={`${avatarUrl}?v=${localStorage.getItem('avatar') ? localStorage.getItem("avatar") : "123"}`} alt="" className="avatar" />
                 )}
                 <button className="avatar-button" onClick={() => {
                     document.getElementById("rootModal").className = ""

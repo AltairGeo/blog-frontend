@@ -73,7 +73,7 @@ export default function AvatarUploader() {
                 if (!response.ok) {
                     throw new Error('Avatar loading error!');
                 }
-
+                localStorage.setItem("avatar", String(Math.random() * 1000))
                 navigate(0);
             } catch (error) {
                 console.error(error);
