@@ -65,10 +65,9 @@ export default function CreatePost() {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "accept": 'application/json'
+                    'Authorization': `Bearer ${cookies.token}`
                 },
                 body: JSON.stringify({
-                    token: cookies.token,
                     post_id: params.postID,
                     text: mdValue.trim(),
                     title: title.trim(),
@@ -100,24 +99,26 @@ export default function CreatePost() {
             const resp = await fetch(`${BackendUrl}/posts/create`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'},
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${cookies.token}`
+                },
                 body: JSON.stringify({
                     title: title.trim(),
                     text: content.trim(),
-                    created_at: new Date().toISOString().slice(0, -1),
-                    token: cookies.token
-                    
                 })
             })
+
             if(!resp.ok) {
                 throw new Error(resp.statusText);
             } else {
                 window.location.href = '/';
             }
-        } catch (error) {
+        }
+        catch (error) {
             alert(error.message);
         }
-    } 
+    }
+
 
     return (
         <>

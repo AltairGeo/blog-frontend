@@ -58,12 +58,14 @@ export default function AvatarUploader() {
             if (!blob) return;
 
             const formData = new FormData();
-            formData.append("token", cookies.token);
             formData.append("image", blob);
 
             try {
                 document.querySelector(".sbm-btn").disabled = true;
                 const response = await fetch(`${BackendUrl}/users/avatar_upload`, {
+                    headers: {
+                        'Authorization': `Bearer ${cookies.token}`
+                    },
                     method: 'POST',
                     body: formData,
                 });

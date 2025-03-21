@@ -22,20 +22,17 @@ export default function Avatar() {
                 const resp = await fetch(`${BackendUrl}/users/get_avatar_by_token`, {
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookies.token}`
                     },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        token: cookies.token
-                    })
+                    method: 'GET',
                 });
 
                 if (!resp.ok) {
                     throw new Error(resp.statusText);
                 }
-                const json_data = await resp.json()
-                const imgpath = json_data["path"]
-                console.log(imgpath)
-                setAvatarUrl(imgpath)
+                const ava_data = await (await resp.text()).replaceAll('"', "")
+                console.log(ava_data)
+                setAvatarUrl(ava_data)
 
                 document.querySelector('.avatar-container').style.background = 'none';
             } catch (error) {

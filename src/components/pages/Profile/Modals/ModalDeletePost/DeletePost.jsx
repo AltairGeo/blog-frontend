@@ -13,10 +13,10 @@ export default function DeletePost(props) {
         const res = await fetch(`${BackendUrl}/posts/delete`, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${cookie.token}`
             },
             body: JSON.stringify({
-                token: cookie.token,
                 id: toDelete
             })
         })

@@ -19,16 +19,13 @@ export default function ChNameModal(props) {
                 throw new Error("Please enter nickname!")
             }
 
-            const resp = await fetch(`${BackendUrl}/users/change_name`, 
+            const resp = await fetch(`${BackendUrl}/users/change_name?new_name=${name}`, 
                 {
                     method: "POST",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookie.token}`
                     }, 
-                    body: JSON.stringify({
-                        token: cookie.token,
-                        new_name: name,
-                    })
                 }
             )
 
@@ -58,7 +55,7 @@ export default function ChNameModal(props) {
             Succes ? // Succesfully
             <>
             <h1 className='header2'>Succesfully!</h1>
-            <p className='p-text'>Please check you email!</p>
+            <p className='p-text'>Your nickname was changed!</p>
             <button className='pass-btn' onClick={props.closeModal}>OK!</button>
             </>
             : // Default

@@ -27,14 +27,18 @@ export default function Register() {
         const password = form.password.value.trim();
         document.getElementById("form-btn").disabled = true;
 
+        const formData = new URLSearchParams();
+        formData.append("username", email);
+        formData.append("password", password);
+
         try {
             setLoading(true);
             const response = await fetch(`${BackendUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': "application/x-www-form-urlencoded"
                 }, 
-                body: JSON.stringify({email, password})
+                body: formData.toString(),
             })
 
             if (!response.ok) {
@@ -43,10 +47,10 @@ export default function Register() {
             }
 
             const data = await response.json();
-            if (data.token) {
-                const decoded = jwtDecode(data.token);
-                const expirationDate = new Date(decoded.expires_at);
-                setCookie('token', data.token, { path: '/', expires: expirationDate});
+            if (data.access_token) {
+                const decoded = jwtDecode(data.access_token);
+                const expirationDate = new Date(decoded.exp);
+                setCookie('token', data.access_token, { path: '/', exp: expirationDate});
                 navigate('/')
             }
         } catch (error) {

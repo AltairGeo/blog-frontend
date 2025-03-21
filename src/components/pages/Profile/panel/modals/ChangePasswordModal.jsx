@@ -35,10 +35,10 @@ export default function ChPassModal(props) {
                 {
                     method: "POST",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookie.token}`
                     }, 
                     body: JSON.stringify({
-                        token: cookie.token,
                         old_password: old,
                         new_password: newPass,
                     })

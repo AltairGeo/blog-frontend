@@ -9,7 +9,7 @@ export default function InfoTab() {
     const [cookies, setCookies] = useCookies(['token'])
     const [info_data, setInfoData] = useState({
         nickname: "nickname",
-        email: "a@a.com",
+        email: "example@mail.com",
         data: "Not supported!",
         id: 0,
     })
@@ -23,11 +23,9 @@ export default function InfoTab() {
                 {
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookies.token}`
                     },
-                    method: "POST",
-                    body: JSON.stringify({
-                        token: cookies.token
-                    })
+                    method: "GET",
                 }
             )
             if(!resp.ok){

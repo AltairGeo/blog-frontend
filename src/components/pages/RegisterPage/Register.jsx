@@ -22,10 +22,16 @@ export default function Register() {
         const password = form.password.value.trim();
         const re_password = form['re-password'].value.trim();
 
+
         if ( password !== re_password ) {
             setError('Passwords do not match.');
             return;
         }
+
+        const formData = new URLSearchParams();
+        formData.append("nickname", nickname)
+        formData.append("email", email)
+        formData.append("password", password)
 
         try {
             document.getElementById("form-btn").disabled = true;
@@ -33,9 +39,9 @@ export default function Register() {
             const response = await fetch(`${BackendUrl}/auth/register`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': "application/x-www-form-urlencoded"
                 },
-                body: JSON.stringify({nickname, email, password})
+                body: formData.toString()
             });
 
             if (!response.ok) {
@@ -44,9 +50,9 @@ export default function Register() {
             
             const data = await response.json();
             if(data.token) {
-                const decoded = jwtDecode(data.token)
-                const expirationDate = new Date(decoded.expires_at);
-                setCookie('token', data.token, { path: '/', expires: expirationDate });
+                const decoded = jwtDecode(data.access_token)
+                const expirationDate = new Date(decoded.exp);
+                setCookie('token', data.access_token, { path: '/', expires: expirationDate });
                 navigate('/');
             }
         } catch (error) {
