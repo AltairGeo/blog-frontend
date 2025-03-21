@@ -31,7 +31,6 @@ export default function Avatar() {
                     throw new Error(resp.statusText);
                 }
                 const ava_data = await (await resp.text()).replaceAll('"', "")
-                console.log(ava_data)
                 setAvatarUrl(ava_data)
 
                 document.querySelector('.avatar-container').style.background = 'none';

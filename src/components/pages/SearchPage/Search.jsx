@@ -100,7 +100,7 @@ export default function SearchPage() {
                                 key={post.id} 
                                 date={post.created_at} 
                                 title={post.title} 
-                                nickname={post.author_name} 
+                                nickname={post.author} 
                                 id={post.id} 
                                 text={post.text.slice(0, 150)}
                             />
