@@ -49,9 +49,9 @@ export default function Register() {
             }
             
             const data = await response.json();
-            if(data.token) {
-                const decoded = jwtDecode(data.access_token)
-                const expirationDate = new Date(decoded.exp);
+            if(data.access_token) {
+                const decoded = jwtDecode(data.access_token);
+                const expirationDate = new Date(decoded.exp * 1000);
                 setCookie('token', data.access_token, { path: '/', expires: expirationDate });
                 navigate('/');
             }
