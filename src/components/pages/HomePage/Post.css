@@ -127,3 +127,49 @@
 #PostBody th {
     background-color: #918f81;
 } */
+
+.ratings-span {
+    display: flex;
+    margin-left: 10px;
+}
+
+.rating {
+    font-family: FA;
+    color: #DBDDCE;
+    font-size: 20px;
+    align-self: center;
+}
+
+.rating p {
+    color: #DBDDCF;
+}
+
+.like-rating {
+    background-color: #8c9078;
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    padding: 8px;
+    border-bottom: 3px solid #6c6e5d;
+}
+
+.dislike-rating {
+    background: #7F3D38;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: 5px;
+    display: flex;
+    padding: 8px;
+    border-bottom: 3px solid #753834;
+}
+
+.ratings-span p {
+    color: #DBDDCE;
+    background-color: #0000;
+    border: none;
+    font-size: 20px;
+    padding: 0;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}

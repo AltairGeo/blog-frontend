@@ -39,7 +39,7 @@ function HomePage() {
         <Paper marg={true}>
             <ul className='posts'>
                 {posts.map((post) => (
-            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author_name={post.author_name} />
+            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author_name={post.author_name} likes={post.likes} dislikes={post.dislikes}/>
                     )
                 )
             }
