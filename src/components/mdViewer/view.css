@@ -54,9 +54,10 @@
 }
 
 .md-preview img {
-    /* border-radius: 10px; */
+    border-radius: 10px;
     max-height: 90vh;
-    border: #282828 3px solid;
+    /* border: #282828 3px solid; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 
