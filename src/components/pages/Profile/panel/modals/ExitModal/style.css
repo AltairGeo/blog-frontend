@@ -1,0 +1,12 @@
+.cont-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-exit {
+    font-size: 40px;
+    color: #DBDDCE;
+    background-color: #282828;
+    padding: 15px;
+    border-radius: 8px;
+}

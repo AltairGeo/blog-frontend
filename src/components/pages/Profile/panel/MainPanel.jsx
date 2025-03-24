@@ -3,25 +3,24 @@ import { useState } from 'react'
 import ChPassModal from './modals/ChangePasswordModal';
 import { useCookies } from 'react-cookie';
 import ChNameModal from './modals/ChNameModal';
+import ExitModal from './modals/ExitModal/Exit';
 
 export default function Panel()
 {
     const [PassModal, setPassModal] = useState(false);
     const [NameModal, setNameModal] = useState(false);
-    const [cookies, setCookie, removeCookie] = useCookies(['token']);
-
+    const [ExitModalState, setExitModal] = useState(false)
 
     const handlePassModal = () => {setPassModal(!PassModal)};
     const handleNameModal = () => {setNameModal(!NameModal)};
+    const handleExitModal = () => {setExitModal(!ExitModalState)}
 
 
-    const ExitAcc = () => {
-        removeCookie('token', { path: '/' });
-    }
     return (
         <>
-            {PassModal ? <ChPassModal closeModal={handlePassModal}/> : ""}
-            {NameModal ? <ChNameModal closeModal={handleNameModal}/> : ""}
+            {ExitModalState ? <ExitModal closeModal={handleExitModal} />: null}
+            {PassModal ? <ChPassModal closeModal={handlePassModal}/> : null}
+            {NameModal ? <ChNameModal closeModal={handleNameModal}/> : null}
             
             <h1 className='header-action-panel'>Action's</h1>
             <div className='btns'>
@@ -33,7 +32,7 @@ export default function Panel()
                 <div className='btn-c'>
                     <div className='del-btns'>
                         <button className='delete-btn'></button>
-                        <button className='exit-btn' onClick={ExitAcc}></button>
+                        <button className='exit-btn' onClick={handleExitModal}></button>
                     </div>
                     <button className='stat-btn'></button>
                 </div>  
