@@ -72,3 +72,12 @@
 .post-btn:active {
     background-color: #5a6147;
 }
+
+.post-cont-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mg-10 {
+    margin-top: 10px;
+}

@@ -87,7 +87,7 @@ export default function Lasts() {
                 :
                 <ul className='post-list'>
                     {pageData.map((post) => (
-                        <MainPost key={post.id} date={post.created_at} title={post.title} nickname={post.author_name} id={post.id} text={post.text.slice(0, 150)}/>
+                        <MainPost key={post.id} date={post.created_at} title={post.title} nickname={post.author_name} id={post.id} text={post.text.slice(0, 150)} likes={post.likes} dislikes={post.dislikes}/>
                     ))}
                 </ul>
             }

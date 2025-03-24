@@ -12,6 +12,18 @@ export default function MainPost(props) {
     const dateObj = new Date(dateStr)
     
     const date = formatter.format(dateObj)
+
+    const FormatLikes = (likes) => {
+        const formatterLikes = new Intl.NumberFormat('en', { 
+            notation: 'compact', 
+            compactDisplay: 'short' 
+        });
+        if (!likes) {
+            return 0
+        }
+        return formatterLikes.format(likes)
+    }
+
     return (
         <div className='post-cont'>
             <div className='post-top'> 
@@ -36,6 +48,16 @@ export default function MainPost(props) {
                 <Link to={`/post/${props.id}`}>
                     <button className='post-btn'>View!</button>
                 </Link>
+                <span className="ratings-span mg-10">
+                    <div className='like-rating'>
+                        <span className='rating'></span>
+                        <p>{FormatLikes(props.likes)}</p>
+                    </div>
+                    <div className='dislike-rating'>
+                        <span className='rating'></span>
+                        <p>{FormatLikes(props.dislikes)}</p>
+                    </div>           
+                </span>
             </div>
         </div>
     )

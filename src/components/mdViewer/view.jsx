@@ -6,7 +6,22 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-apacheconf';
+import 'prismjs/components/prism-gradle';
+import 'prismjs/components/prism-haskell';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-csv';
+import 'prismjs/components/prism-graphql';
+import 'prismjs/components/prism-latex';
+import 'prismjs/components/prism-lua';
+import 'prismjs/components/prism-nasm';
+import 'prismjs/components/prism-php-extras';
+import 'prismjs/components/prism-zig';
+import 'prismjs/components/prism-rust';
 import './prism-theme.css'
 import { useEffect } from 'react';
 
