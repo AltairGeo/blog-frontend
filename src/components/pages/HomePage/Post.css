@@ -46,10 +46,10 @@
     margin: 0;
     font-size: 25px;
     padding: 5px;
-    background-color: #908D79;
-    border-bottom: #7c7a68 2px solid;
+    background-color: #798360;
+    border-bottom: #61694D 3px solid;
     border-radius: 10px;
-    color: #424243;
+    color: #DBDDCE;
 }
 
 .PostBottom {
@@ -64,19 +64,20 @@
 .PostBottom button {
     font-family: Russo;
     font-size: 24px;
-    background-color: #7E7B68;
+    background-color: #798360;
     border: 0;
     border-radius: 10px;
     padding: 5px;
     height: 50px;
-    color: #424243;
+    color: #DBDDCE;
     box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
     transition: ease 0.3s;
     cursor: text;
+    border-bottom: 3px solid #61694D;
 }
 
 .PostBottom button:hover {
-    background-color: #9b9a84;
+    background-color: #6a7255;
     box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.075);
     scale: 1.05;
 }
@@ -88,45 +89,12 @@
 
 #PostElement {
     border-radius: 10px;
-    background-color: #424243;
+    background-color: #313131;
     margin: 12px;
     padding: 12px;
 }
 
-/* 
- #PostBody * {
-    max-width: 100%;
-    word-break: break-all;
-}
 
-#PostBody p:has(code) {
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px;
-    background-color: #a3a18f;
-    border-radius: 5px;
-}
-
-#PostBody blockquote {
-    border-left: #343434 5px solid;
-    margin-left: 0px;
-    padding-left: 40px;
-}
-
-#PostBody table {
-    border-collapse: collapse;
-    width: 100%; /* Ширина таблицы
-}
-  
-#PostBody th, td {
-    border: 1px solid black;
-    text-align: left; 
-    padding: 8px;
-}
-  
-#PostBody th {
-    background-color: #918f81;
-} */
 
 .ratings-span {
     display: flex;
@@ -145,12 +113,12 @@
 }
 
 .like-rating {
-    background-color: #8c9078;
+    background-color: #798360;
     padding: 5px;
     border-radius: 8px;
     display: flex;
     padding: 8px;
-    border-bottom: 3px solid #6c6e5d;
+    border-bottom: 3px solid #61694D;
 }
 
 .dislike-rating {
