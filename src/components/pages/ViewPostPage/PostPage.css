@@ -104,3 +104,60 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+.rating-span {
+    margin-left: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.rating-span div {
+    display: flex;
+}
+
+.rating-span button {
+    font-family: FA;
+    font-size: 20px;
+    color: #DBDDCE;
+    background: #0000;
+    border: none;
+    transition: ease 0.1s;
+}
+
+.rating-span button:active {
+    color: #b5b6ad;
+}
+
+.rating-span button:disabled {
+    color: #b5b6ad;
+}
+
+.cont-foot * {
+    box-sizing: border-box;
+}
+
+.cont-foot {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.PostLike {
+    background-color: #798360;
+    border-radius: 5px;
+    padding: 5px;
+    border-bottom: 3px solid #61694D;
+}
+
+.PostDislike {
+    background-color: #7F3D38;
+    border-radius: 5px;
+    padding: 5px;
+    border-bottom: 3px solid #69322E;
+}
+
+.rating-span * p {
+    color: #DBDDCF;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3px;
+}

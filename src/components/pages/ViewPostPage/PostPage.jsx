@@ -16,6 +16,8 @@ export default function PostPage(){
     const [PostAuthorName, setPostAuthor] = useState(null)
     const [PostAuthorID, setAuthorID] = useState(null)
     const [PostDate, setPostDate] = useState(null)
+    const [PostLikes, setPostLikes] = useState(null)
+    const [PostDisLikes, setPostDisLikes] = useState(null)
     const params = useParams();
     
     
@@ -40,6 +42,14 @@ export default function PostPage(){
         const formattedDate = formatter.format(dateObj);
         setPostDate(formattedDate)
         setAuthorID(data.author_id)
+
+        const formatterLikes = new Intl.NumberFormat('en', { 
+            notation: 'compact', 
+            compactDisplay: 'short' 
+        });
+
+        setPostLikes(formatterLikes.format(data.likes))
+        setPostDisLikes(formatterLikes.format(data.dislikes))
     } catch (error){
         setError(error.message)
     } finally {
@@ -65,7 +75,19 @@ export default function PostPage(){
                             <MarkdownViewer value={PostText}/>
                         </div>
                         <div className="PostFooter">
-                            <span className="PostAuthor"><Link to={`/user/${PostAuthorID}`}>{PostAuthorName}</Link></span>
+                            <span className="cont-foot">
+                                <div className="PostAuthor"><Link to={`/user/${PostAuthorID}`}>{PostAuthorName}</Link></div>
+                                <span className="rating-span">
+                                    <div className="PostLike">
+                                        <button></button>
+                                        <p>{PostLikes}</p>
+                                    </div>
+                                    <div className="PostDislike">
+                                        <button></button>
+                                        <p>{PostDisLikes}</p>
+                                    </div>
+                                </span>
+                            </span>
                             <span className="PostDate">{PostDate}</span>
                         </div>
                     </div>
