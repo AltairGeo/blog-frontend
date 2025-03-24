@@ -4,11 +4,9 @@ import { useRef } from "react";
 export default function MarkdownEditor(props) {
   const textareaRef = useRef(null);
 
-  // Функция оборачивания выделенного текста
   const applyFormatting = (format) => {
     if (!textareaRef.current) return;
 
-    // Получаем позиции выделения
     const { selectionStart, selectionEnd } = textareaRef.current;
     const before = props.value.substring(0, selectionStart);
     const selectedText = props.value.substring(selectionStart, selectionEnd);
@@ -16,8 +14,6 @@ export default function MarkdownEditor(props) {
 
     let wrappedText = "";
 
-    // Определяем, какую разметку применить, и оборачиваем выделенный текст.
-    // Если ничего не выделено, можно вставить текст-заглушку.
     switch (format) {
       case "bold":
         wrappedText = `**${selectedText || "bold"}**`;
@@ -35,7 +31,7 @@ export default function MarkdownEditor(props) {
         wrappedText = `> ${selectedText || "Quotes"}`;
         break;
       case "code":
-        wrappedText = `\`${selectedText || "code"}\``;
+        wrappedText = `${"```python\n"}${selectedText || "print('Hello world!')"}${"\n```"}`
         break;
       case "image":
         wrappedText = `![${selectedText || "Name"}](https://example.com)`;

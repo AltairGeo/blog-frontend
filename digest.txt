@@ -1,0 +1,4557 @@
+Directory structure:
+└── blog-frontend/
+    ├── README.md
+    ├── LICENSE
+    ├── config.js
+    ├── eslint.config.js
+    ├── index.html
+    ├── package.json
+    ├── vite.config.js
+    ├── public/
+    │   ├── KellySlab-Regular.ttf
+    │   ├── Teko.ttf
+    │   ├── fa-brands-400.ttf
+    │   ├── fa-regular-400.ttf
+    │   └── fa-solid-900.ttf
+    └── src/
+        ├── App.css
+        ├── App.jsx
+        ├── index.css
+        ├── main.jsx
+        ├── LoaderSpin/
+        │   ├── LoaderSpin.css
+        │   └── LoaderSpin.jsx
+        └── components/
+            ├── Header.css
+            ├── Header.jsx
+            ├── Error/
+            │   ├── Error.css
+            │   └── Error.jsx
+            ├── Loading/
+            │   ├── Loading.css
+            │   └── Loading.jsx
+            ├── NotFound/
+            │   ├── NFound.jsx
+            │   └── style.css
+            ├── Paper/
+            │   ├── Paper.css
+            │   └── Paper.jsx
+            ├── Post/
+            │   ├── post.jsx
+            │   └── style.css
+            ├── mdEditor/
+            │   ├── Mark.css
+            │   └── Mark.jsx
+            ├── mdViewer/
+            │   ├── view.css
+            │   └── view.jsx
+            ├── modal/
+            │   ├── modal.jsx
+            │   └── style.css
+            └── pages/
+                ├── CreatePage/
+                │   ├── Create.css
+                │   └── Create.jsx
+                ├── HomePage/
+                │   ├── HomePage.css
+                │   ├── HomePage.jsx
+                │   ├── Post.css
+                │   └── Post.jsx
+                ├── LastsPostsPage/
+                │   ├── Lasts.jsx
+                │   └── style.css
+                ├── LoginPage/
+                │   ├── Login.css
+                │   └── Login.jsx
+                ├── Profile/
+                │   ├── Avatar/
+                │   │   ├── Avatar.css
+                │   │   └── Avatar.jsx
+                │   ├── Info/
+                │   │   ├── Info.css
+                │   │   └── Info.jsx
+                │   ├── Modals/
+                │   │   ├── ModalAvatar/
+                │   │   │   ├── Cropper.css
+                │   │   │   ├── Cropper.jsx
+                │   │   │   ├── ModalAvatar.css
+                │   │   │   └── ModalAvatar.jsx
+                │   │   └── ModalDeletePost/
+                │   │       ├── DeletePost.css
+                │   │       └── DeletePost.jsx
+                │   ├── MyPosts/
+                │   │   ├── MyPosts.css
+                │   │   ├── MyPosts.jsx
+                │   │   ├── PaginatorPosts.css
+                │   │   ├── PaginatorPosts.jsx
+                │   │   ├── PostPreview.css
+                │   │   └── PostPreview.jsx
+                │   ├── ProfilePage/
+                │   │   ├── Profile.css
+                │   │   └── Profile.jsx
+                │   ├── loader/
+                │   │   ├── loader.css
+                │   │   └── loader.jsx
+                │   └── panel/
+                │       ├── MainPanel.jsx
+                │       ├── Panel.css
+                │       └── modals/
+                │           ├── ChNameModal.jsx
+                │           ├── ChangePasswordModal.jsx
+                │           ├── chname.css
+                │           └── style.css
+                ├── RegisterPage/
+                │   ├── Register.css
+                │   └── Register.jsx
+                ├── SearchPage/
+                │   ├── Search.jsx
+                │   └── style.css
+                └── ViewPostPage/
+                    ├── PostPage.css
+                    └── PostPage.jsx
+
+================================================
+File: README.md
+================================================
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+
+================================================
+File: LICENSE
+================================================
+MIT License
+
+Copyright (c) 2025 Altair
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+================================================
+File: config.js
+================================================
+export const BackendUrl = "http://127.0.0.1:8000"
+
+
+================================================
+File: eslint.config.js
+================================================
+import js from '@eslint/js'
+import globals from 'globals'
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+
+export default [
+  { ignores: ['dist'] },
+  {
+    files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    settings: { react: { version: '18.3' } },
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
+      ...reactHooks.configs.recommended.rules,
+      'react/jsx-no-target-blank': 'off',
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+]
+
+
+
+================================================
+File: index.html
+================================================
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MicroBlog</title>
+    <link rel="icon" href="/favicon.svg">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+  <noscript>Please enable js!</noscript>
+</html>
+
+
+
+================================================
+File: package.json
+================================================
+{
+  "name": "blog-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jwt-decode": "^4.0.0",
+    "prismjs": "^1.30.0",
+    "react": "^18.3.1",
+    "react-cookie": "^7.2.2",
+    "react-dom": "^18.3.1",
+    "react-image-crop": "^11.0.7",
+    "react-markdown": "^9.0.3",
+    "react-paginate": "^8.3.0",
+    "react-router-dom": "^7.1.3",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "vite": "^6.0.5"
+  }
+}
+
+
+
+================================================
+File: vite.config.js
+================================================
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+
+
+================================================
+File: public/KellySlab-Regular.ttf
+================================================
+[Non-text file]
+
+
+================================================
+File: public/Teko.ttf
+================================================
+[Non-text file]
+
+
+================================================
+File: public/fa-brands-400.ttf
+================================================
+[Non-text file]
+
+
+================================================
+File: public/fa-regular-400.ttf
+================================================
+[Non-text file]
+
+
+================================================
+File: public/fa-solid-900.ttf
+================================================
+[Non-text file]
+
+
+================================================
+File: src/App.css
+================================================
+@font-face {
+    font-family: FA;
+    src: url("/fa-solid-900.ttf");
+}
+
+@font-face {
+    font-family: Russo;
+    src: url('/KellySlab-Regular.ttf');
+}
+
+@font-face {
+    font-family: Teko;
+    src: url("/Teko.ttf");
+  }
+
+
+
+
+================================================
+File: src/App.jsx
+================================================
+import { useState, useEffect } from 'react'
+import './App.css'
+import Header from './components/Header'
+import HomePage from './components/pages/HomePage/HomePage';
+import Register from './components/pages/RegisterPage/Register';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Login from './components/pages/LoginPage/Login';
+import CreatePost from './components/pages/CreatePage/Create';
+import PostPage from './components/pages/ViewPostPage/PostPage';
+import Profile from './components/pages/Profile/ProfilePage/Profile';
+import Lasts from './components/pages/LastsPostsPage/Lasts';
+import SearchPage from './components/pages/SearchPage/Search';
+
+
+
+function App() { 
+  const [activeTab, setActiveTab] = useState("home");
+  const location = useLocation(); // Получаем текущий путь
+
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      console.log()
+      setActiveTab("home");
+    } else if (location.pathname === '/register') {
+      setActiveTab("register");
+    } else if (location.pathname === '/login') {
+      setActiveTab("login");
+    } else if (location.pathname === '/create') {
+      setActiveTab("create");
+    } else if (location.pathname.slice(0, 5) === '/post'){  
+      setActiveTab('')
+    } else if (location.pathname === '/profile'){
+      setActiveTab('profile')
+    } else if (location.pathname === '/lasts'){
+      setActiveTab('lasts')
+    } else if (location.pathname === "/search") {
+      setActiveTab('search')
+    }
+
+  }, [location]);
+
+  return (
+    <>
+      <Header invis={activeTab === '' ? true : false} active={activeTab}></Header>
+      <Routes>
+        <Route path='/' element={<HomePage></HomePage>}/>
+        <Route path='/register' element={<Register></Register>}/>
+        <Route path='/login' element={<Login></Login>}/>
+        <Route path='/create' element={<CreatePost />}/>
+        <Route path='/post/:postId' element={<PostPage />}></Route>
+        <Route path='/profile' element={<Profile />}/>
+        <Route path='/edit/:postID' element={<CreatePost />}/>
+        <Route path='/lasts' element={<Lasts />}/>
+        <Route path='/search' element={<SearchPage />}/>
+      </Routes>
+    </>
+  )
+}
+
+export default App
+
+
+
+================================================
+File: src/index.css
+================================================
+body {
+    background-color: #343434;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    scrollbar-color: #7F3D39 #424242;
+    scrollbar-width: thin;
+    overflow-x: hidden;
+}
+
+html {
+    scrollbar-color: #7F3D39 #1d2021;
+    scrollbar-width: auto;
+    overflow-x: hidden;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+================================================
+File: src/main.jsx
+================================================
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { BrowserRouter } from 'react-router-dom'
+
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App></App>
+  </BrowserRouter>
+)
+
+
+
+================================================
+File: src/LoaderSpin/LoaderSpin.css
+================================================
+.lds-ring {
+  color: #dbddcf;
+}
+
+
+.lds-ring,
+.lds-ring div {
+  box-sizing: border-box;
+}
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid currentColor;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: currentColor transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+================================================
+File: src/LoaderSpin/LoaderSpin.jsx
+================================================
+import './LoaderSpin.css';
+
+export default function LoaderSpin() {
+    return (
+        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+    )
+}
+
+
+================================================
+File: src/components/Header.css
+================================================
+/* HEADER */
+
+#header *{ 
+    font-family: Russo;
+    font-size: 22px;
+}
+
+#header-cont {
+    z-index: 1500;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#header {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    transition: ease 0.3s;
+    background-image: url(../svgs/header.svg);
+    background-size: cover;
+    color: #dbddcf;
+    display: flex;
+    /* background-color: #1d2021; */
+    background-color: #202020;
+    max-width: 1500px;
+    padding: 20px;
+    text-align: center;
+    justify-content: space-between;
+    border-radius: 35px;
+    box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.048);
+}
+  
+#header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+#header li {
+    display: inline-block; 
+    margin-right: 20px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: ease 0.3s;
+    font-size: 5px;
+}
+
+#header li:hover {
+    transform: scale(1.1);
+}
+  
+#header a {
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убрать подчеркивание */
+    transition: color 0.2s ease; /* анимация перехода */
+}
+  
+#header a:hover {
+    color: #ccc; /* цвет текста при наведении */
+}
+
+.header-reg {
+    align-content: flex-end;
+}
+
+.active {
+    transition: color 0.2s ease;
+    background-color: #7f3d39;
+    padding: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 15px;
+}
+
+#createPostBTN {
+    font-family: FA;
+    font-size: 20px;
+}
+
+#search-btn * {
+    font-family: FA;
+    font-size: 20px;
+}
+
+@media (min-width: 0px) and (max-width: 550px) {
+
+}
+
+
+================================================
+File: src/components/Header.jsx
+================================================
+import './Header.css'
+import { useCookies } from 'react-cookie'
+import { Link } from 'react-router-dom'
+
+function Header(props) {
+    const [cookies, setCookie] = useCookies(['token'])
+    try {
+        props.invis ? document.getElementById('header').style.display = 'none' : document.getElementById('header').style.display = 'flex'
+    } catch(e) {
+        console.error(e.message)
+    }
+    return (
+        <div id='header-cont'>
+        <div id="header">
+            <nav>
+                <ul id='header-pgs'>
+                    <li><a className={props.active === "home" ? "active" : ""}><Link to='/'>Home</Link></a></li>
+                    <li><a className={props.active === "lasts" ? "active" : ""}><Link to='/lasts'>Lasts</Link></a></li>
+                    <li><a id='search-btn' className={props.active === "search" ? "active": ""}><Link to='/search'></Link></a></li>
+                </ul>
+            </nav>
+            <nav>
+                {cookies.token ? 
+                <ul>
+                    <li><Link to='/create' className={props.active === "create" ? "active" : ""} id="createPostBTN">+</Link></li>
+                    <li><Link to='/profile' className={props.active === "profile" ? "active" : ""} >Profile</Link></li>
+                </ul> 
+            :               
+                <ul>
+                    <li><a className={props.active === "register" ? "active" : ""}><Link to="/register">Registration</Link></a></li>
+                    <li><Link className={props.active === "login" ? "active" : ""} to="/login">Login</Link></li>
+                </ul>}
+            </nav>
+        </div>
+        </div>
+    )
+}
+
+export default Header
+
+
+================================================
+File: src/components/Error/Error.css
+================================================
+@font-face {
+    font-family: Russo;
+    src: url('/KellySlab-Regular.ttf');
+}
+
+#error {
+    font-family: Russo;
+    background-color: #7f3d39;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    margin: 10px;
+    position: absolute;
+    color: #DBDDCF;
+    bottom: 0;
+    right: 0;
+    transition: ease 0.5s;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+#error-title {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+#error-text {
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+
+================================================
+File: src/components/Error/Error.jsx
+================================================
+import './Error.css'
+
+function ErrorText(props) {
+    return  (
+        <div id="error">
+            <h2 id="error-title">{props.title}</h2>
+            <p id="error-text">{props.text}</p>
+        </div>
+    )
+}
+
+export default ErrorText 
+
+
+================================================
+File: src/components/Loading/Loading.css
+================================================
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #DBDDCF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+.loader-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+
+================================================
+File: src/components/Loading/Loading.jsx
+================================================
+import './Loading.css'
+
+export default function Loading() {
+    return (
+        <div className='loader-div'>
+            <span className="loader"></span>
+        </div>
+    )
+}
+
+
+================================================
+File: src/components/NotFound/NFound.jsx
+================================================
+import './style.css'
+import Paper from '../Paper/Paper'
+
+
+export default function NFound() {
+
+    return (
+        <div className='cent-div'>
+        <div className='err-cont'>
+            <h1>Oops...!</h1>
+            <p>404: Not found!</p>
+        </div>
+        </div>
+    )
+}
+
+
+================================================
+File: src/components/NotFound/style.css
+================================================
+.err-cont {
+    background-color: #7F3D39;
+    color: #DBDDCF;
+    padding: 30px;
+    border-radius: 12px;
+    position: absolute;
+    box-shadow: 4px 2px 3px 5px rgba(0, 0, 0, 0.048);
+}
+
+.err-cont h1 {
+    text-align: center;
+    font-size: auto;
+}
+
+.err-cont p {
+    font-size: 30px;
+    margin-top: auto;
+    text-align: center;
+}
+
+.cent-div {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+================================================
+File: src/components/Paper/Paper.css
+================================================
+.paper {
+    background-color: #505050;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.marg {
+    margin-top: 8%;
+}
+
+
+================================================
+File: src/components/Paper/Paper.jsx
+================================================
+import './Paper.css';
+
+export default function Paper({ children, marg }) {
+  const className = marg ? 'paper marg' : 'paper';
+  return <div className={className}>{children}</div>;
+}
+
+
+================================================
+File: src/components/Post/post.jsx
+================================================
+import './style.css'
+import MarkdownViewer from '../mdViewer/view'
+import { Link } from 'react-router-dom'
+
+export default function MainPost(props) {
+    const dateStr = props.date
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+    const dateObj = new Date(dateStr)
+    
+    const date = formatter.format(dateObj)
+    return (
+        <div className='post-cont'>
+            <div className='post-top'> 
+                <div className='top-cont-post'>
+                    <div className='post-nickname'>
+                        <p>{props.nickname}</p>
+                    </div>
+                    <div className='post-date'>
+                        <p>{date}</p>
+                    </div>
+                </div>
+
+                <div className='cont-post-title'>
+                    <h2>{props.title}</h2>
+                </div>
+            </div>
+            <div className='cont-post-text'>
+                <MarkdownViewer value={props.text}></MarkdownViewer>
+            </div>
+
+            <div className='post-cont-bottom'>
+                <Link to={`/post/${props.id}`}>
+                    <button className='post-btn'>View!</button>
+                </Link>
+            </div>
+        </div>
+    )
+}
+
+
+================================================
+File: src/components/Post/style.css
+================================================
+.post-cont {
+    background-color: #313131;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.top-cont-post {
+    display: flex;
+    gap: 25px;
+    background-color: #7f3d39;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+.top-cont-post p {
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #dbddcf;
+    font-weight: 600;
+}
+
+.post-top {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    display: flex;
+    gap: 3%;
+    background-color: #753835;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.cont-post-title {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.cont-post-title * {
+    color: #dbddcf;
+    margin: auto;
+    padding: 0;
+    font-size: 28px;
+}
+
+.post-btn {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.085);
+    margin-top: 10px;
+    background-color: #798361;
+    color: #dbddcf;
+    font-size: 30px;
+    border: none;
+    border-bottom: #61694e 3px solid;
+    border-radius: 5px;
+    padding: 5px;
+    transition: ease 0.2s;
+}
+
+.post-btn:hover {
+    background-color: #6e7758;
+}
+
+.post-list {
+    padding: 0;
+    margin: 0;
+}
+
+.post-list .post-cont {
+    margin-top: 20px;
+}
+
+.post-btn:active {
+    background-color: #5a6147;
+}
+
+
+================================================
+File: src/components/mdEditor/Mark.css
+================================================
+.editor-textarea {
+    box-sizing: border-box;
+    resize: none;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 50vh;
+    overflow-y: auto;
+    max-height: 50vh;
+    font-family: Russo, Teko;
+    font-size: 20px;
+    border: none;
+    background-color: #DBDDCF;
+    padding: 8px;
+    border-radius: 5px;
+    scrollbar-color: #69322f #b7b8b2;
+    scrollbar-width: thin;
+    clip-path: inset(0 round 10px); /* Закругляем углы */
+}
+
+.editor-toolbar button {
+    margin: 0;
+    border-radius: 5px;
+    height: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-family: FA;
+    color: #DBDDCF;
+    border: none;
+    background-color: #7f3d39;
+    font-size: 18px;
+    padding: 7px;
+}
+
+.editor-toolbar button:hover {
+    background-color: #69322f;
+}
+
+.editor-toolbar button:active {
+    background-color: #532825;
+}
+
+.editor-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.editor-toolbar-btns {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 90%;
+    background-color: #1d2021;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 12px;
+}
+
+
+================================================
+File: src/components/mdEditor/Mark.jsx
+================================================
+import "./Mark.css";
+import { useRef } from "react";
+
+export default function MarkdownEditor(props) {
+  const textareaRef = useRef(null);
+
+  // Функция оборачивания выделенного текста
+  const applyFormatting = (format) => {
+    if (!textareaRef.current) return;
+
+    // Получаем позиции выделения
+    const { selectionStart, selectionEnd } = textareaRef.current;
+    const before = props.value.substring(0, selectionStart);
+    const selectedText = props.value.substring(selectionStart, selectionEnd);
+    const after = props.value.substring(selectionEnd);
+
+    let wrappedText = "";
+
+    // Определяем, какую разметку применить, и оборачиваем выделенный текст.
+    // Если ничего не выделено, можно вставить текст-заглушку.
+    switch (format) {
+      case "bold":
+        wrappedText = `**${selectedText || "bold"}**`;
+        break;
+      case "italic":
+        wrappedText = `*${selectedText || "italic"}*`;
+        break;
+      case "header":
+        wrappedText = `# ${selectedText || "Header"}`;
+        break;
+      case "link":
+        wrappedText = `[${selectedText || "click"}](https://example.com)`;
+        break;
+      case "quote":
+        wrappedText = `> ${selectedText || "Quotes"}`;
+        break;
+      case "code":
+        wrappedText = `\`${selectedText || "code"}\``;
+        break;
+      case "image":
+        wrappedText = `![${selectedText || "Name"}](https://example.com)`;
+        break;
+      case "line":
+        wrappedText = `\n***`;
+        break;
+      case "table":
+        wrappedText =
+          `\n| Header | Header | Header |\n` +
+          `| ------ | ------ | ------ |\n` +
+          `| Data | Data | Data |`;
+        break;
+      default:
+        wrappedText = selectedText;
+    }
+
+    // Собираем новый текст
+    const newValue = before + wrappedText + after;
+    props.setValue(newValue);
+  };
+
+  return (
+    <div className="markdown-editor">
+      {/* Панель инструментов */}
+      <div className="editor-toolbar">
+        <div className="editor-toolbar-btns">
+          <button onClick={() => applyFormatting("bold")}></button>
+          <button onClick={() => applyFormatting("italic")}></button>
+          <button onClick={() => applyFormatting("header")}></button>
+          <button onClick={() => applyFormatting("link")}></button>
+          <button onClick={() => applyFormatting("quote")}></button>
+          <button onClick={() => applyFormatting("code")}></button>
+          <button onClick={() => applyFormatting("image")}></button>
+          <button onClick={() => applyFormatting("line")}></button>
+          <button onClick={() => applyFormatting("table")}></button>
+        </div>
+      </div>
+
+      {/* Поле ввода Markdown */}
+      <textarea
+        ref={textareaRef}
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        className="editor-textarea"
+        value={props.value}
+        onChange={(e) => props.setValue(e.target.value)}
+        placeholder="Please enter markdown text here..."
+      ></textarea>
+    </div>
+  );
+}
+
+
+================================================
+File: src/components/mdViewer/view.css
+================================================
+.md-preview {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 250;
+    font-family: Russo, Teko;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto; /* Вертикальная полоса прокрутки */
+    scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
+    scrollbar-color: #69322f #1d2021; /* Firefox: цвет трека и ползунка */
+    clip-path: inset(0 round 10px); /* Закругляем углы */
+    background-color: #DBDDCF;
+    color: #343434;
+}
+.md-preview * {
+    box-sizing: border-box;
+    max-width: 100%;
+    word-break: normal;
+}
+
+.md-preview p:has(code) {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px;
+    background-color: #a3a18f;
+    border-radius: 5px;
+}
+
+.md-preview blockquote {
+    border-left: #343434 5px solid;
+    margin-left: 0px;
+    padding-left: 40px;
+}
+
+.md-preview table {
+    border-collapse: collapse;
+    width: 100%; /* Ширина таблицы */
+}
+  
+.md-preview th, td {
+    border: 1px solid black;
+    text-align: left; /* Выравнивание текста */
+    padding: 8px;
+}
+  
+.md-preview th {
+    background-color: #918f81; /* Заливка заголовка */
+}
+
+.md-preview hr {
+    border: none;
+    border-top: 3px solid #424242;
+}
+
+.md-preview img {
+    /* border-radius: 10px; */
+    max-height: 90vh;
+    border: #282828 3px solid;
+}
+
+
+.md-preview h1 {
+    padding-bottom: 8px;
+}
+
+
+================================================
+File: src/components/mdViewer/view.jsx
+================================================
+import Markdown from 'react-markdown'
+import './view.css'
+import Prism from 'prismjs';
+import remarkGfm from 'remark-gfm';
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-python';
+
+export default function MarkdownViewer(props) {
+  return (
+    <div className='md-preview'>
+        <Markdown
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '');
+              
+              return !inline && match ? (
+                <div className="code-block">
+                  <pre className={className}>
+                    <code className={className}>
+                      {String(children).replace(/\n$/, '')}
+                    </code>
+                  </pre>
+                </div>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        remarkPlugins={[remarkGfm]}>{props.value}</Markdown>
+    </div>
+  );
+}
+
+
+================================================
+File: src/components/modal/modal.jsx
+================================================
+import './style.css'
+
+
+// Universal modal component
+
+export default function Modal(props) {
+    return (
+        <>
+            <button className='btn-close-modal' onClick={() => {props.closeModal()}}></button>
+            <div className='Modal'>
+                <div className='modal-container'>
+                    {props.children}
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/modal/style.css
+================================================
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 12000;
+    display: flex;
+}
+
+.modal-container {
+    border-radius: 5px;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    padding: 20px;
+    background-color: #424242;
+}
+
+.btn-close-modal {
+    position: fixed;
+    box-sizing: border-box;
+    left: 13px;
+    top: 13px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-family: FA;
+    color: #DBDDCF;
+    border: none;
+    background-color: #753835;
+    border-radius: 5px;
+    z-index: 16000;
+}
+
+.btn-close-modal:hover {
+    background-color: #5c2c29;
+}
+
+.btn-close-modal:active {
+    background-color: #492320;
+}
+
+
+================================================
+File: src/components/pages/CreatePage/Create.css
+================================================
+.md-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    height: 100%;
+}
+
+.group-1 {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.title-input {
+    box-shadow: 9px 6px 11px 2px rgba(0,0,0,0.31);
+    color: #dbddcf;
+    font-size: 20px;
+    background-color: #7f3d39;
+    margin-left: 25px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.md-editor {
+    box-shadow: 9px 6px 21px 2px rgba(0,0,0,0.31);
+    width: 40%;
+    padding: 25px;
+    background-color: #424242;
+    border-radius: 10px;
+    max-height: 70vh;
+}
+
+.preview {
+    box-shadow: 9px 6px 21px 2px rgba(0,0,0,0.31);
+    background-color: #DBDDCF;
+    overflow-y: auto; /* Вертикальная полоса прокрутки */
+    scrollbar-width: thin; /* Firefox: ширина полосы прокрутки */
+    scrollbar-color: #7f3d39 #b7b8b2; /* Firefox: цвет трека и ползунка */
+    border-radius: 10px;
+    max-height: 70vh; /* Ограничение высоты */
+    margin-left: 25px;
+    clip-path: inset(0 round 10px); /* Закругляем углы */
+}
+
+.check-btn {
+    font-family: FA;
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    border: none;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: #dbddcf;
+    background-color: #7d8360;
+}
+
+.check-btn:hover {
+    transition: ease 0.2s;
+    background-color: #63684a;
+    bottom: 22px;
+}
+
+.check-btn:active {
+    background-color: #54583f;
+}
+
+.edit-btn {
+    font-family: FA;
+    position: absolute;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    border: none;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    color: #dbddcf;
+    background-color: #7d8360;
+}
+
+.edit-btn:hover {
+    transition: ease 0.2s;
+    background-color: #63684a;
+    bottom: 22px;
+}
+
+.edit-btn:active {
+    background-color: #54583f;
+}
+
+
+================================================
+File: src/components/pages/CreatePage/Create.jsx
+================================================
+import './Create.css'
+import {BackendUrl} from '../../../../config'
+import { useState } from 'react'
+import MarkdownEditor from '../../mdEditor/Mark'
+import MarkdownViewer from '../../mdViewer/view'
+import { useCookies } from 'react-cookie';
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
+
+export default function CreatePost() {
+    const [mdValue, setMdValue] = useState('# Hello, world!');
+    const [NewOrNot, setNew] = useState(true)
+    const [cookies, setCookie] = useCookies(['token']);
+    const params = useParams();
+    const [title, setTitle] = useState("")
+    const navigate = useNavigate()
+
+    console.log(BackendUrl)
+
+    if (!cookies.token) {
+        window.location.href = '/';
+    }
+
+    useEffect(() => {
+        const GetPostIfEdit = async () =>
+        {
+            try
+            {
+                if(!params.postID) {
+                    throw new Error("Post id not found!")
+                }
+                const resp = await fetch(`${BackendUrl}/posts/get_post?post_id=${params.postID}`)
+                if (!resp.ok){
+                    throw new Error(resp.statusText);
+                }
+                const data = await resp.json()
+                setMdValue(data.text)
+                setTitle(data.title)
+                setNew(false)
+
+            } catch(error) 
+            {
+                console.error(error.message)
+            }
+        }
+        GetPostIfEdit()
+    }, [])
+
+
+    async function handleChangePost() {
+        document.querySelector('.edit-btn').disabled = true;
+        const title = document.getElementById('title-input').value;
+        const content = document.querySelector('.md-editor textarea').value;
+        if(!cookies.token) {
+            window.location.href = '/login';
+        }
+        if (title.trim() === '' || content.trim() === '') {
+            alert('Title and content should not be empty!');
+            return;
+        }
+        try {
+            const resp = await fetch(`${BackendUrl}/posts/change_post`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${cookies.token}`
+                },
+                body: JSON.stringify({
+                    post_id: params.postID,
+                    text: mdValue.trim(),
+                    title: title.trim(),
+                })
+            })
+            if (!resp.ok){
+                throw new Error(resp.statusText)
+            }
+            navigate("/profile")
+        } catch(error) {
+            console.error(error.message)
+        }
+    }
+
+    async function handleSendPost() {
+        document.querySelector('.check-btn').disabled = true;
+        const title = document.getElementById('title-input').value;
+        const content = document.querySelector('.md-editor textarea').value;
+        if(!cookies.token) {
+            window.location.href = '/login';
+        }
+    
+        if (title.trim() === '' || content.trim() === '') {
+            alert('Title and content should not be empty!');
+            return;
+        }
+    
+        try {
+            const resp = await fetch(`${BackendUrl}/posts/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${cookies.token}`
+                },
+                body: JSON.stringify({
+                    title: title.trim(),
+                    text: content.trim(),
+                })
+            })
+
+            if(!resp.ok) {
+                throw new Error(resp.statusText);
+            } else {
+                window.location.href = '/';
+            }
+        }
+        catch (error) {
+            alert(error.message);
+        }
+    }
+
+
+    return (
+        <>
+            <div className='md-div'>
+                <div className='md-editor'>
+                        <MarkdownEditor setValue={setMdValue} value={mdValue} ></MarkdownEditor>
+                </div>
+                <div className='group-1'>
+                    <input className='title-input' value={title} onChange={(msg) => {
+                        setTitle(msg.target.value)
+                    }} maxLength={50} placeholder='Title...' autoCorrect="off" autoComplete='off' id='title-input'></input>
+                    <div className='preview'>
+                        <MarkdownViewer value={mdValue}></MarkdownViewer>
+                    </div>
+                </div>
+            </div>
+            {NewOrNot ? <button onClick={handleSendPost} className='check-btn'>+</button> : 
+            <button className='edit-btn' onClick={handleChangePost}></button>
+            }
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/HomePage/HomePage.css
+================================================
+
+.posts {
+    padding: 0;
+    background-color: #505050;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+================================================
+File: src/components/pages/HomePage/HomePage.jsx
+================================================
+import './HomePage.css'
+import { useState, useEffect } from 'react';
+import ErrorText from '../../Error/Error'
+import Loading from '../../Loading/Loading'
+import Post from './Post';
+import Paper from '../../Paper/Paper';
+import {BackendUrl} from '../../../../config'
+
+
+function HomePage() {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        async function fetchPosts() {
+            try {
+                const response = await fetch(`${BackendUrl}/posts/get_last_posts`);
+                if(!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                const data = await response.json();
+                setPosts(data);
+            } catch (err){
+                setError({statusText: err.message});
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPosts()}, [])
+    
+    return (
+    <>
+        {error != null ? <ErrorText title="Error!" text={error.statusText}></ErrorText> : ""}
+        {loading ?
+            <Loading /> : 
+            error != null ? "" 
+        : 
+        <Paper marg={true}>
+            <ul className='posts'>
+                {posts.map((post) => (
+            <Post postID={post.id} key={post.id} title={post.title} body={post.text} author_name={post.author_name} likes={post.likes} dislikes={post.dislikes}/>
+                    )
+                )
+            }
+            </ul>
+        </Paper>}
+    </>
+    )
+}
+export default HomePage
+
+
+================================================
+File: src/components/pages/HomePage/Post.css
+================================================
+.PostHeader {
+    font-family: Russo, Teko;
+    font-size: 15px;
+
+    background-color: #7F3D39;
+    color: #DBDDCF;
+    border-bottom: 4px solid #753835;
+    border-radius: 6px;
+    margin: 0px;
+    padding: 4px;
+    text-align: center;
+}
+
+#PostBody {
+    z-index: 250;
+    font-family: Russo, Teko;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #DBDDCF;  
+    border-bottom: 4px solid #b8b9b0;
+    border-radius: 10px;  
+    word-break: break-all;
+    max-height: 250px;
+    overflow-y: hidden;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.PostHeader h1{
+    margin: 4px;
+    min-width: 50%;
+}
+
+.PostSpan{
+    font-family: Russo, Teko;
+    font-size: 20px;
+    display: flex;
+    margin: 0;
+    color: white;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.PostSpan p {
+    margin: 0;
+    font-size: 25px;
+    padding: 5px;
+    background-color: #798360;
+    border-bottom: #61694D 3px solid;
+    border-radius: 10px;
+    color: #DBDDCE;
+}
+
+.PostBottom {
+    font-family: Russo;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.PostBottom button {
+    font-family: Russo;
+    font-size: 24px;
+    background-color: #798360;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    height: 50px;
+    color: #DBDDCE;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    transition: ease 0.3s;
+    cursor: text;
+    border-bottom: 3px solid #61694D;
+}
+
+.PostBottom button:hover {
+    background-color: #6a7255;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.075);
+    scale: 1.05;
+}
+
+.PostBottom button:active {
+    scale: 1.0;
+    background-color: #7E7B68;
+}
+
+#PostElement {
+    border-radius: 10px;
+    background-color: #313131;
+    margin: 12px;
+    padding: 12px;
+}
+
+
+
+.ratings-span {
+    display: flex;
+    margin-left: 10px;
+}
+
+.rating {
+    font-family: FA;
+    color: #DBDDCE;
+    font-size: 20px;
+    align-self: center;
+}
+
+.rating p {
+    color: #DBDDCF;
+}
+
+.like-rating {
+    background-color: #798360;
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    padding: 8px;
+    border-bottom: 3px solid #61694D;
+}
+
+.dislike-rating {
+    background: #7F3D38;
+    padding: 5px;
+    border-radius: 8px;
+    margin-left: 5px;
+    display: flex;
+    padding: 8px;
+    border-bottom: 3px solid #753834;
+}
+
+.ratings-span p {
+    color: #DBDDCE;
+    background-color: #0000;
+    border: none;
+    font-size: 20px;
+    padding: 0;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+
+================================================
+File: src/components/pages/HomePage/Post.jsx
+================================================
+import './Post.css'
+import { Link } from 'react-router-dom'
+import MarkdownViewer from './../../mdViewer/view'
+
+
+export default function Post(props){
+
+    const FormatLikes = (likes) => {
+        const formatterLikes = new Intl.NumberFormat('en', { 
+            notation: 'compact', 
+            compactDisplay: 'short' 
+        });
+        if (!likes) {
+            return 0
+        }
+        return formatterLikes.format(likes)
+    }
+
+    return (
+        <li id='PostElement'>
+            <div>
+                <div className="PostHeader"><h1>{props.title}</h1></div>
+                {/* <p id="PostBody">{props.body.slice(0, 350) + "..."}</p> */}
+                <div id="PostBody"><MarkdownViewer value={props.body.slice(0, 350) + "..."}></MarkdownViewer></div>
+                <div className="PostBottom">
+                        <Link to={`/post/${props.postID}`}>
+                            <button className="btn-read-more">Read more</button>
+                        </Link>
+                    <span className="PostSpan">
+                        <p id="PostAuthorName">{props.author_name}</p>
+                        <span className='ratings-span'>
+                            <div className='like-rating'>
+                                <span className='rating'></span>
+                                <p>{FormatLikes(props.likes)}</p>
+                            </div>
+                            <div className='dislike-rating'>
+                                <span className='rating'></span>
+                                <p>{FormatLikes(props.dislikes)}</p>
+                            </div>                            
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </li>
+    )
+}
+
+
+================================================
+File: src/components/pages/LastsPostsPage/Lasts.jsx
+================================================
+import './style.css'
+import Paper from '../../Paper/Paper'
+import ReactPaginate from 'react-paginate'
+import { useEffect, useState } from 'react'
+import { BackendUrl } from '../../../../config'
+import MainPost from '../../Post/post'
+import Loading from '../../Loading/Loading'
+import NFound from '../../NotFound/NFound'
+
+
+
+export default function Lasts() {
+    const [maxPage, setMaxPage] = useState(1);
+    const [curPage, setCurPage] = useState(1);
+    const [pageData, setPageData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [stat404, set404] = useState(false);
+
+    useEffect( () => {
+        try {
+        const getCountPages = async () => {
+            const resp = await fetch(`${BackendUrl}/posts/count`)
+            if (!resp.ok) {
+                console.error(`Error: ${resp.statusText}`)
+            }
+            setMaxPage(parseInt(await resp.text()))
+        }
+        getCountPages()
+        } catch(error) {
+            console.error(error.message)
+        } finally {
+            setLoading(false)
+        }
+    },[])
+
+    useEffect(() => {
+        const getCurPage = async () => {
+            try {
+                const resp = await fetch(`${BackendUrl}/posts/get_last_posts_page?page=${curPage.toString()}`)
+                if (resp.status === 404) {
+                    set404(true)
+                    throw new Error("404: Not found!")
+                }
+                if (!resp.ok) {
+                    throw new Error(resp.statusText)
+                }
+                const resp_data = await resp.json()
+                setPageData(resp_data)
+            } catch(error) {
+                console.error(error.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+        getCurPage()
+    }, [curPage])
+
+    const handlePageClick = (event) => {
+        const selectedPage = event.selected + 1;
+        setCurPage(selectedPage);
+        setLoading(true)
+    }
+
+    return (
+        <>
+
+        {stat404 ? <NFound /> :
+            <Paper marg={true}>
+                
+                <>
+                <div className='paginate-container'>
+                    <ReactPaginate 
+                        breakLabel=""
+                        nextLabel=""
+                        nextClassName='control-btn'
+                        previousClassName='control-btn'
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={3}
+                        pageCount={maxPage}
+                        previousLabel=""
+                        renderOnZeroPageCount={null}
+                        pageLinkClassName="page-elem"
+                        pageClassName="page-elem-parent"
+                    />
+                </div>
+                {loading ? <Loading />
+                :
+                <ul className='post-list'>
+                    {pageData.map((post) => (
+                        <MainPost key={post.id} date={post.created_at} title={post.title} nickname={post.author_name} id={post.id} text={post.text.slice(0, 150)}/>
+                    ))}
+                </ul>
+            }
+            </>
+            
+            </Paper>
+    }
+        </>
+    )
+}
+
+
+
+================================================
+File: src/components/pages/LastsPostsPage/style.css
+================================================
+.paginate-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.paginate-container ul li a {
+    color: #dbddcf;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.page-elem {
+    margin-top: auto;
+    font-size: 18px;
+    margin-bottom: auto;
+}
+
+.selected a {
+    border-bottom: #dbddcf 2px solid;
+}
+
+.page-elem-parent {
+    display: flex;
+    justify-content: center;
+}
+
+.control-btn {
+    font-family: FA;
+    font-size: 22px;
+    color: #dbddcf;
+    background-color: #7f3d39;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 5px;
+    border-bottom: 3px #69322f solid;
+    transition: ease 0.2s;
+}
+
+.control-btn * {
+    font-family: FA;
+}
+
+.control-btn:hover {
+    scale: 1.05;
+}
+
+.control-btn:active {
+    background-color: #68312e;
+}
+
+.paginate-container ul {
+    width: 60%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: #282828;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+
+.break {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 22px;
+}
+
+.break * {
+    font-family: FA;
+}
+
+
+================================================
+File: src/components/pages/LoginPage/Login.css
+================================================
+
+
+
+================================================
+File: src/components/pages/LoginPage/Login.jsx
+================================================
+import './Login.css'
+import { useCookies } from 'react-cookie';
+import { useState } from 'react';
+import Loading from '../../Loading/Loading';
+import ErrorText from '../../Error/Error';
+import {BackendUrl} from '../../../../config'
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
+
+export default function Register() {
+    const [cookies, setCookie] = useCookies(['token']); 
+    const [error_msg, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
+
+
+    if (cookies.token) {
+        navigate('/')
+    }
+    
+    const handleSubmit = async (event) => { 
+        setError('');
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value.trim();
+        const password = form.password.value.trim();
+        document.getElementById("form-btn").disabled = true;
+
+        const formData = new URLSearchParams();
+        formData.append("username", email);
+        formData.append("password", password);
+
+        try {
+            setLoading(true);
+            const response = await fetch(`${BackendUrl}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                }, 
+                body: formData.toString(),
+            })
+
+            if (!response.ok) {
+                const data = await response.json()
+                throw new Error(data.detail);
+            }
+
+            const data = await response.json();
+            if (data.access_token) {
+                const decoded = jwtDecode(data.access_token);
+                const expirationDate = new Date(decoded.exp * 1000);
+                console.log(expirationDate)
+                setCookie('token', data.access_token, { path: '/', expires: expirationDate});
+                navigate('/')
+            }
+        } catch (error) {
+            console.error(error.message);
+            setError(error.message);
+        } finally {
+            setLoading(false);
+            document.getElementById("form-btn").disabled = false;
+        }
+    }
+
+    return (
+        <>
+            {loading ? <Loading></Loading> : ''}
+            {error_msg ? <ErrorText title="Error!" text={error_msg}></ErrorText> : ''}
+            <div className='vert-form-div'>
+                <div className='form-div'>
+                    <form className='form-register' onSubmit={handleSubmit}>
+                        <input type="email" name='email' placeholder='Email'/>
+                        <input type="password" name='password' placeholder='Password'/>
+                        <input id='form-btn' type="submit"/>
+                    </form>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/Avatar/Avatar.css
+================================================
+.avatar-container {
+    height: 256px;
+    width: 256px;
+    background-color: #DBDDCF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+
+.avatar {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-radius: 10px;
+    height: 256px;
+    width: 256px;
+    max-width: 256px;
+    max-height: 256px;
+}
+
+.avatar-button {
+    position: absolute;
+    
+    margin-top: -40px;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    transform: translateY(0);
+    scale: 0.5;
+    transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.4s ease, scale 0.2s ease;
+;
+    /* Appearence */
+    width: 50px;
+    height: 50px;
+    background-color: #81413a;
+    color: #DBDDCF;
+    font-size: 22px;
+    font-family: FA;
+    border-radius: 10px;
+}
+
+.avatar-button:hover {
+    background-color: #6d322c;
+}
+
+.avatar-button:active {
+    background-color: #41211d;
+}
+
+.avatar-container:hover .avatar-button {
+    transform: translateY(100px); 
+    opacity: 1;
+    scale: 1.1;
+}
+
+@media (min-width: 0px) and (max-width: 550px) {
+    .avatar-container {
+        width: auto;
+        height: auto;
+    }
+}
+
+
+================================================
+File: src/components/pages/Profile/Avatar/Avatar.jsx
+================================================
+import './Avatar.css';
+import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
+import Loader from '../loader/loader';
+import {BackendUrl} from '../../../../../config'
+
+
+export default function Avatar() {
+    const [cookies] = useCookies(['token']);
+    const [loading, setLoading] = useState(true);
+    const [avatarUrl, setAvatarUrl] = useState(null); // Состояние для URL аватара
+
+
+    const getAvatar = () => {
+        async function handleAvatar() {
+            try {
+                if (!cookies.token) {
+                    window.location.href = '/login';
+                    return;
+                }
+
+                const resp = await fetch(`${BackendUrl}/users/get_avatar_by_token`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookies.token}`
+                    },
+                    method: 'GET',
+                });
+
+                if (!resp.ok) {
+                    throw new Error(resp.statusText);
+                }
+                const ava_data = await (await resp.text()).replaceAll('"', "")
+                setAvatarUrl(ava_data)
+
+                document.querySelector('.avatar-container').style.background = 'none';
+            } catch (error) {
+                console.error('Error fetching avatar:', error.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        handleAvatar();
+    }
+    
+    useEffect(getAvatar, [cookies.token]);
+
+    return (
+        <>
+            <div className="avatar-container">
+                {loading ? 
+                <Loader /> : (
+                    avatarUrl && <img src={`${avatarUrl}?v=${localStorage.getItem('avatar') ? localStorage.getItem("avatar") : "123"}`} alt="" className="avatar" />
+                )}
+                <button className="avatar-button" onClick={() => {
+                    document.getElementById("rootModal").className = ""
+                }}></button>
+        </div>
+        </>
+    );
+}
+
+
+================================================
+File: src/components/pages/Profile/Info/Info.css
+================================================
+.container-info {
+    padding: 5px;
+    /* background-color: #DBDDCF; */
+    width: 100%;
+    margin: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #DBDDCF;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.info-nickname {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-radius: 5px;
+    color: #DBDDCF;
+    font-size: 25px;
+    background-color: #6e6e13;
+    border-bottom: #4d4d0e 3px solid;
+    text-align: center;
+}   
+
+.info-nickname p {
+    margin: 0;
+    padding: 5px;   
+}
+
+.info-base {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #424242;
+    height: 70%;
+}
+
+.info-base p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#info-id {
+    margin-top: auto;
+}
+
+@media (min-width: 0px) and (max-width: 550px) {
+    .container-info {
+        width: auto;
+    }
+}
+
+
+================================================
+File: src/components/pages/Profile/Info/Info.jsx
+================================================
+import './Info.css'
+import { useCookies } from 'react-cookie'
+import ErrorText from '../../../Error/Error'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { BackendUrl } from '../../../../../config'
+
+export default function InfoTab() {
+    const [cookies, setCookies] = useCookies(['token'])
+    const [info_data, setInfoData] = useState({
+        nickname: "nickname",
+        email: "example@mail.com",
+        data: "Not supported!",
+        id: 0,
+    })
+    const [err_msg, set_err_msg] = useState(null)
+
+
+    useEffect(() => {
+        const get_data = async () => {
+            try {
+            const resp = await fetch(`${BackendUrl}/users/get_self`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookies.token}`
+                    },
+                    method: "GET",
+                }
+            )
+            if(!resp.ok){
+                throw new Error(resp.statusText)
+            }
+            const data = await resp.json()
+            setInfoData({
+                nickname: data.nickname,
+                email: `Email: ${data.email}`,
+                data: "Reg. Date: Not supported!",
+                id: `ID: ${data.id}`,
+            })
+        } catch(error) {
+            set_err_msg(error.message)
+        }   
+        }
+        get_data()
+    }, [])
+
+    return(
+        <>
+            {err_msg ? <ErrorText title="Error info loading!" text={err_msg}></ErrorText> : ""}
+            <div className='container-info'>
+                <div className='info-nickname'>
+                    <p id='info-nickname'>{info_data['nickname']}</p>
+                </div>
+
+                <div className='info-base'>
+                    <p id='info-email'>{info_data['email']}</p>
+                    <p id='info-data'>{info_data['data']}</p>
+                    <p id='info-id'>{info_data['id']}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalAvatar/Cropper.css
+================================================
+.ReactCrop {
+    box-sizing: content-box;
+    max-width: 70vw;
+    max-height: 70vh;
+
+}
+
+.avatar-uploader {
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+.cropperCont * {
+    box-sizing: border-box;
+    max-height: 55vh;
+}
+
+.cropperCont {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #282828;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+#avatar-up {
+    display: none;
+}
+
+.custom-file-upload {
+    background-color: #b57614;
+    color: #fbf1c7;
+    padding: 5px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+
+.cr-image * {
+    box-sizing: border-box;
+}
+
+.custom-file-upload:hover {
+    background-color: #a06911;
+}
+
+.sbm-btn {
+    margin: 0;
+    border: none;
+    align-self: center;
+    padding: 9px;
+    font-size: 22px;
+    background-color: #8a8a17;
+    color: #fbf1c7;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-right: auto;
+    border-bottom: #79740e 4px solid;
+    transition: ease 0.3s;
+}
+
+.sbm-btn:active {
+    background-color: #6b660d;
+    border-bottom: #79740e;
+}
+
+.sbm-btn:disabled {
+    background-color: #75700f;
+    border-bottom: 4px solid #6b660d;
+}
+
+.sbm-btn:hover {
+    background-color: #75700f;
+    border-bottom: #6b660d 4px solid;
+
+}
+
+
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalAvatar/Cropper.jsx
+================================================
+import { useState, useRef } from 'react';
+import ReactCrop, { centerCrop, makeAspectCrop } from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+import { BackendUrl } from '../../../../../../config';
+import { useCookies } from 'react-cookie';
+import './Cropper.css'
+import { useNavigate } from 'react-router-dom';
+
+
+export default function AvatarUploader() {
+    const [cookies] = useCookies(["token"])
+    const [image, setImage] = useState(null);
+    const [crop, setCrop] = useState(null);
+    const imgRef = useRef(null);
+    const navigate = useNavigate();
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setImage(event.target.result);
+                setCrop(
+                    centerCrop(
+                        makeAspectCrop({ unit: "%", width: 50 }, 1, 256, 256),
+                        256,
+                        256
+                    )
+                );
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const uploadImage = async () => {
+        if (!imgRef.current || !crop) return;
+
+        const canvas = document.createElement('canvas');
+        const scaleX = imgRef.current.naturalWidth / imgRef.current.width;
+        const scaleY = imgRef.current.naturalHeight / imgRef.current.height;
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+
+        ctx.drawImage(
+            imgRef.current,
+            crop.x * scaleX,
+            crop.y * scaleY,
+            crop.width * scaleX,
+            crop.height * scaleY,
+            0,
+            0,
+            256,
+            256
+        );
+
+        canvas.toBlob(async (blob) => {
+            if (!blob) return;
+
+            const formData = new FormData();
+            formData.append("image", blob);
+
+            try {
+                document.querySelector(".sbm-btn").disabled = true;
+                const response = await fetch(`${BackendUrl}/users/avatar_upload`, {
+                    headers: {
+                        'Authorization': `Bearer ${cookies.token}`
+                    },
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) {
+                    throw new Error('Avatar loading error!');
+                }
+                localStorage.setItem("avatar", String(Math.random() * 1000))
+                navigate(0);
+            } catch (error) {
+                console.error(error);
+            }
+        }, 'image/png');
+    };
+
+    return (
+        <div className="avatar-uploader">
+            <label htmlFor="avatar-up" className="custom-file-upload">
+                Click to select file
+            </label>
+            <input type="file" accept="image/*" id='avatar-up' onChange={handleFileChange} />
+            {image && (
+                <>
+                    <div className='cropperCont'>
+                        <div className='cr-image'>
+                            <ReactCrop
+                                crop={crop}
+                                onChange={(newCrop) => setCrop(newCrop)}
+                                aspect={1}
+                                minWidth={256}
+                                minHeight={256}
+                            >
+                                <img ref={imgRef} src={image} alt="Preview" />
+                            </ReactCrop>
+                        </div>
+                    </div>
+                    <button className='sbm-btn' onClick={uploadImage}>Upload avatar</button>
+                </>
+            )}
+        </div>
+    );
+}
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalAvatar/ModalAvatar.css
+================================================
+#rootModal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.322);
+    z-index: 15000;
+}
+
+.unvis {
+    visibility: hidden;
+}
+
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    padding: 15px;
+    width: 60%;
+    height: 80%;
+    border: none;
+    border-radius: 12px;
+    background-color: #424242;
+    border-bottom: #303030 4px solid;
+    box-sizing: border-box;
+}
+
+.btn-close {
+    position: fixed;
+    box-sizing: border-box;
+    left: 13px;
+    top: 13px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    font-family: FA;
+    color: #DBDDCF;
+    border: none;
+    background-color: #69322f;
+    border-radius: 5px;
+}
+
+.btn-close:hover {
+    background-color: #5c2c29;
+}
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalAvatar/ModalAvatar.jsx
+================================================
+import './ModalAvatar.css'
+import Cropper from './Cropper'
+
+export default function ModalAvatarDialog() {
+
+
+    return (
+        <>
+            <div id='rootModal' className='unvis'>
+                <button className='btn-close' onClick={() => {
+                document.getElementById("rootModal").className = "unvis"
+                }}></button>
+                <div className='modalContainer'>
+                    <div className='cont'>
+                            <Cropper></Cropper>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalDeletePost/DeletePost.css
+================================================
+
+
+#deletePostModal {
+    position: fixed;
+    z-index: 15000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.280);
+    display: flex;
+    justify-content: center;
+}
+
+.modalDialogContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dialogDelete {
+    background-color: #424242;
+    border-radius: 8px;
+    box-shadow: 5px 6px 10px 2px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.textDialog {
+    font-size: 27px;
+    color: #DBDDCF;
+    background: #282828;
+    padding: 10px;
+    width: 20vw;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.dialogBTNs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.deleteBTN {
+    background-color: #7F3D39;
+    color: #DBDDCF;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    transition: ease 0.05s;
+}
+
+.denyBTN {
+    background-color: #798361;
+    color: #DBDDCF;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    transition: ease 0.05s;
+}
+
+.denyBTN:hover {
+    background-color: #6e7a4f;
+}
+
+.deleteBTN:hover {
+    background-color: #69322f;
+}
+
+.deleteBTN:active {
+    background-color: #5e2d2b;
+}
+
+.denyBTN:active {
+    background-color: #5e6a3b;
+}
+
+
+================================================
+File: src/components/pages/Profile/Modals/ModalDeletePost/DeletePost.jsx
+================================================
+import './DeletePost.css';
+import { useCookies } from 'react-cookie';
+import { BackendUrl } from '../../../../../../config';
+import { useNavigate } from 'react-router'
+
+export default function DeletePost(props) {
+    const [cookie] = useCookies(["token"])
+    const { toDelete, setModal } = props;
+    const navigate = useNavigate()
+
+    const deletePost = async () => {
+        setModal(null)
+        const res = await fetch(`${BackendUrl}/posts/delete`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${cookie.token}`
+            },
+            body: JSON.stringify({
+                id: toDelete
+            })
+        })
+        navigate(0)
+    }
+
+    return (
+        <>
+            <div id='deletePostModal'>
+                <div className='modalDialogContainer'>
+                    <div className='dialogDelete'>
+                        <div className='textDialog'>
+                            <p>Are you sure?</p>
+                        </div>
+                        <div className='dialogBTNs'>
+                            <button className='deleteBTN' onClick={() => {deletePost()}}>Yes, delete this!</button>
+                            <button className='denyBTN' onClick={() => {setModal(null)}}>No, save it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/MyPosts.css
+================================================
+.myPostsContainer {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.duo_post_viewier {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 5px;
+    /* flex-grow: 20; */
+}
+
+.PaginatorPosts {
+    display: flex;
+    height: 10%;
+    flex-direction: column-reverse;
+    /* flex-grow: 1; */
+}
+
+.loader-spin {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found {
+    color: #dbddcf;
+    background-color: #7f3d39;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 3px solid #5c2c29;
+}
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/MyPosts.jsx
+================================================
+import './MyPosts.css'
+import { useState, useEffect } from 'react'
+import PagesPost from './PaginatorPosts'
+import PostPreview from './PostPreview'
+import { useCookies } from 'react-cookie'
+import {jwtDecode} from 'jwt-decode'
+import { BackendUrl } from '../../../../../config'
+import LoaderSpin from '../../../../LoaderSpin/LoaderSpin'
+
+export default function MyPostsView(props) {
+  const [loading, setLoading] = useState(true)
+  const [NotFound, setNotFound] = useState(false)
+  const [MaxPage, setMaxPage] = useState(1)
+  const [Posts, setPosts] = useState([])
+  const [CurrentPage, setCurrentPage] = useState(1)
+  const [cookies] = useCookies(['token'])
+  const object_of_token = jwtDecode(cookies.token)
+
+  
+  const handlePageChange = (action) => {
+    if (action === "next"){
+        CurrentPage + 1 <= MaxPage ? setCurrentPage(CurrentPage + 1) : ""
+    }
+    if (action === "prev"){
+        CurrentPage - 1 >= 1 ? setCurrentPage(CurrentPage - 1) : ""
+    }
+  }
+
+  useEffect(() => {
+    const get_posts = async () => {
+      try {
+        const response = await fetch(
+          `${BackendUrl}/users/get_user_posts?user_id=${object_of_token.id}`
+        )
+        if (!response.ok) {
+            if (response.status === 404) {
+                setNotFound(true)
+            }
+            throw new Error(response.statusText)
+        }
+        const data = await response.json()
+        // Устанавливаем максимальное количество страниц (по 2 поста на страницу)
+        setMaxPage(Math.ceil(data.length / 2))
+        return data
+      } catch (error) {
+        console.error('Error fetching posts:', error.message)
+        return []
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    get_posts().then((data) => {
+      if (data && data.length > 0) {
+        // Разбиваем массив data на подмассивы по 2 элемента
+        const chunkedPosts = data.reduce((acc, _, i) => {
+          if (i % 2 === 0) {
+            acc.push(data.slice(i, i + 2))
+          }
+          return acc
+        }, [])
+        setPosts(chunkedPosts)
+      }
+    })
+  }, [])
+
+  const TimeForming = (time) => {
+    const dateObj = new Date(time);
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+    const formattedDate = formatter.format(dateObj);
+    return formattedDate
+  }
+
+
+  return (
+    <>
+    {loading ? <div className='loader-spin'><LoaderSpin /></div> :
+    NotFound ? <h1 className='not-found'>{"Not found! :("}</h1> : 
+      <div className='myPostsContainer'>
+        <div className='headerRazdel'>
+          <h1>My Posts</h1>
+        </div>
+        <div className='duo_post_viewier'>
+        {Posts[CurrentPage - 1] ? 
+            Posts[CurrentPage - 1].map((post) => (
+              <PostPreview
+                handleDelete={props.handleDelete}
+                key={post.id}
+                title={post.title}
+                text={post.text.slice(0, 60) + "..."}
+                postID={post.id}
+                postDate={TimeForming(post.created_at)}
+              />
+            ))
+         : ""}
+        </div>
+        <div className='PaginatorPosts'>
+          <PagesPost currentPage={CurrentPage} handlePage={handlePageChange}/>
+        </div>
+      </div>
+}
+    </>
+  )
+}
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/PaginatorPosts.css
+================================================
+.paginator-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #282828;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+.paginator-container button {
+    font-family: FA;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: #7F3D39;
+    border-radius: 5px;
+    border-bottom: 3px #69322f solid;
+}
+
+.paginator-container button:hover {
+    background-color: #69322f;
+    border-bottom: 3px #582a28 solid;
+}
+
+.paginator-container button:active {
+    background-color: #63302d;
+    border: none;   
+}
+
+.paginator-container * {
+    color: #DBDDCF;
+}
+
+
+.paginator-container p {
+    margin: 0px;
+    background-color: #7F3D39;
+    border-bottom: 3px #69322f solid;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 22px;
+    padding: 3px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+@media (min-width: 0px) and (max-width:1060px) {
+    .paginator-container {
+        margin-top: 50px;
+    }
+}
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/PaginatorPosts.jsx
+================================================
+import './PaginatorPosts.css'
+
+export default function PagesPost(props) {
+    
+    return (
+    <div className='paginator-container'>
+        <button className='back-btn' onClick={() => props.handlePage("prev")}></button>
+        <p className='pages-counter'>{props.currentPage}</p>
+        <button className='forward-btn' onClick={() => props.handlePage("next")}></button>
+    </div>  
+    )
+}
+
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/PostPreview.css
+================================================
+.postPreview {
+    background-color: #dbddcf;
+    padding: 5px;
+    flex-grow: 1;
+    flex-basis: 50%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.Previewtext {
+    box-sizing: border-box;
+    color: #282828;
+    font-size: 16px;
+    max-height: 65vh;
+}
+
+.Previewtext * {
+    box-sizing: border-box;
+    overflow-y: hidden;
+    max-height: 50vh;
+}
+
+.edit-Button {
+    background-color: #798361;
+    font-family: FA;
+    font-size: 20px;
+    width: 15%;
+    height: 47px;
+    margin-right: 5px;
+    border: none;
+    border-bottom: #61694e 3px solid;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.edit-Button:hover {
+    background-color: #6e7758;
+    border-bottom: #565e46 3px solid;
+}
+
+.edit-Button * {
+    font-family: FA;
+    text-decoration: none;
+    color: #DBDDCF;
+}
+
+.Previewtitle {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    width: 70%;
+    border-bottom: 4px #69322f solid;
+    background-color: #7F3D39;
+    margin: 0px;
+    color: #dbddcf;
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.Previewtitle * {
+    text-decoration: none;
+    color: #DBDDCF;
+}
+
+.Previewtitle p {
+
+    margin: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.PreviewDateAndID {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    color: #282828;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.PreviewDateAndID p {
+    margin: 0;
+}
+
+.sort-cont {
+    display: flex;
+    flex-direction: row;;
+}
+
+.headerRazdel {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    color: #dbddcf;
+    background-color: #7F3D39;
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 4px #69322f solid;
+}
+
+.headerRazdel h1 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-delete-post {
+    background-color: #7F3D39;
+    font-family: FA;
+    font-size: 20px;
+    width: 15%;
+    height: 47px;
+    border: none;
+    border-bottom: #69322f 3px solid;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.btn-delete-post:hover {
+    background-color: #69322f;
+    border-bottom: #5e2d2b 3px solid;
+}
+
+.btn-delete-post:active {
+    scale: 1.05;
+}
+
+
+================================================
+File: src/components/pages/Profile/MyPosts/PostPreview.jsx
+================================================
+import './PostPreview.css'
+import MarkdownViewer from '../../../mdViewer/view'
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
+export default function PostPreview(props) {
+    const navigate = useNavigate()
+
+    return (
+        <>
+            <div className='postPreview'>
+                <div className='sort-cont'>
+                    <button className='edit-Button' onClick={() =>{navigate(`/edit/${props.postID}`)}}></button>
+                    <button className='btn-delete-post' onClick={() => {
+                        props.handleDelete(props.postID)
+                    }}></button>
+                    <div className='Previewtitle'><p><Link to={`/post/${props.postID}`}>{props.title}</Link></p></div>
+                </div>
+                <div className='Previewtext'><MarkdownViewer value={props.text}></MarkdownViewer></div>
+                <div className='PreviewDateAndID'><p>ID: {props.postID}</p><p>{props.postDate}</p></div>
+            </div>
+        </>
+    )
+
+}
+
+
+================================================
+File: src/components/pages/Profile/ProfilePage/Profile.css
+================================================
+.profile-grid {
+    display: grid;
+    margin-top: 6%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    column-gap: 25px;
+    row-gap: 25px;
+    grid-template-columns: 48% auto;
+    grid-template-rows: auto auto;
+    width: 100%;
+
+}
+
+.container {
+    padding-top: 1.5vw;
+    display: flex;
+}
+
+.base-info {
+    display: flex;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    background-color: #424242;
+    max-height: 256px;
+    border-radius: 10px;
+    grid-column: 1;
+}
+
+
+
+.btns-and-change {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    padding: 10px;
+    background-color: #424242;
+    border-radius: 7px;
+    grid-column: 1;
+}
+
+.my-posts {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-radius: 7px;
+    padding: 0px;
+    background-color: #424242;
+    grid-column: 2;
+    grid-row: 1/2 span;
+}
+
+@media (min-width: 0px) and (max-width:1060px) {
+    .profile-grid {
+        margin-top: 15%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media (min-width: 0px) and (max-width: 550px) {
+    .base-info {
+        flex-direction: column;
+        max-height: none;
+    }
+    .profile-grid {
+        margin-top: 20%;
+    }
+}
+
+
+================================================
+File: src/components/pages/Profile/ProfilePage/Profile.jsx
+================================================
+import './Profile.css'
+import Avatar from '../Avatar/Avatar'
+import { useCookies } from 'react-cookie';
+import InfoTab from '../Info/Info';
+import ModalAvatarDialog from '../Modals/ModalAvatar/ModalAvatar';
+import MyPostsView from '../MyPosts/MyPosts';
+import DeletePost from '../Modals/ModalDeletePost/DeletePost';
+import { useState } from 'react';
+import Panel from '../panel/MainPanel';
+
+
+export default function Profile() {
+    const [cookies] = useCookies(['token']);
+    const [toDelete, setToDelete] = useState(null);
+    if(!cookies.token){
+        if (!cookies.token) {
+            window.location.href = '/login';
+        }
+    }
+
+    return (
+        <>
+        {toDelete ? <DeletePost setModal={setToDelete} toDelete={toDelete}></DeletePost> : ""}
+            <ModalAvatarDialog></ModalAvatarDialog>
+            <div className='container'>
+                <div className='profile-grid'>
+                    <div className='base-info'>
+                        <Avatar />
+                        <InfoTab />
+                    </div>
+                    <div className='btns-and-change'>
+                        <Panel />
+                    </div>
+                    <div className='my-posts'>
+                        <MyPostsView handleDelete={setToDelete}/>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/loader/loader.css
+================================================
+.loader-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 256px;
+  width: 256px;
+  
+}
+
+.vert-cont {
+  height: 256px;
+  width: 256px;
+}
+
+.lds-ripple,
+.lds-ripple div {
+  box-sizing: border-box;
+}
+.lds-ripple { 
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid currentColor;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 8px;
+    height: 8px;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 8px;
+    height: 8px;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 8px;
+    height: 8px;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+  }
+}
+
+
+
+
+================================================
+File: src/components/pages/Profile/loader/loader.jsx
+================================================
+import './loader.css'
+
+export default function Loader() {
+    return (
+        <div id='vert-cont'>
+            <div className='loader-container'>
+                <div className="lds-ripple"><div></div><div></div></div>
+            </div>
+        </div>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/panel/MainPanel.jsx
+================================================
+import './Panel.css'
+import { useState } from 'react'
+import ChPassModal from './modals/ChangePasswordModal';
+import { useCookies } from 'react-cookie';
+import ChNameModal from './modals/ChNameModal';
+
+export default function Panel()
+{
+    const [PassModal, setPassModal] = useState(false);
+    const [NameModal, setNameModal] = useState(false);
+    const [cookies, setCookie, removeCookie] = useCookies(['token']);
+
+
+    const handlePassModal = () => {setPassModal(!PassModal)};
+    const handleNameModal = () => {setNameModal(!NameModal)};
+
+
+    const ExitAcc = () => {
+        removeCookie('token', { path: '/' });
+    }
+    return (
+        <>
+            {PassModal ? <ChPassModal closeModal={handlePassModal}/> : ""}
+            {NameModal ? <ChNameModal closeModal={handleNameModal}/> : ""}
+            
+            <h1 className='header-action-panel'>Action's</h1>
+            <div className='btns'>
+                <div className='change-btns'>
+                    <button className='password-button' onClick={handlePassModal}></button>
+                    <button className='name-button' onClick={handleNameModal}></button>
+                    <button className='email-button'>@</button>
+                </div>
+                <div className='btn-c'>
+                    <div className='del-btns'>
+                        <button className='delete-btn'></button>
+                        <button className='exit-btn' onClick={ExitAcc}></button>
+                    </div>
+                    <button className='stat-btn'></button>
+                </div>  
+            </div>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/panel/Panel.css
+================================================
+.header-action-panel {
+    text-align: center;
+    background-color: #282828;
+    color: #dbddcf;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.btns button {
+    color: #dbddcf;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.btns * {
+    font-family: FA;
+}
+
+.btns button:hover {
+    scale: 1.03;
+    position: static;
+}
+
+.btns button:active {
+    scale: 0.99;
+}
+
+.btns button {
+    transition: ease 0.3s;
+}
+
+.change-btns {
+    margin-top: 4px;
+    width: 100%;
+    display: flex;
+}
+
+.password-button {
+    flex-grow: 40;
+    font-size: 60px;
+    background-color: #6e6e13;
+    border: none;
+    color: #dbddcf;
+    padding: 20px;
+    border-radius: 5px;
+    border-bottom: 4px solid #616111;
+}
+
+.email-button {
+    flex-grow: 30;
+    border: none;
+    color: #dbddcf;
+    border-radius: 5px;
+    font-size: 50px;
+    background-color: #427b58;
+    border-bottom: 4px solid #38684a;
+}
+
+.name-button {
+    background-color: #d79921;
+    font-size: 50px;
+    border-radius: 5px;
+    flex-grow: 30;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: none;
+    color: #dbddcf;
+    border-bottom: 4px solid #bb861c;
+}
+
+
+.del-btns {
+    flex-grow: 60;
+    display: flex;
+    flex-direction: column;
+}
+
+.del-btns * {
+    flex-grow: 50;
+}
+
+
+.btn-c {
+    width: 100%;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.stat-btn {
+    background-color: #076678;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 4px solid #065768;
+    font-size: 80px;
+    flex-grow: 40;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #793032;
+    border-bottom: 4px solid #5c2526;
+    font-size: 38px;
+}
+
+.exit-btn {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    font-size: 38px;
+    background-color: #7f3d39;
+    border-bottom: 4px solid #5c2c29;
+}
+
+
+================================================
+File: src/components/pages/Profile/panel/modals/ChNameModal.jsx
+================================================
+import './style.css'
+import Modal from '../../../../modal/modal'
+import { useState } from 'react'
+import { BackendUrl } from '../../../../../../config'
+import { useCookies } from 'react-cookie'
+
+
+export default function ChNameModal(props) {
+    const [Err, setErr] = useState(null)
+    const [Succes, setSucces] = useState(false)
+    const [cookie] = useCookies(["token"])
+
+
+    const handlesubmit = async () => {
+        document.querySelector(".pass-btn").disabled = true
+        try{
+            const name = document.getElementById("name-inp").value
+            if (!name) {
+                throw new Error("Please enter nickname!")
+            }
+
+            const resp = await fetch(`${BackendUrl}/users/change_name?new_name=${name}`, 
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookie.token}`
+                    }, 
+                }
+            )
+
+            if (!resp.ok) {
+                const data = await resp.json()
+                throw new Error(data.detail)
+            }
+
+            if(resp.ok) {
+                setSucces(true)
+            }
+
+        } catch(error) {
+            setErr(error.message)
+        }
+    }
+    return (
+        <>
+            <Modal closeModal={props.closeModal}>
+            { Err ? // Error
+                <>
+                    <h1 className='header1'>Error!</h1>
+                    <p className='p-text'>{Err}</p>
+                    <button onClick={props.closeModal} className='err-btn'>OK!</button>
+                </>
+                :
+            Succes ? // Succesfully
+            <>
+            <h1 className='header2'>Succesfully!</h1>
+            <p className='p-text'>Your nickname was changed!</p>
+            <button className='pass-btn' onClick={props.closeModal}>OK!</button>
+            </>
+            : // Default
+                <> 
+                    <h1 className='header1'>Change name</h1>
+                    <div className='pass-inp-div'>
+                        <input id='name-inp' type="text" className='pass-inp' placeholder='new name'/>
+                    </div>
+                    <br />
+                    <button className='pass-btn' onClick={handlesubmit}>Submit!</button>
+                </>
+            }
+            </Modal>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/panel/modals/ChangePasswordModal.jsx
+================================================
+import './style.css'
+import Modal from '../../../../modal/modal'
+import { useState } from 'react'
+import { BackendUrl } from '../../../../../../config'
+import { useCookies } from 'react-cookie'
+
+
+
+export default function ChPassModal(props) {
+    const [ProccesError, setErr] = useState(false)
+    const [cookie] = useCookies(["token"])
+    const [Succes, setSuc] = useState(false)
+
+
+    const handleSubmit = async () => {
+        try {
+            document.querySelector(".pass-btn").disabled = true
+            const old = document.getElementById("old-pass").value
+            const newPass = document.getElementById("new-pass").value
+            const RnewPass = document.getElementById("r-new-pass").value
+
+            if (!old){
+                setErr("Please enter old password!")
+            }
+
+            if (!newPass || !RnewPass) {
+                setErr("Please enter new password!")
+            } 
+
+            if (newPass != RnewPass) {
+                setErr("Passwords don't match")
+            }
+
+            const resp = await fetch(`${BackendUrl}/users/change_password`,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${cookie.token}`
+                    }, 
+                    body: JSON.stringify({
+                        old_password: old,
+                        new_password: newPass,
+                    })
+                }
+            )
+            if (!resp.ok) {
+                const data = await resp.json()
+                setErr(data.detail)
+            }
+
+            if (resp.ok) {
+                setSuc(true)
+            }
+    } catch(error) {
+        setErr(error.message)
+    }
+    }
+
+    return (
+        <>
+            <Modal closeModal={props.closeModal}>
+                { ProccesError ?
+                <>
+                    <h1 className='header1'>Error!</h1>
+                    <p className='p-text'>{ProccesError}</p>
+                    <button onClick={props.closeModal} className='err-btn'>OK!</button>
+                </>
+                :
+                Succes ? 
+                <>
+                <h1 className='header2'>Succesfully!</h1>
+                <p className='p-text'>Please check you email!</p>
+                <button className='pass-btn' onClick={props.closeModal}>OK!</button>
+                </>
+                :
+                <>
+                <h1 className='header1'>Change password</h1>
+                <div className='pass-inp-div'>
+                    <input id='old-pass' className='pass-inp' type="password" placeholder='old password' />
+                    <input id='new-pass' className='pass-inp inp-mar' type="text" placeholder='new password' />
+                    <input id='r-new-pass' className='pass-inp' type="text" placeholder='repeat new password' />
+                </div>
+                <br />
+                <button className='pass-btn' onClick={handleSubmit}>Submit!</button>
+                </>
+                }
+            </Modal>
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/Profile/panel/modals/chname.css
+================================================
+
+
+
+================================================
+File: src/components/pages/Profile/panel/modals/style.css
+================================================
+.pass-inp-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.pass-inp {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    background-color: #dbddcf;
+}
+
+.inp-mar {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.pass-btn {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    background-color: #798361;
+    font-size: 25px;
+    color: #dbddcf;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    transition: ease 0.05s
+}
+
+.pass-btn:hover {
+    background-color: #6e7758;
+}
+
+.pass-btn:active {
+    background-color: #61694e;
+}
+
+.pass-btn:disabled {
+    background-color: #575e46;
+}
+
+.header1 {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    color: #dbddcf;
+    background-color: #7f3d39;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 3px solid #69322f;
+}
+
+.header2 {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    border-bottom: #575e46 3px solid;
+    background-color: #798361;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #dbddcf;
+}
+
+.p-text {
+    color: #303030;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #dbddcf;
+}
+
+.err-btn {
+    background-color: #7f3d39;
+    border: none;
+    font-size: 25px;
+    color: #dbddcf;
+    padding: 8px;
+    border-radius: 5px;
+    transition: ease 0.05s;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.err-btn:hover {
+    background-color: #6e3532;
+}
+
+.err-btn:active {
+    background-color: #69322f;
+}
+
+
+================================================
+File: src/components/pages/RegisterPage/Register.css
+================================================
+
+* {
+    font-family: Russo, Teko;
+    outline: none;
+}
+
+/* Внешний контейнер */
+.vert-form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Внутренний блок формы */
+  .form-div {
+    background-image: url('/register_back.svg');
+    background-size: cover;
+    background-color: #505050;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+  }
+  
+  /* Стили формы */
+  .form-register {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input {
+    padding: 10px;
+    background-color: #ececea;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  
+  #form-btn {
+    margin-top: 35px;
+    background-color: #6e6639;
+    color: #dbddcf;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #form-btn:hover {
+    background-color: #4e4a21;
+  }
+
+
+================================================
+File: src/components/pages/RegisterPage/Register.jsx
+================================================
+import './Register.css'
+import ErrorText from '../../Error/Error';
+import { useCookies } from 'react-cookie';
+import { useState } from 'react';
+import Loading from '../../Loading/Loading';
+import { BackendUrl } from '../../../../config';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
+export default function Register() {
+    const [cookies, setCookie] = useCookies(['token']); // Работа с cookie
+    const [error_msg, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
+
+    const handleSubmit = async (event) => {
+        setError('');
+        event.preventDefault();
+        const form = event.target;
+        const nickname = form.nickname.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value.trim();
+        const re_password = form['re-password'].value.trim();
+
+
+        if ( password !== re_password ) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        const formData = new URLSearchParams();
+        formData.append("nickname", nickname)
+        formData.append("email", email)
+        formData.append("password", password)
+
+        try {
+            document.getElementById("form-btn").disabled = true;
+            setLoading(true);
+            const response = await fetch(`${BackendUrl}/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                body: formData.toString()
+            });
+
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            
+            const data = await response.json();
+            if(data.access_token) {
+                const decoded = jwtDecode(data.access_token);
+                const expirationDate = new Date(decoded.exp * 1000);
+                setCookie('token', data.access_token, { path: '/', expires: expirationDate });
+                navigate('/');
+            }
+        } catch (error) {
+            console.error(error.message);
+            setError(error.message);
+        } finally {
+            document.getElementById("form-btn").disabled = false;
+            setLoading(false);
+        }
+    }
+    
+    return (
+        <>
+            { cookies.token ? navigate('/') : '' }
+            { loading ? <Loading></Loading> : '' }
+            <div className='vert-form-div'>
+                <div className='form-div'>
+                    <form className='form-register' onSubmit={handleSubmit}>
+                        <input name='nickname' type="text" maxLength={40} placeholder='Nickname'/>
+                        <input type="email" name='email' placeholder='Email'/>
+                        <input type="password" name='password' placeholder='Password'/>
+                        <input type="password" name='re-password' placeholder='Repeat password' />
+                        <input id='form-btn' type="submit"/>
+                    </form>
+                </div>
+            </div>
+            {error_msg != '' ? <ErrorText title="Error!" text={error_msg}></ErrorText> : ''}
+        </>
+    )
+}
+
+
+================================================
+File: src/components/pages/SearchPage/Search.jsx
+================================================
+import './style.css'
+import Paper from '../../Paper/Paper'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { BackendUrl } from '../../../../config'
+import MainPost from '../../Post/post'
+import Loading from '../../Loading/Loading'
+
+
+export default function SearchPage() {
+    const [query, setQuery] = useState(null)
+    const [curPage, setCurPage] = useState(1);
+    const [pageData, setPageData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [stat404, set404] = useState(false);
+    const [err, setErr] = useState(false)
+    const [inputValue, setInputValue] = useState("")
+
+    const handle_query_btn = () => {
+        if (inputValue.trim() === "") return;
+        setErr(false)
+        set404(false)
+        setQuery(inputValue) // Устанавливаем значение из state
+    }
+
+    useEffect(() => {
+        const getSearchedPosts = async () => {
+            try {
+                setLoading(true)
+                setErr(false)
+                set404(false)
+    
+                const response = await fetch(`${BackendUrl}/search/find?query=${query}&page=${curPage}`)
+    
+                if (response.status === 404) {
+                    set404(true)
+                    throw new Error("404: error not found!")
+                } else if (!response.ok) {
+                    setErr(true)
+                    throw new Error(response.statusText)
+                }
+    
+                const responseJSON = await response.json()
+                if (!responseJSON.posts || responseJSON.posts.length === 0) {
+                    set404(true)
+                    throw new Error("404: No posts found!")
+                }
+    
+                setPageData(responseJSON.posts)
+            } catch (error) {
+                setPageData(null)
+                console.error(error.message)
+            } finally {
+                setLoading(false)
+            }
+        }
+    
+        if (query) {
+            getSearchedPosts()
+        }
+    }, [query, curPage])
+
+
+    const handle_page_inc = () => {
+        setErr(false)
+        set404(false)
+        setCurPage(curPage + 1)        
+    }
+
+    const handle_page_dec = () => {
+        setErr(false)
+        set404(false)
+        if (curPage === 1) {
+            return;
+        }
+        setCurPage(curPage - 1)
+    }
+
+
+    return (
+        <Paper marg={true}>
+            <div className='search-cont'>
+                <div className='search-panel'>
+                    <input onChange={(e) => setInputValue(e.target.value)} id='search-input' className='search-input' type="text" placeholder='Enter text to search...'/>
+                    <button className='search-btn' onClick={handle_query_btn}></button>
+                </div>
+            </div>
+            
+            {stat404 && <div className='center'><div className='error-msg'><h1 className='text-center'>Error</h1><p>Something was wrong!</p></div></div>}
+            {err && <div className='center'><div className='error-msg'><h1 className='text-center'>Error</h1><p>Something was wrong!</p></div></div>}
+
+            {!loading && query && !err?
+            <>
+            
+            <div>
+                {!stat404 && pageData && pageData.length > 0 && (
+                    <ul className='post-list'>
+                        {pageData.map((post) => (
+                            <MainPost 
+                                key={post.id} 
+                                date={post.created_at} 
+                                title={post.title} 
+                                nickname={post.author} 
+                                id={post.id} 
+                                text={post.text.slice(0, 150)}
+                            />
+                        ))}
+                    </ul>
+                )}
+                <div className='center'>
+                    <div className='paginate-container-search'>
+                            <button onClick={handle_page_dec} className='arr-btn'></button>
+                            <p className='page-counter'>{curPage}</p>
+                            <button onClick={handle_page_inc} className='arr-btn'></button>
+                    </div>
+                </div>
+            </div>
+            </>
+            :
+            null
+            }
+        </Paper>
+        
+    )
+}
+
+
+================================================
+File: src/components/pages/SearchPage/style.css
+================================================
+.search-btn {
+    font-family: FA;
+    background-color: #798360;
+    border: none;
+    border-bottom: #61694e 3px solid;
+    border-radius: 5px;
+    color: #DBDDCE;
+    font-size: 25px;
+    height: 45px;
+    width: 45px;
+    margin-left: 8px;
+}
+
+.search-btn:hover {
+    background-color: #6e7758;
+    border-bottom: #565e46 3px solid;   
+}
+
+.search-btn:active {
+    background-color: #62694e;
+    border-bottom: #545a43 3px solid;
+}
+
+.search-cont {
+    display: flex;
+    justify-content: center;
+    width: auto;
+}
+
+.search-panel {
+    background-color: #282828;
+    padding: 8px;
+    border-radius: 5px;
+    width: auto;
+}
+
+.search-input {
+    transition: ease-out 0.3s;
+}
+
+.search-input:focus {
+    scale: 1.05;
+    margin: 10px;
+}
+
+
+.paginate-container-search {
+    margin-top: 5px;
+    background-color: #282828;
+    width: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arr-btn {
+    font-family: FA;
+    font-size: 22px;
+    background-color: #7F3D38;
+    border: none;
+    color: #DBDDCE;
+    border-bottom: 3px solid #69322E;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+}
+
+.arr-btn:hover {
+    background-color: #723834;
+}
+
+.arr-btn:active {
+    background-color: #69322E;
+    border-bottom: 3px solid #582a27;
+}
+
+.page-counter {
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #DBDDCE;
+    font-size: 20px;
+}
+
+.error-msg {
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #7F3D38;
+    border-bottom: 3px solid #69322E;
+}
+.error-msg * {
+    color: #DBDDCE;
+}
+
+.error-msg p {
+    font-size: 20px;
+}
+
+
+================================================
+File: src/components/pages/ViewPostPage/PostPage.css
+================================================
+.scrn {
+    width: 100%;
+    height: 100%;
+}
+
+#root {
+    overflow-x: auto;
+}
+
+.PostBase {
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    background-color: #505050;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.PostContainer {
+    padding: 5px;
+}
+
+.PostTitle {
+    margin-bottom: 10px;
+    background-color: #7F3D39;
+    border-bottom: 3px #69322f solid;
+    box-shadow: 5px 6px 5px 2px rgba(0, 0, 0, 0.080);
+    color: #e4e6db;
+    text-align: center;
+    padding: 5px;
+    font-size: 25px;
+    min-height: 25px;
+    border-radius: 5px;
+}
+
+.text-title {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.PostText {
+    box-shadow: 5px 6px 10px 2px rgba(0,0,0,0.08);
+    background-color: #DBDDCF;
+    border-radius: 8px;
+}
+
+.btn-home {
+    position: fixed;
+    z-index: 1500;
+    top: 15px;
+    left: 15px;
+    color: #DBDDCF;
+    background-color: #7F3D39;
+    font-family: FA;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    transition: ease 0.05s;
+}
+
+.btn-home:hover {
+    background-color: #69322f;
+}
+
+.btn-home:active {
+    background-color: #5e2d2b;
+}
+
+.PostAuthor {
+    background-color: #7F3D39;
+    border-bottom: 3px #69322f solid;
+    color: #DBDDCF;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 6px 10px 2px rgba(0,0,0,0.08);
+    text-decoration: none;
+}
+
+.PostAuthor * {
+    color: inherit;
+    text-decoration: none;
+}
+
+.PostFooter {
+    box-shadow: 5px 6px 10px 2px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    background-color: #282828;
+    border-radius: 8px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.PostDate {
+    background-color: #7F3D39;
+    box-shadow: 5px 6px 10px 2px rgba(0,0,0,0.08);
+    border-bottom: 3px #69322f solid;
+    color: #DBDDCF;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.rating-span {
+    margin-left: 15px;
+    display: flex;
+    gap: 5px;
+}
+
+.rating-span div {
+    display: flex;
+}
+
+.rating-span button {
+    font-family: FA;
+    font-size: 20px;
+    color: #DBDDCE;
+    background: #0000;
+    border: none;
+    transition: ease 0.1s;
+}
+
+.rating-span button:active {
+    color: #b5b6ad;
+}
+
+.rating-span button:disabled {
+    color: #b5b6ad;
+}
+
+.cont-foot * {
+    box-sizing: border-box;
+}
+
+.cont-foot {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.PostLike {
+    background-color: #798360;
+    border-radius: 5px;
+    padding: 5px;
+    border-bottom: 3px solid #61694D;
+}
+
+.PostDislike {
+    background-color: #7F3D38;
+    border-radius: 5px;
+    padding: 5px;
+    border-bottom: 3px solid #69322E;
+}
+
+.rating-span * p {
+    color: #DBDDCF;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3px;
+}
+
+
+================================================
+File: src/components/pages/ViewPostPage/PostPage.jsx
+================================================
+import { useParams } from "react-router";
+import './PostPage.css'
+import MarkdownViewer from "../../mdViewer/view";
+import { Link } from "react-router";
+import Loading from "../../Loading/Loading"
+import { useState, useEffect } from "react";
+import ErrorText from "../../Error/Error";
+import { BackendUrl } from '../../../../config'
+import { useCookies } from "react-cookie";
+
+
+
+export default function PostPage(){
+    const [loader, setLoader] = useState(true)
+    const [Error_MSG, setError] = useState(null)
+    const [PostText, setPostText] = useState(null)
+    const [PostTitle, setPostTitle] = useState(null)
+    const [PostAuthorName, setPostAuthor] = useState(null)
+    const [PostAuthorID, setAuthorID] = useState(null)
+    const [PostDate, setPostDate] = useState(null)
+    const [PostLikes, setPostLikes] = useState(null)
+    const [PostDisLikes, setPostDisLikes] = useState(null)
+    const params = useParams();
+    const [cookies] = useCookies(['token']);
+    
+    
+    useEffect( () => {
+    async function fetchData(){
+        try{
+        const response = await fetch(`${BackendUrl}/posts/get_post?post_id=${params.postId}`)
+        if(!response.ok){
+            throw new Error(response.statusText)
+        }
+        const data = await response.json()
+        setPostText(data.text)
+        setPostTitle(data.title)
+        setPostAuthor(data.author_name)
+        const dateStr = data.created_at;
+        const dateObj = new Date(dateStr);
+        const formatter = new Intl.DateTimeFormat('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+        const formattedDate = formatter.format(dateObj);
+        setPostDate(formattedDate)
+        setAuthorID(data.author_id)
+
+        setPostLikes(data.likes)
+        setPostDisLikes(data.dislikes)
+    } catch (error){
+        setError(error.message)
+    } finally {
+        setLoader(false)
+    }
+    }
+    fetchData()}, [])
+
+
+    const FormatLikes = (likes) => {
+        const formatterLikes = new Intl.NumberFormat('en', { 
+            notation: 'compact', 
+            compactDisplay: 'short' 
+        });
+        return formatterLikes.format(likes)
+    }
+
+    const handleLike = () => {
+        if(!cookies.token) {
+            alert("Not authorized!")
+        } else {
+            const old = document.getElementById("dislike").disabled
+            document.getElementById("like").disabled = true;
+            document.getElementById("dislike").disabled = false;
+
+            const reqAs = async () => {
+                const resp = await fetch(`${BackendUrl}/posts/${params.postId}/like`, {
+                    method: "GET",
+                    headers: {
+                        'Authorization': `Bearer ${cookies.token}`
+                    }
+                })
+                if (!resp.ok) {
+                    resp.status === 400 ? alert("Already liked!") : null
+                    console.error(resp.statusText)
+                } else {
+                    setPostLikes(PostLikes + 1)
+                    if (old) {
+                        setPostDisLikes(PostDisLikes - 1)
+                    }
+                }
+            }
+            reqAs()
+        }
+    }
+
+    const handleDislike = () => {
+        if(!cookies.token) {
+            alert("Not authorized!")
+        } else {
+            const old = document.getElementById("like").disabled
+            document.getElementById("like").disabled = false;
+            document.getElementById("dislike").disabled = true;
+            const reqAs = async () => {
+                const resp = await fetch(`${BackendUrl}/posts/${params.postId}/dislike`, {
+                    method: "GET",
+                    headers: {
+                        'Authorization': `Bearer ${cookies.token}`
+                    }
+                })
+                if (!resp.ok) {
+                    resp.status === 400 ? alert("Already disliked!") : null
+                    console.error(resp.statusText)
+                } else {
+                    setPostDisLikes(PostDisLikes + 1)
+                    if(old) {
+                        setPostLikes(PostLikes - 1)
+                    }
+                }
+            }
+            reqAs()
+        }
+    }
+
+
+    return (
+        <>
+            <Link to="/"><button className="btn-home"></button></Link>
+            {loader ? <Loading></Loading> : null}
+            {Error_MSG != null ? <ErrorText title="Error!" text={Error_MSG}></ErrorText> : null}
+
+            {Error_MSG === null && loader === false ?
+            <div className="scrn">
+                <div className="PostBase">
+                    <div className="PostContainer">
+                        <div className="PostTitle">
+                            <p className="text-title">{PostTitle}</p>
+                        </div>
+                        <div className="PostText">
+                            <MarkdownViewer value={PostText}/>
+                        </div>
+                        <div className="PostFooter">
+                            <span className="cont-foot">
+                                <div className="PostAuthor"><Link to={`/user/${PostAuthorID}`}>{PostAuthorName}</Link></div>
+                                <span className="rating-span">
+                                    <div className="PostLike">
+                                        <button id="like" onClick={handleLike}></button>
+                                        <p>{FormatLikes(PostLikes)}</p>
+                                    </div>
+                                    <div className="PostDislike">
+                                        <button id="dislike" onClick={handleDislike}></button>
+                                        <p>{FormatLikes(PostDisLikes)}</p>
+                                    </div>
+                                </span>
+                            </span>
+                            <span className="PostDate">{PostDate}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            : null}
+        </>
+    )
+}
+

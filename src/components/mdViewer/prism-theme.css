@@ -1,0 +1,79 @@
+/* src/components/mdViewer/prism-custom-theme.css */
+
+/* Базовые стили */
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Russo, Teko;
+  font-size: 18px;
+  line-height: 1.5;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 4;
+  hyphens: none;
+  background: #282828;  /* Фон редактора */
+  color: #DBDDCE;       /* Основной цвет текста */
+}
+
+/* Контейнер для кода */
+pre[class*="language-"] {
+  padding: 1.2em;
+  margin: 1em 0;
+  border-radius: 8px;
+  overflow: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Токены */
+.token.comment {
+  color: #87926c;       /* Зеленый для комментариев */
+  font-style: italic;
+}
+
+.token.keyword {
+  color: #458588;       /* Синий для ключевых слов */
+  font-weight: bold;
+}
+
+.token.string {
+  color: #ce9178;       /* Оранжевый для строк */
+}
+
+.token.function {
+  color: #ebc16e;       /* Желтый для функций */
+}
+
+.token.number {
+  color: #79a079;       /* Светло-зеленый для чисел */
+}
+
+.token.operator {
+  color: #d4d4d4;       /* Серый для операторов */
+}
+
+.token.punctuation {
+  color: #d4d4d4;       /* Серый для пунктуации */
+}
+
+.token.class-name {
+  color: #8EC07B;       /* Бирюзовый для имен классов */
+}
+
+.token.tag {
+  color: #458588;       /* Синий для тегов HTML/XML */
+}
+
+.token.attr-name {
+  color: #9cdcfe;       /* Голубой для атрибутов */
+}
+
+.token.attr-value {
+  color: #ce9178;       /* Оранжевый для значений атрибутов */
+}
+
+.token.important {
+  color: #ff5555;       /* Красный для важных элементов */
+  font-weight: bold;
+}
