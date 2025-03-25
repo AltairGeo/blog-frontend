@@ -30,7 +30,7 @@ export default function MyPostsView(props) {
     const get_posts = async () => {
       try {
         const response = await fetch(
-          `${BackendUrl}/users/get_user_posts?user_id=${object_of_token.id}`
+          `${BackendUrl}/users/posts/${object_of_token.id}`
         )
         if (!response.ok) {
             if (response.status === 404) {

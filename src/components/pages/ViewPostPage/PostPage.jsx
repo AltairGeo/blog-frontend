@@ -27,7 +27,7 @@ export default function PostPage(){
     useEffect( () => {
     async function fetchData(){
         try{
-        const response = await fetch(`${BackendUrl}/posts/get_post?post_id=${params.postId}`)
+        const response = await fetch(`${BackendUrl}/posts/${params.postId}`)
         if(!response.ok){
             throw new Error(response.statusText)
         }

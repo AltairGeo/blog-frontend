@@ -31,7 +31,7 @@ export default function CreatePost() {
                 if(!params.postID) {
                     throw new Error("Post id not found!")
                 }
-                const resp = await fetch(`${BackendUrl}/posts/get_post?post_id=${params.postID}`)
+                const resp = await fetch(`${BackendUrl}/posts/${params.postID}`)
                 if (!resp.ok){
                     throw new Error(resp.statusText);
                 }
@@ -61,14 +61,13 @@ export default function CreatePost() {
             return;
         }
         try {
-            const resp = await fetch(`${BackendUrl}/posts/change_post`, {
+            const resp = await fetch(`${BackendUrl}/posts/${params.postID}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${cookies.token}`
                 },
                 body: JSON.stringify({
-                    post_id: params.postID,
                     text: mdValue.trim(),
                     title: title.trim(),
                 })
