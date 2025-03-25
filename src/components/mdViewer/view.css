@@ -19,13 +19,13 @@
     word-break: normal;
 }
 
-.md-preview p:has(code) {
+/* .md-preview p:has(code) {
     font-size: 18px;
     font-weight: 500;
     padding: 10px;
     background-color: #a3a18f;
     border-radius: 5px;
-}
+} */
 
 .md-preview blockquote {
     border-left: #343434 5px solid;

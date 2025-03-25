@@ -79,8 +79,8 @@ export default function InfoTab() {
 
                 <div className='info-base'>
                     <div className='flex-beetween'>
-                        <input className='bio-input' type="text" name="" placeholder='Enter you bio...' id="bio-input" maxLength={80} defaultValue={info_data["bio"] ? info_data["bio"] : ""} ></input>
-                        <button disabled={bio_btn_dis} onClick={handleBIO} className='bio-btn'></button>
+                        <input autocomplete="off" className='bio-input' type="text" name="" placeholder='Enter you bio...' id="bio-input" maxLength={80} defaultValue={info_data["bio"] ? info_data["bio"] : ""} ></input>
+                        <button autoCorrect={false} disabled={bio_btn_dis} onClick={handleBIO} className='bio-btn'></button>
                     </div>
                     <p id='info-email'>{info_data['email']}</p>
                     <p id='info-data'>{info_data['data']}</p>
