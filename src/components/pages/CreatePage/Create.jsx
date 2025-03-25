@@ -31,7 +31,11 @@ export default function CreatePost() {
                 if(!params.postID) {
                     throw new Error("Post id not found!")
                 }
-                const resp = await fetch(`${BackendUrl}/posts/${params.postID}`)
+                const resp = await fetch(`${BackendUrl}/posts/self/${params.postID}`, {
+                    headers: {
+                        'Authorization': `Bearer ${cookies.token}`
+                    }
+                })
                 if (!resp.ok){
                     throw new Error(resp.statusText);
                 }
