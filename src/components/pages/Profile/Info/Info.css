@@ -11,6 +11,40 @@
     padding: 10px;
 }
 
+.bio-input {
+    background-color: #bec0b4;
+    box-shadow: 2px 5px 4px 5px rgba(0, 0, 0, 0.035);
+    width: 80%;
+    color: #313131;
+}
+
+.bio-btn {
+    background-color: #798360;
+    font-family: FA;
+    border: none;
+    color: #DBDDCF;
+    font-size: 25px;
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    margin-left: auto;
+    box-shadow: 2px 5px 4px 5px rgba(0, 0, 0, 0.035);
+    border-bottom: 3px solid #61694D;
+    transition: ease 0.1s;
+}
+
+.bio-btn:not(:disabled):active {
+    background-color: #697054;
+    border-bottom: 3px solid #61694D;
+    scale: 0.96;
+}
+
+.bio-btn:disabled {
+    background-color: #5d5f56;
+    border-bottom: 3px solid #4f5344;
+    color: #DBDDCF;
+}
+
 .info-nickname {
     box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
     border-radius: 5px;
@@ -48,4 +82,9 @@
     .container-info {
         width: auto;
     }
+}
+
+.flex-beetween {
+    display: flex;
+    justify-content: space-between;
 }

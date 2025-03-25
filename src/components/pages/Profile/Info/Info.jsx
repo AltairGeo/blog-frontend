@@ -14,6 +14,7 @@ export default function InfoTab() {
         id: 0,
     })
     const [err_msg, set_err_msg] = useState(null)
+    const [bio_btn_dis, set_bio_dis] = useState(false)
 
 
     useEffect(() => {
@@ -35,8 +36,9 @@ export default function InfoTab() {
             setInfoData({
                 nickname: data.nickname,
                 email: `Email: ${data.email}`,
-                data: "Reg. Date: Not supported!",
+                data: "Reg. Date: Not avaible!",
                 id: `ID: ${data.id}`,
+                bio: data.bio
             })
         } catch(error) {
             set_err_msg(error.message)
@@ -44,6 +46,28 @@ export default function InfoTab() {
         }
         get_data()
     }, [])
+
+    const handleBIO = () => {
+        set_bio_dis(false)
+        const bio_change = async () => {
+            const new_bio = document.getElementById("bio-input").value
+            try {
+                const resp = await fetch(`${BackendUrl}/users/change_bio?bio=${new_bio}`,
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${cookies.token}`
+                        }
+                    }
+                )
+            } catch(error) {
+                console.error(error.message)
+            } finally {
+                set_bio_dis(false)
+            }
+        }
+        bio_change()
+    }
+
 
     return(
         <>
@@ -54,6 +78,10 @@ export default function InfoTab() {
                 </div>
 
                 <div className='info-base'>
+                    <div className='flex-beetween'>
+                        <input className='bio-input' type="text" name="" placeholder='Enter you bio...' id="bio-input" maxLength={80} defaultValue={info_data["bio"] ? info_data["bio"] : ""} ></input>
+                        <button disabled={bio_btn_dis} onClick={handleBIO} className='bio-btn'></button>
+                    </div>
                     <p id='info-email'>{info_data['email']}</p>
                     <p id='info-data'>{info_data['data']}</p>
                     <p id='info-id'>{info_data['id']}</p>

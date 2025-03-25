@@ -22,6 +22,7 @@ import 'prismjs/components/prism-nasm';
 import 'prismjs/components/prism-php-extras';
 import 'prismjs/components/prism-zig';
 import 'prismjs/components/prism-rust';
+import 'prismjs/components/prism-c'
 import './prism-theme.css'
 import { useEffect } from 'react';
 
