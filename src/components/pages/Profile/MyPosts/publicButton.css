@@ -1,0 +1,22 @@
+.public-btn {
+    font-family: FA;
+    color: #DBDDCE;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    transition: ease 0.15s;
+}
+
+.public-btn:active {
+    scale: 0.9;
+}
+
+.pub {
+    background-color: #798360;
+}
+
+
+.non-pub {
+    background-color: #7F3D38;
+}

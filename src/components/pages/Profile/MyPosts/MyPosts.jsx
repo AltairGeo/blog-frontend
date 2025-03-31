@@ -94,6 +94,7 @@ export default function MyPostsView(props) {
                 text={post.text.slice(0, 60) + "..."}
                 postID={post.id}
                 postDate={TimeForming(post.created_at)}
+                public={post.public}
               />
             ))
          : ""}
