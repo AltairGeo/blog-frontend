@@ -32,13 +32,21 @@ export default function InfoTab() {
             if(!resp.ok){
                 throw new Error(resp.statusText)
             }
-            const data = await resp.json()
+            const data = await resp.json();
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+            });
+            const dateOBJ = new Date(data.created_at)
+            const dateFormatted = formatter.format(dateOBJ)
             setInfoData({
                 nickname: data.nickname,
                 email: `Email: ${data.email}`,
                 data: "Reg. Date: Not avaible!",
                 id: `ID: ${data.id}`,
-                bio: data.bio
+                bio: data.bio,
+                created_at: dateFormatted,
             })
         } catch(error) {
             set_err_msg(error.message)
@@ -83,7 +91,7 @@ export default function InfoTab() {
                         <button autoCorrect={false} disabled={bio_btn_dis} onClick={handleBIO} className='bio-btn'></button>
                     </div>
                     <p id='info-email'>{info_data['email']}</p>
-                    <p id='info-data'>{info_data['data']}</p>
+                    <p id='info-data'>{`Reg.Date: ${info_data['created_at']}`}</p>
                     <p id='info-id'>{info_data['id']}</p>
                 </div>
             </div>
