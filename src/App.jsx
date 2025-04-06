@@ -10,7 +10,7 @@ import PostPage from './components/pages/ViewPostPage/PostPage';
 import Profile from './components/pages/Profile/ProfilePage/Profile';
 import Lasts from './components/pages/LastsPostsPage/Lasts';
 import SearchPage from './components/pages/SearchPage/Search';
-
+import UserProfile from './components/UserPage/User';
 
 
 function App() { 
@@ -36,6 +36,8 @@ function App() {
       setActiveTab('lasts')
     } else if (location.pathname === "/search") {
       setActiveTab('search')
+    } else if (location.pathname.slice(0, 5) === "/user") {
+      setActiveTab('')
     }
 
   }, [location]);
@@ -53,6 +55,7 @@ function App() {
         <Route path='/edit/:postID' element={<CreatePost />}/>
         <Route path='/lasts' element={<Lasts />}/>
         <Route path='/search' element={<SearchPage />}/>
+        <Route path='/user/:userID' element={<UserProfile />}/>
       </Routes>
     </>
   )
