@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import './style.css'
 import { useParams } from 'react-router-dom';
 import { BackendUrl } from '../../../config';
+import SeeEmailModal from './SeeEmail';
+
+
 
 export default function UserProfile() {
     const params = useParams();
     const [usr_data, set_usr_data] = useState(null)
+    const [seeEmailm, setemailmodal] = useState(false)
 
     useEffect(() => {
         const basefunc = async () => {
@@ -16,15 +20,20 @@ export default function UserProfile() {
         basefunc()
     }, [params.userID])
 
+    const CloseEmailModal = () => {
+        setemailmodal(false)
+    }
+
     return (
-        <>
+        <> 
+            {seeEmailm ? <SeeEmailModal closeModal={CloseEmailModal} email={usr_data.email} nickname={usr_data.nickname}/> : null}
             <div className='user-profile-contain'>  
                 <div className='base-user-head'>
                     <img src={usr_data ? usr_data.avatar_path : "/base_avatar.png"} className='avatar' />
                     <div className='usr-othr'>
                         <div className='usr-nickname'>
                             <p>{usr_data ? usr_data.nickname : "Loading..."}</p>
-                            <button className='send-email-btn'></button>
+                            <button className='send-email-btn' onClick={() => {setemailmodal(true)}}></button>
                         </div>
                         <div className='usr-bio'>
                             <p>{usr_data ? usr_data.bio ? usr_data.bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis interdum sapien, id tincidunt." : "Loading..."}</p>

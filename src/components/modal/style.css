@@ -42,3 +42,7 @@
 .btn-close-modal:active {
     background-color: #492320;
 }
+
+.modal-link {
+    color: #7F3D38;
+}
