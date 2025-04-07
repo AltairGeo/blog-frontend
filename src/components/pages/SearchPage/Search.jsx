@@ -103,6 +103,7 @@ export default function SearchPage() {
                                 nickname={post.author} 
                                 id={post.id} 
                                 text={post.text.slice(0, 150)}
+                                author_id={0}
                             />
                         ))}
                     </ul>
