@@ -33,7 +33,7 @@ export default function ChPassModal(props) {
 
             const resp = await fetch(`${BackendUrl}/users/change_password`,
                 {
-                    method: "POST",
+                    method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${cookie.token}`

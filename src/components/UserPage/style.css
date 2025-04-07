@@ -1,0 +1,96 @@
+.user-profile-contain {
+    padding: 5px;
+    width: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 8%;
+}
+
+.base-user-head {
+    background-color: #282828;
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+}
+
+.usr-othr {
+    padding: 0px;
+    width: auto;
+    margin-left: 8px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.usr-nickname {
+    width: 100%;
+    background-color: #7F3D38;
+    height: 53px;
+    border-radius: 10px;
+    border-bottom: 4px solid #69322E;
+    text-align: center;
+    align-content: center;
+}
+
+.usr-nickname p {
+    font-family: Russo;
+    font-size: 32px;
+    margin: 0;
+    color: #DBDDCE;
+}
+
+.usr-bio {
+    margin-top: 5px;
+    background-color: #DBDDCE;
+    height: 30%;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    border-bottom: 4px solid #B8B9AF;
+}
+
+.usr-bio p {
+    color: #282828;
+    font-size: 20px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.send-email-btn {
+    right: 17%;
+    width: 40px;
+    height: 40px;
+    font-family: FA;
+    position: absolute;
+    margin-top: -80px;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    transform: translateY(0);
+    scale: 0.8;
+    border: none;
+    border-radius: 5px;
+    background-color: #798360;
+    color: #DBDDCE;
+    font-size: 18px;
+    transition: ease 0.2s;
+    border-bottom: 3px solid #61694D;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
+}
+
+.send-email-btn:hover {
+    background-color: #697254;
+}
+
+.send-email-btn:active {
+    background-color: #61694D;
+}
+
+.usr-nickname:hover .send-email-btn {
+    transform: translateY(36px); 
+    opacity: 1;
+    scale: 1.1;
+}

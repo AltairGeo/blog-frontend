@@ -37,7 +37,7 @@ function App() {
     } else if (location.pathname === "/search") {
       setActiveTab('search')
     } else if (location.pathname.slice(0, 5) === "/user") {
-      setActiveTab('')
+      setActiveTab('none')
     }
 
   }, [location]);

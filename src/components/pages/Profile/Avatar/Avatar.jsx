@@ -31,11 +31,17 @@ export default function Avatar() {
                     throw new Error(resp.statusText);
                 }
                 const ava_data = await (await resp.text()).replaceAll('"', "")
-                setAvatarUrl(ava_data)
+        
+                if (ava_data === null) {
+                    setAvatarUrl("/base_avatar.png")
+                } else {
+                    setAvatarUrl(ava_data)
+                }
 
                 document.querySelector('.avatar-container').style.background = 'none';
             } catch (error) {
                 console.error('Error fetching avatar:', error.message);
+                setAvatarUrl("/base_avatar.png")
             } finally {
                 setLoading(false);
             }
