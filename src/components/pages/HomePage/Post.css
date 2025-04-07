@@ -141,3 +141,9 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+
+.link-to-author {
+    text-decoration: none;
+    color: #DBDDCE;
+}

@@ -27,7 +27,7 @@ export default function Post(props){
                             <button className="btn-read-more">Read more</button>
                         </Link>
                     <span className="PostSpan">
-                        <p id="PostAuthorName">{props.author_name}</p>
+                        <p id="PostAuthorName"><Link className='link-to-author' to={`/user/${props.author_id}`}>{props.author_name}</Link></p>
                         <span className='ratings-span'>
                             <div className='like-rating'>
                                 <span className='rating'></span>
