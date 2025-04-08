@@ -42,7 +42,7 @@
 .usr-bio {
     margin-top: 5px;
     background-color: #DBDDCE;
-    height: 30%;
+    height: 36%;
     border-radius: 10px;
     padding: 5px;
     text-align: center;
@@ -110,4 +110,60 @@
     color: #DBDDCE;
     font-size: 20px;
     font-weight: 700;
+}
+
+.usr-breadcrumbs {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+
+.usr-breadcrumbs button {
+    flex: 1;
+    height: 80px;
+    font-family: FA;
+    font-size: 35px;
+    color: #DBDDCE;
+    border-radius: 8px;
+    padding: 10px;
+    transition: ease 0.3s;
+}
+
+.usr-breadcrumbs button:not(:disabled):hover {
+    scale: 1.05;
+}
+
+.posts-btn {
+    border: none;
+    background-color: #076678;
+    border-bottom: 4px solid #065767;
+}
+
+.posts-btn:disabled {
+    background-color: #064855;
+    border-bottom: 4px solid #043c46;
+}
+
+.like-btn {
+    border: none;
+    background-color: #7F3D38;
+    border-bottom: 4px solid #69322E;
+}
+
+.like-btn:disabled {
+    background-color: #69322E;
+    border-bottom: 4px solid #502522;
+}
+
+.stats-btn {
+    border: none;
+    background-color: #427B57;
+    border-bottom: 4px solid #376849;
+}
+
+.stats-btn:disabled {
+    background-color: #376849;
+    border-bottom: 4px solid #254732;
 }

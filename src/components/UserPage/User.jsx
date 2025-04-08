@@ -10,6 +10,7 @@ export default function UserProfile() {
     const params = useParams();
     const [usr_data, set_usr_data] = useState(null)
     const [seeEmailm, setemailmodal] = useState(false)
+    const [currentTAB, setCurrentTab] = useState('posts')
 
     useEffect(() => {
         const basefunc = async () => {
@@ -24,6 +25,19 @@ export default function UserProfile() {
         setemailmodal(false)
     }
 
+
+    const DataFormatMake = (dateSTR) => {
+        const formatter = new Intl.DateTimeFormat('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+        });
+        const DatObj = new Date(dateSTR)
+        return formatter.format(DatObj)
+    }
+
+
+
     return (
         <> 
             {seeEmailm ? <SeeEmailModal closeModal={CloseEmailModal} email={usr_data.email} nickname={usr_data.nickname}/> : null}
@@ -36,11 +50,15 @@ export default function UserProfile() {
                             <button className='send-email-btn' onClick={() => {setemailmodal(true)}}></button>
                         </div>
                         <div className='usr-bio'>
-                            <p>{usr_data ? usr_data.bio ? usr_data.bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis interdum sapien, id tincidunt." : "Loading..."}</p>
-                        </div>
+                            <p>{usr_data ? usr_data.bio ? usr_data.bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis interdum sapien, id tincidunt." : "Loading..."}</p>                           
                     </div>
+                    <div className='usr-breadcrumbs'>
+                                <button onClick={() => {setCurrentTab("posts")}} disabled={currentTAB === "posts" ? true : null} className='posts-btn'></button>
+                                <button onClick={() => {setCurrentTab("likes")}} disabled={currentTAB === "likes" ? true : null} className='like-btn'></button>
+                                <button onClick={() => {setCurrentTab("stats")}} disabled={currentTAB === "stats" ? true : null} className='stats-btn'></button>
+                            </div> 
+                    </div> </div>
                 </div>
-            </div>
         </>
     )
 }
