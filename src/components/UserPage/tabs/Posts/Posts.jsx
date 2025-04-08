@@ -9,7 +9,7 @@ export default function UserPosts(props) {
 
     useEffect(() => {
         const getUserPosts = async () => {
-            const resp = await fetch(`${BackendUrl}/users/posts/${props.usr_id}`)
+            const resp = await fetch(`${BackendUrl}/users/${props.usr_id}/posts`)
             const respData = await resp.json()
             setPostsData(respData)
         }
