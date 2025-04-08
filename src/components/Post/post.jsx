@@ -28,9 +28,11 @@ export default function MainPost(props) {
         <div className='post-cont'>
             <div className='post-top'> 
                 <div className='top-cont-post'>
+                    {!props.nickname ? null :
                     <div className='post-nickname'>
                         <p><Link className="link-to-author" to={`/user/${props.author_id}`}>{props.nickname}</Link></p>
                     </div>
+                    }
                     <div className='post-date'>
                         <p>{date}</p>
                     </div>

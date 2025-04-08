@@ -7,6 +7,7 @@
 }
 
 .base-user-head {
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, 0.075);
     background-color: #282828;
     border-radius: 12px;
     padding: 8px;

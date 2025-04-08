@@ -3,6 +3,7 @@ import './style.css'
 import { useParams } from 'react-router-dom';
 import { BackendUrl } from '../../../config';
 import SeeEmailModal from './SeeEmail';
+import UserPosts from './tabs/Posts/Posts';
 
 
 
@@ -58,6 +59,9 @@ export default function UserProfile() {
                                 <button onClick={() => {setCurrentTab("stats")}} disabled={currentTAB === "stats" ? true : null} className='stats-btn'></button>
                             </div> 
                     </div> </div>
+
+                    {currentTAB === "posts" ? <UserPosts usr_id={params.userID}/> : null}
+
                 </div>
         </>
     )
